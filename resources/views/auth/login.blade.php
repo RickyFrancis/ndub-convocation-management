@@ -6,11 +6,18 @@
         @csrf
 
         <!-- Email Address -->
-        <div>
+        <!-- <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                 autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div> -->
+
+        <!-- NDUB ID -->
+        <div>
+            <x-input-label for="ndub_id" :value="__('NDUB ID')" />
+            <x-text-input id="ndub_id" class="block mt-1 w-full" type="text" name="ndub_id" :value="old('ndub_id')" required autofocus autocomplete="ndub_id" />
+            <x-input-error :messages="$errors->get('ndub_id')" class="mt-2" />
         </div>
 
         <!-- Password -->

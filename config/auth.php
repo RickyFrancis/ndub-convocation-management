@@ -63,6 +63,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            'identifier' => 'ndub_id', // Set the identifier to 'NDUB ID'
         ],
 
         // 'users' => [
