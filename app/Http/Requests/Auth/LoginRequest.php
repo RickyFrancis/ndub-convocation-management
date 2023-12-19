@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             //'email' => ['required', 'string', 'email'],
-            'ndub_id' => ['required', 'string'],
+            'student_id' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -42,11 +42,11 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('ndub_id', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt($this->only('student_id', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'ndub_id' => trans('auth.failed'),
+                'student_id' => trans('auth.failed'),
             ]);
         }
 
@@ -69,7 +69,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'ndub_id' => trans('auth.throttle', [
+            'student_id' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -81,6 +81,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->input('ndub_id')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('student_id')).'|'.$this->ip());
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\registration;
+use App\Models\GraduateList;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -34,17 +34,20 @@ class RegisteredUserController extends Controller
         $request->validate([
             //'name' => ['required', 'string', 'max:255'],
             //'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'ndub_id' => 'required|max:50|exists:registrations,ndub_id|unique:users,ndub_id',
+            'student_id' => 'required|max:50|exists:graduate_lists,student_id|unique:users,student_id',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ],[
-            'ndub_id.exists'=>'Your NDUB ID is invalid, please open a support ticket for resolving this issue.',
-            'ndub_id.unique'=>'Your account already registered with NDUB ID, please login or go to forget password.',
+            'student_id.exists'=>'Your NDUB ID is invalid, please open a support ticket for resolving this issue.',
+            'student_id.unique'=>'Your account already registered with NDUB ID, please login or go to forget password.',
         ]);
+
+        $graduate_lists_id = GraduateList::where('student_id', $request->student_id)->first();
 
         $user = User::create([
             //'name' => $request->name,
             //'email' => $request->email,
-            'ndub_id' => $request->ndub_id,
+            'student_id' => $request->student_id,
+            'graduate_lists_id' => $graduate_lists_id->id,
             'password' => Hash::make($request->password),
         ]);
 

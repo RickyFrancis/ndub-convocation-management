@@ -15,9 +15,10 @@
 
         <!-- NDUB ID -->
         <div>
-            <x-input-label for="ndub_id" :value="__('NDUB ID')" />
-            <x-text-input id="ndub_id" class="block mt-1 w-full" type="text" name="ndub_id" :value="old('ndub_id')" required autofocus autocomplete="ndub_id" />
-            <x-input-error :messages="$errors->get('ndub_id')" class="mt-2" />
+            <x-input-label for="student_id" :value="__('NDUB ID')" />
+            <x-text-input id="student_id" class="block mt-1 w-full" type="text" name="student_id" :value="old('student_id')"
+                required autofocus autocomplete="student_id" />
+            <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
         </div>
 
         <!-- Password -->
