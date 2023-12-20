@@ -13,28 +13,38 @@ return new class extends Migration
     {
         Schema::create('graduate_lists', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->string('student_id', 50);
             $table->string('program');
             $table->string('batch', 50);
+            $table->string('department');
             $table->string('major', 50);
             $table->string('minor', 50);
             $table->year('academic_year');
+            $table->year('admission_year');
+            $table->year('admission_semester');
             $table->string('father_name');
             $table->string('mother_name');
             $table->string('phone', 100);
             $table->string('email', 100);
             $table->string('blood_group', 10);
+            $table->string('nid')->nullable();
+            $table->string('birth_certificate_no')->nullable();
             $table->integer('credit_earned');
             $table->float('cgpa');
             $table->date('result_publish_date');
+            $table->date('dob');
             $table->string('passing_trimester', 50);
+            $table->string('ssc_passing_year', 50);
+            $table->string('ssc_result', 50);
+            $table->string('hsc_passing_year', 50);
+            $table->string('hsc_result', 50);
             $table->boolean('account_clearance');
             $table->float('due_amount', 100);
             $table->boolean('library_clearance');
             $table->boolean('administrative_clearance');
             $table->boolean('department_clearance');
+            $table->timestamps();
         });
     }
 
