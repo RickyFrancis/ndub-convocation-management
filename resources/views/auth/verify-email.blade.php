@@ -5,9 +5,15 @@
 
     @if (session('status') == 'verification-link-sent')
         <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            {{ __('A new verification link has been sent to the email address you provided during registration. ') }}
         </div>
     @endif
+
+    <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">Email address: {{$auth->email}}</div>
+    
+    <div class="mb-4 font-medium text-sm text-gray-400 dark:text-gray-400">
+            {{ __('NB: If you think this is not your email address then open a support ticket for resolving the issue. ') }}
+    </div>
 
     <div class="mt-4 flex items-center justify-between">
         <form method="POST" action="{{ route('verification.send') }}">
