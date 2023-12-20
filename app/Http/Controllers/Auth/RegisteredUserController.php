@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();
+
 //dd($request->student_id);
         $user = User::create([
             //'name' => $request->name,
