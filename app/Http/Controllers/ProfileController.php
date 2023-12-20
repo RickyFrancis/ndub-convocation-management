@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\GraduateList;
 
 class ProfileController extends Controller
 {
+
+    public function dashboard(){
+        $user = GraduateList::where('id', Auth::user()->graduate_lists_id)->first();
+        //dd($GraduateList);
+        return view('dashboard', compact('user'));
+    }
+
     /**
      * Display the user's profile form.
      */
