@@ -40,7 +40,7 @@
 {{ $salutation }}
 @else
 @lang('Regards'),<br>
-{{ __('NDUB IT (Software Division)') }}
+{{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}

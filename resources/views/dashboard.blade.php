@@ -5,7 +5,7 @@
         </h2>
 
 
-
+        <div class="box-content h-32 w-32 p-4 border-4">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
         </h2>
@@ -25,7 +25,7 @@
 
             <div>
                 <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
+                <x-text-input id="name" name="name" type="text" class="mt-1 block w-half" :value="old('name', $user->name)"
                     required autofocus autocomplete="name" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
             </div>
@@ -47,7 +47,7 @@
             <div>
                 <x-input-label for="program" :value="__('Program')" />
                 <x-text-input id="program" name="program" type="text" class="mt-1 block w-full" :value="old('program', $user->program)"
-                    required autocomplete="program" />
+                    required autocomplete="program" readonly/>
                 <x-input-error class="mt-2" :messages="$errors->get('program')" />
             </div>
 
@@ -61,7 +61,7 @@
             </div>
         </form>
 
-
+</div>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
