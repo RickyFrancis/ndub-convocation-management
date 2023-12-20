@@ -41,14 +41,14 @@ class RegisteredUserController extends Controller
             'student_id.unique'=>'Your account already registered with this student ID, please login or go to forget password.',
         ]);
 
-        $graduate_lists_id = GraduateList::where('student_id', $request->student_id)->first();
+        $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();
 //dd($request->student_id);
         $user = User::create([
             //'name' => $request->name,
             //'email' => $request->email,
             'student_id' => $request->student_id,
-            'graduate_lists_id' => $graduate_lists_id->id,
-            'email' => $graduate_lists_id->email,
+            'graduate_lists_id' => $graduate_lists_info->id,
+            'email' => $graduate_lists_info->email,
             'role_id' => '3',
             'password' => Hash::make($request->password),
         ]);
