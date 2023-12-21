@@ -94,9 +94,8 @@ function readProductURL(input) {
 }
 
 // Delete modal
+
 $(document).on("click", "#delete", function () {
     var deleteID = $(this).data('id');
     $(".modal_card #modal_id").val( deleteID );
 });
-
-

@@ -27,6 +27,11 @@ Route::get('/', function () {
 
 // })->middleware(['auth'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard', function () {
+    //return view('dashboard');
+    return view('admin.dashboard.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/dashboard', function () {

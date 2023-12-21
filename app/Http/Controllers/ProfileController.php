@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function dashboard(){
         $user = GraduateList::where('id', Auth::user()->graduate_lists_id)->first();
         //dd($GraduateList);
-        return view('admin.dashboard', compact('user'));
+        return view('admin.dashboard.dashboard', compact('user'));
     }
 
     /**
