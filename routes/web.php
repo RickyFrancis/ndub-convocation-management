@@ -21,10 +21,17 @@ Route::get('/', function () {
 });
 
 // Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//     //return view('dashboard');
+
+//     return view('admin.dashboard');
+
+// })->middleware(['auth'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

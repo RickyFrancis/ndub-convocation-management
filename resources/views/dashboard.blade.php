@@ -3,8 +3,65 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-
-
+        <!-- card start -->
+        <div class="flex flex-wrap">
+            <div class="w-1/4 p-2 mt-2 mb-2">
+                <div class="p-6 mt-6 mb-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <p class="mb-3 font-normal text-gray-900 dark:text-white">
+                        @php
+                            if($user->account_clearance=='0'){
+                                echo 'Account clearance <br><br> Done';
+                            }elseif($user->account_clearance=='1'){
+                                echo 'Account clearance <br><br> Pending<br><br>';
+                                
+                                echo 'Due: '.$user->due_amount;
+                            }
+                        @endphp
+                    </p>
+                </div>
+            </div>
+            <div class="w-1/4 p-2 mt-2 mb-2">
+                <div class="p-6 mt-6 mb-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <p class="mb-3 font-normal text-gray-900 dark:text-white">
+                        @php
+                            if($user->library_clearance=='0'){
+                                echo 'Library clearance <br><br> Done';
+                            }elseif($user->library_clearance=='1'){
+                                echo 'Library clearance <br><br> Pending<br><br>';
+                            }
+                        @endphp
+                    </p>
+                </div>
+            </div>
+            <div class="w-1/4 p-2 mt-2 mb-2">
+                <div class="p-6 mt-6 mb-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <p class="mb-3 font-normal text-gray-900 dark:text-white">
+                        @php
+                            if($user->administrative_clearance=='0'){
+                                echo 'Administrative clearance <br><br> Done';
+                            }elseif($user->administrative_clearance=='1'){
+                                echo 'Administrative clearance <br><br> Pending<br><br>';
+                            }
+                        @endphp
+                    </p>
+                </div>
+            </div>
+            <div class="w-1/4 p-2 mt-2 mb-2">
+                <div class="p-6 mt-6 mb-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <p class="mb-3 font-normal text-gray-900 dark:text-white">
+                        @php
+                            if($user->department_clearance=='0'){
+                                echo 'Department clearance <br><br> Done';
+                            }elseif($user->department_clearance=='1'){
+                                echo 'Department clearance <br><br> Pending<br><br>';
+                            }
+                        @endphp
+                    </p>
+                </div>
+            </div>
+            <!-- Other content or cards here -->
+        </div>
+        <!-- card end -->
         <div class="box-content h-32 w-32 p-4 border-4">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
