@@ -73,7 +73,7 @@ img {
 .header_container
 {
     /* border-top: 4px solid black; */
-    background-color: #5800db;
+    background-color: #09308b;
 }
 
 .header_row
@@ -292,3 +292,25 @@ img {
 /* .summary_month_name_section{
   padding-left: 101px;
 } */
+
+ /* index page css start */
+
+ .index_body_class{
+  background-image: url('../img/convocation.jpg');
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.index_header_text{
+  /* font-size: 30px; */
+  font-family: cursive;
+  color: rgb(255, 255, 255);
+}
+
+.index_header_row
+{
+    height: 100%;
+    width: 100%;
+    background-color: #09308b;
+}

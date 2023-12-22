@@ -33,6 +33,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('dashboard/student/edit/{slug}', [SpotController::class, 'edit'])->name('edit_spot');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
