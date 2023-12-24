@@ -63,7 +63,7 @@
                 @else
                     <a class="btn btn-primary btn-lg ml-5" href="{{ route('login') }}">Sign In</a>
                 @if (Route::has('register'))
-                    <a class="btn btn-success btn-lg ml-3" href="{{ route('register') }}">Register</a>
+                    <a class="btn btn-success btn-lg ml-3" href="{{ route('register') }}">Register </a>
                 @endif
                 @endauth
                 @endif
