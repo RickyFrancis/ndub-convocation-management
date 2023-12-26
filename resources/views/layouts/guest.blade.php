@@ -8,6 +8,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('contents/admin/') }}/assets/img/ndub.png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -20,8 +21,8 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
             <a href="/">
-                <img src="https://ndub.edu.bd/wp-content/uploads/2021/06/Notre-Dame-University-Bangladesh-Logo-Transparent.png"
-                    alt="" width="200">
+                <img src="{{ asset('contents/admin/') }}/assets/img/ndub.png"
+                    alt="" width="230">
                 {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
             </a>
         </div>
