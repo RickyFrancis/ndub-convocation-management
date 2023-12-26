@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
- <!-- Google Font: Source Sans Pro -->
- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
-        rel="stylesheet">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+            rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('contents/admin/') }}/plugins/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Ionicons -->
@@ -52,27 +52,28 @@
 <body class="index_body_class">
         <header>
         <div class="container-fluid header_container">
-            <div class="row p-3 mb-3 index_header_row">
+            <div class="row p-3 mb-3 index_header_row text-center">
                 <div class="col-12 col-md-9">
-                    <h1 class="text-center index_header_text"> NDUB Convocation Portal</h1>
+                    <h1 class="text-center index_header_text">NDUB Convocation Portal</h1>
                 </div>
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3 text-center">
                 @if (Route::has('login'))
                 @auth
-                    <a class="btn btn-primary btn-lg ml-5" href="{{ url('/dashboard') }}">Dashboard</a>
+                    <a class="btn btn-light btn-lg ml-5" href="{{ url('/dashboard') }}">Dashboard</a>
                 @else
-                    <a class="btn btn-primary btn-lg ml-5" href="{{ route('login') }}">Sign In</a>
+                    <a class="btn btn-light btn-lg ml-5" href="{{ route('login') }}">Sign In</a>
                 @if (Route::has('register'))
-                    <a class="btn btn-success btn-lg ml-3" href="{{ route('register') }}">Register </a>
+                    <a class="btn btn-light btn-lg ml-3" href="{{ route('register') }}">Register </a>
                 @endif
                 @endauth
                 @endif
                 </div>
             </div>
         </div>
-    </header>
-            </div>
-        </div>
+        </header>
+        <section>
+            <h1 class="text-center text-primary"></h1>
+        </section>
 </body>
 
 </html>
