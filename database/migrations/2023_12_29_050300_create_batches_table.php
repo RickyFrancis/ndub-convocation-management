@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('batches', function (Blueprint $table) {
-            $table->id();
+            $table->id('batch_id');
             $table->string('batch_name')->nullable();
             $table->string('batch_slug')->nullable();
             $table->string('batch_created_by')->nullable();

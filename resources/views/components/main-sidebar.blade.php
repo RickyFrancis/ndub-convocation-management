@@ -14,7 +14,7 @@
                         @php
                             use App\Models\User;
                             $user = User::where('id', Auth::user()->id)->first();
-                            echo '<small> User </small>';
+                            echo '<small></small>';
                         @endphp</b></a><br>
             </div>
 

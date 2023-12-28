@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('graduate_lists', function (Blueprint $table) {
-            $table->id();
+            $table->id('graduate_list_id');
             $table->string('name')->nullable();
             $table->string('student_id')->nullable();
-            $table->integer('program')->nullable();
-            $table->integer('batch')->nullable();
-            $table->integer('department')->nullable();
+            $table->integer('program_id')->nullable();
+            $table->integer('batch_id')->nullable();
+            $table->integer('department_id')->nullable();
             $table->string('major')->nullable();
             $table->string('minor')->nullable();
             $table->string('academic_year_from')->nullable();
