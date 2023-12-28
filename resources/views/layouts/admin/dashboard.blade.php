@@ -119,10 +119,10 @@
         </div>
         <!-- /.content-wrapper -->
         {{-- <footer class="main-footer">
-    <strong>Copyright &copy; 2023 <a href="#">FOP Awards</a>.</strong>
+    <strong>Copyright &copy; 2023 <a href="#">NDUB Convocation</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
+      <!-- <b>Version</b> 1.0.0 -->
     </div>
   </footer> --}}
 

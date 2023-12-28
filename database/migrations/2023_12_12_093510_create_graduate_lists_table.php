@@ -68,11 +68,16 @@ return new class extends Migration
             $table->string('guest2_permanent_address')->nullable();
             $table->string('guest2_photo')->nullable();
             $table->string('student_photo')->nullable();
+            $table->integer('second_program_graduate_list_table_id')->nullable();
             $table->boolean('account_clearance')->nullable();
             $table->float('due_amount')->nullable();
             $table->boolean('library_clearance')->nullable();
             $table->boolean('administrative_clearance')->nullable();
             $table->boolean('department_clearance')->nullable();
+            $table->string('graduate_list_created_by')->nullable();
+            $table->string('graduate_list_updated_by')->nullable();
+            $table->string('graduate_list_deleted_by')->nullable();
+            $table->string('graduate_list_deleted_at')->nullable();
             $table->timestamps();
         });
     }
