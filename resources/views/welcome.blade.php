@@ -72,8 +72,14 @@
         </div>
         </header>
         <section>
-            <h1 class="text-center text-primary"></h1>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-4">
+                    <img src="{{ asset('contents/admin/') }}/assets/img/ndub.png" alt="" class="img-fluid" width="">
+                    <h1 class="text-center text-primary">Notre Dame University Bangladesh</h1>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </section>
 </body>
-
 </html>
