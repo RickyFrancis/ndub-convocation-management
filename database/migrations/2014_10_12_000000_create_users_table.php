@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('student_id', 50)->nullable();
             $table->integer('graduate_lists_id')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->nullable();
             $table->string('phone')->nullable();
 			$table->string('photo')->nullable();
 			$table->string('role_id')->nullable();
