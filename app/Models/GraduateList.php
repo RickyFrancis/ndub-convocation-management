@@ -9,6 +9,14 @@ class GraduateList extends Model{
     use HasFactory;
 
     public function departmentInfo(){
-        return $this->belongsTo('App\Models\Department','department_id','division_id');
+        return $this->belongsTo('App\Models\Department','department_id','department_id');
+    }
+
+    public function programInfo(){
+        return $this->belongsTo('App\Models\Program','program_id','program_id');
+    }
+
+    public function batchInfo(){
+        return $this->belongsTo('App\Models\Batch','batch_id','batch_id');
     }
 }
