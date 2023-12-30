@@ -197,7 +197,9 @@
                     @enderror
                     </div>
                 </div>
-
+                <hr>
+                    <div class="text-center text-bold"><h4>Personal Information</h4></div>
+                <hr>
                 <div class="form-group row mb-3 @error('father_name') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Father name:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
