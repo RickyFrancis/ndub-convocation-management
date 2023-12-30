@@ -17,7 +17,7 @@ class GraduateListsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 1500) as $index) {
 
             $account_clearance = $faker->boolean;
             $due_amount = $account_clearance ? $faker->randomFloat(2, 0, 5000) : 0;
@@ -31,12 +31,12 @@ class GraduateListsTableSeeder extends Seeder
             // DB::table('graduate_lists')->insert([
             //     'name' => $faker->name,
             //     'student_id' => $faker->unique()->numerify('###'),
-            //     'program' => $faker->randomElement($programs),
-            //     'batch' => $faker->randomElement(['BBA 12', 'CSE 7', 'ELL 8', 'LLB 15']),
-            //     'department' => $faker->randomElement(['BBA', 'CSE', 'ELL', 'LLB', 'MBA', 'MCSE']),
+            //     'program_id' => $faker->randomElement(['2', '3', '4', '5']),
+            //     'batch_id' => $faker->randomElement(['2', '3', '4', '5']),
+            //     'department_id' => $faker->randomElement(['2', '3', '4', '5']),
             //     'major' => $faker->randomElement(['Marketing', 'HRM', 'Management', 'Finance']),
             //     'minor' => $faker->randomElement(['Accounting', 'Business Math', 'Statistics', 'Economics']),
-            //     'academic_year' => $academic_year,
+            //     'academic_year_to' => $academic_year,
             //     'admission_year' => $admission_year,
             //     'ssc_passing_year' => $academic_year,
             //     'hsc_passing_year' => $academic_year,

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('graduate_lists', function (Blueprint $table) {
-            $table->id('graduate_list_id');
+            $table->id('id');
             $table->string('name')->nullable();
             $table->string('student_id')->nullable();
             $table->integer('program_id')->nullable();
@@ -35,11 +35,11 @@ return new class extends Migration
             $table->string('office_phone')->nullable();
             $table->string('office_mobile')->nullable();
             $table->string('email')->nullable();
-            $table->string('blood_group', 10)->nullable();
+            $table->string('blood_group')->nullable();
             $table->string('nid')->nullable();
             $table->string('birth_certificate_no')->nullable();
-            $table->integer('credit_earned')->nullable();
-            $table->float('cgpa')->nullable();
+            $table->string('credit_earned')->nullable();
+            $table->double('cgpa')->nullable();
             $table->string('result_publish_date')->nullable();
             $table->string('dob')->nullable();
             $table->string('passing_trimester')->nullable();
@@ -47,14 +47,24 @@ return new class extends Migration
             $table->string('ssc_board')->nullable();
             $table->string('ssc_group')->nullable();
             $table->string('ssc_passing_year')->nullable();
-            $table->string('ssc_result')->nullable();
+            $table->double('ssc_result')->nullable();
             $table->string('ssc_certificate_photo')->nullable();
             $table->string('hsc_institute')->nullable();
             $table->string('hsc_board')->nullable();
             $table->string('hsc_group')->nullable();
             $table->string('hsc_passing_year')->nullable();
-            $table->string('hsc_result')->nullable();
+            $table->double('hsc_result')->nullable();
             $table->string('hsc_certificate_photo')->nullable();
+            $table->string('bachelor_institute')->nullable();
+            $table->string('bachelor_board')->nullable();
+            $table->string('bachelor_group')->nullable();
+            $table->string('bachelor_passing_year')->nullable();
+            $table->string('bachelor_result')->nullable();
+            $table->string('masters_institute')->nullable();
+            $table->string('masters_board')->nullable();
+            $table->string('masters_group')->nullable();
+            $table->string('masters_passing_year')->nullable();
+            $table->string('masters_result')->nullable();
             $table->string('guest1_name')->nullable();
             $table->string('guest1_relationship')->nullable();
             $table->string('guest1_nid')->nullable();
@@ -68,16 +78,19 @@ return new class extends Migration
             $table->string('guest2_permanent_address')->nullable();
             $table->string('guest2_photo')->nullable();
             $table->string('student_photo')->nullable();
-            $table->integer('second_program_graduate_list_table_id')->nullable();
+            $table->integer('second_program_grad_list_id')->nullable();
             $table->boolean('account_clearance')->nullable();
-            $table->float('due_amount')->nullable();
+            $table->double('due_amount')->nullable();
             $table->boolean('library_clearance')->nullable();
             $table->boolean('administrative_clearance')->nullable();
             $table->boolean('department_clearance')->nullable();
-            $table->string('graduate_list_created_by')->nullable();
-            $table->string('graduate_list_updated_by')->nullable();
-            $table->string('graduate_list_deleted_by')->nullable();
-            $table->string('graduate_list_deleted_at')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->string('deleted_at')->nullable();
+            $table->string('edit_start_status')->default(0);
+            $table->string('child_account_status')->default(0);
+            $table->string('registration_complete_status')->default(0);
             $table->timestamps();
         });
     }

@@ -32,8 +32,11 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('dashboard/student/edit/{slug}', [SpotController::class, 'edit'])->name('edit_spot');
+Route::middleware(['auth', 'verified'])->group(function () {
+Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard/user/information/edit/{id}', [ProfileController::class, 'edit'])->name('edit_user_information');
+Route::post('dashboard/user/information/update', [ProfileController::class, 'update'])->name('update_user_information');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -31,6 +31,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $trimmed_student_id = str_replace([' ', '-'], '', trim($request->student_id));
+        //dd($trimmed_student_id);
         $request->validate([
             //'name' => ['required', 'string', 'max:255'],
             //'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -42,8 +44,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();
-
-//dd($request->student_id);
+        
         $user = User::create([
             //'name' => $request->name,
             //'email' => $request->email,

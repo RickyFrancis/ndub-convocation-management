@@ -26,13 +26,15 @@ class PasswordResetLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $trimmed_student_id = str_replace([' ', '-'], '', trim($request->student_id));
+        //dd($trimmed_student_id);
         $request->validate([
             // 'email' => ['required', 'email'],
             'student_id' => 'required|max:50|exists:users,student_id',
         ],[
             'student_id.exists'=>'Your student ID is invalid, please open a support ticket for resolving this issue.']);
 
-        $user_info = User::where('student_id', $request->student_id)->first();
+        $user_info = User::where('student_id', $trimmed_student_id)->first();
 
         //dd($graduate_lists_id);
 

@@ -1,29 +1,115 @@
 @extends('layouts.admin.dashboard')
 @section('dashboard_content')
-@if(Session::has('success'))
-    <script>
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        text: '{{Session::get('success')}}',
-        showConfirmButton: true,
-        timer: '5000',
-    })
-    </script>
-    @endif
-    @if(Session::has('error'))
-    <script>
-    Swal.fire({
-        position: 'center',
-        icon: 'error',
-        text: '{{Session::get('error')}}',
-        showConfirmButton: true,
-        timer: '5000',
-    })
-    </script>
-    @endif
     <br>
     <div class="container-fluid">
+        <!-- <div class="row">
+            <div class="col-md-12">
+            <hr>
+            <h3 class="text-center">Clearance Status</h3>
+            <hr>
+            </div>
+        
+            <div class="col-md-3">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-body bg-primary text-white">
+                        <h5 class="card-title"><b>Account clearance</b></h5>
+                        <p class="card-text">
+                            <b>
+                                @php
+                                    if ($user->account_clearance == '0') {
+                                        echo 'Done';
+                                    } elseif ($user->account_clearance == '1') {
+                                        echo 'Pending';
+                                    }
+                                @endphp
+                            </b>
+                        </p>
+                        <p class="pt-1">
+                            <b>
+                                @php
+                                    if ($user->account_clearance == '1') {
+                                        echo 'Due: ' . number_format($user->due_amount);
+                                    }
+                                @endphp
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-body bg-success text-white">
+                        <h5 class="card-title"><b>Library clearance</b></h5>
+                        <p class="card-text">
+                            <b>
+                                @php
+                                    if ($user->library_clearance == '0') {
+                                        echo 'Done';
+                                    } elseif ($user->library_clearance == '1') {
+                                        echo 'Pending<br>';
+                                    }
+                                @endphp
+                            </b>
+                        </p>
+                        <p class="pt-1">
+                            <b>
+                                ---
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-body bg-dark text-white">
+                        <h5 class="card-title"><b>Administrative clearance</b></h5>
+                        <p class="card-text">
+                            <b>
+                                @php
+                                    if ($user->administrative_clearance == '0') {
+                                        echo 'Done';
+                                    } elseif ($user->administrative_clearance == '1') {
+                                        echo 'Pending<br>';
+                                    }
+                                @endphp
+                            </b>
+                        </p>
+                        <p class="pt-1">
+                            <b>---
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-body bg-danger text-white">
+                        <h5 class="card-title"><b>Department clearance</b></h5>
+                        <p class="card-text">
+                            <b>
+                                @php
+                                    if ($user->department_clearance == '0') {
+                                        echo 'Done';
+                                    } elseif ($user->department_clearance == '1') {
+                                        echo 'Pending<br>';
+                                    }
+                                @endphp
+                            </b>
+                        </p>
+                        <p class="pt-1">
+                            <b>
+                                ---
+                            </b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+
         <div class="row">
             <div class="col-md-12">
             <hr>
@@ -35,15 +121,10 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-12 col-md-9">
-                            <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> My Information</b></h4>
+                        <div class="col-md-8">
+                            <!-- <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> View Information</b></h4> -->
                         </div>
-                        <div class="col-12 col-md-3 text-center">
-                            @php
-                            use Illuminate\Support\Facades\Crypt;
-                            $graduate_list_id =  Crypt::encryptString($user->id);
-                            @endphp
-                            <a class="btn btn-info" href="{{ route('edit_user_information', ['id' => $graduate_list_id]) }}" title="Edit">Edit Information</a>
+                        <div class="col-md-4 text-right">
                         </div>
                     </div>
                 </div>
@@ -66,29 +147,17 @@
                         <tr>
                         <td><b>Program</b></td>
                         <td>:</td>
-                        <td>
-                            @if($user->program_id!='')
-                            {{$user->programInfo->program_name ? $user->programInfo->program_name : ''}}
-                            @endif
-                        </td>
+                        <td>{{$user->programInfo->program_name ? $user->programInfo->program_name : ''}}</td>
                         </tr>
                         <tr>
                         <td><b>Batch</b></td>
                         <td>:</td>
-                        <td>
-                            @if($user->batch_id!='')
-                            {{$user->batchInfo->batch_name ? $user->batchInfo->batch_name : ''}}
-                            @endif
-                        </td>
+                        <td>{{$user->batchInfo->batch_name ? $user->batchInfo->batch_name : ''}}</td>
                         </tr>
                         <tr>
                         <td><b>Department</b></td>
                         <td>:</td>
-                        <td>
-                            @if($user->department_id!='')
-                            {{$user->departmentInfo->department_name ? $user->departmentInfo->department_name : ''}}
-                            @endif
-                        </td>
+                        <td>{{$user->departmentInfo->department_name ? $user->departmentInfo->department_name : ''}}</td>
                         </tr>
                         <tr>
                         <td><b>Major</b></td>
