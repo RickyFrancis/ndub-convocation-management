@@ -179,6 +179,89 @@ class ProfileController extends Controller
         // return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    public function photoUpload($encryptedId){
+        try {
+            $id = Crypt::decryptString($encryptedId);
+            //dd($id);
+        } catch (DecryptException $e) {
+           
+        }
+        
+        $user = GraduateList::where('id', $id)->first();
+        return view('admin.student.photo-upload', compact('user'));
+    }
+
+    public function photoUploadUpdate(Request $request): RedirectResponse
+    {
+        $this->validate($request,[
+            'student_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            'guest1_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            'guest2_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            'ssc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            'hsc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+        ]);
+        //dd($request);
+        $loggedUser = Auth::user()->id;
+
+        if($request->hasFile('student_photo')){
+            $image1 = $request->file('student_photo');
+            $imageName1 = 'student_'.$loggedUser.'_'.time().'.'.$image1->getClientOriginalExtension();
+            Image::make($image1)->save('uploads/student/'.$imageName1);
+        }
+        
+        if($request->hasFile('guest1_photo')){
+            $image2 = $request->file('guest1_photo');
+            $imageName2 = 'guest1_'.$loggedUser.'_'.time().'.'.$image2->getClientOriginalExtension();
+            Image::make($image2)->save('uploads/guest/'.$imageName2);
+        }
+
+        if($request->hasFile('guest2_photo')){
+            $image3 = $request->file('guest2_photo');
+            $imageName3 = 'guest2_'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
+            Image::make($image3)->save('uploads/guest/'.$imageName3);
+        }
+        
+        if($request->hasFile('ssc_certificate_photo')){
+            $image4 = $request->file('ssc_certificate_photo');
+            $imageName4 = 'ssc_certificate_'.$loggedUser.'_'.time().'.'.$image4->getClientOriginalExtension();
+            Image::make($image4)->save('uploads/ssc/'.$imageName4);
+        }
+
+        if($request->hasFile('hsc_certificate_photo')){
+            $image5 = $request->file('hsc_certificate_photo');
+            $imageName5 = 'hsc_certificate_'.$loggedUser.'_'.time().'.'.$image5->getClientOriginalExtension();
+            Image::make($image5)->save('uploads/hsc/'.$imageName5);
+        }
+
+        $update = GraduateList::where('id', $request->id)->update([
+            'student_photo'=>$imageName1,
+            'guest1_photo'=>$imageName2,
+            'guest2_photo'=>$imageName3,
+            'ssc_certificate_photo'=>$imageName4,
+            'hsc_certificate_photo'=>$imageName5,
+            'edit_start_status'=>'1',
+            'updated_by'=>$loggedUser,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+        
+        if($update){
+            Session::flash('success','Photo successfully uploaded!');
+            return redirect()->route('dashboard');
+        }else{
+            Session::flash('error','Photo upload process failed!');
+            return redirect()->route('user_photo_upload');
+        }
+        // $request->user()->fill($request->validated());
+
+        // if ($request->user()->isDirty('email')) {
+        //     $request->user()->email_verified_at = null;
+        // }
+
+        // $request->user()->save();
+
+        // return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
     /**
      * Delete the user's account.
      */

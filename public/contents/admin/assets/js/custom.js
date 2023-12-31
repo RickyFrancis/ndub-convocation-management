@@ -36,16 +36,16 @@ $.ajaxSetup({
     }
 });
 
-// Customer photo preview
+// Student photo preview
 
-function readCustomerURL(input) {
+function readStudentURL(input) {
 
     if (input.files && input.files[0]) {
         
         var reader = new FileReader();
         reader.onload = function (e) {
 
-            $('#customer_photo_review')
+            $('#student_photo_review')
                 .attr('src', e.target.result)
                 .width(80)
                 .height(80);
@@ -55,16 +55,16 @@ function readCustomerURL(input) {
     }
 }
 
-// Supplier photo preview
+// Guest 1 photo preview
 
-function readSupplierURL(input) {
+function readGuest1URL(input) {
 
     if (input.files && input.files[0]) {
         
         var reader = new FileReader();
         reader.onload = function (e) {
 
-            $('#supplier_photo_review')
+            $('#guest1_photo_review')
                 .attr('src', e.target.result)
                 .width(80)
                 .height(80);
@@ -74,18 +74,56 @@ function readSupplierURL(input) {
     }
 }
 
-// Product photo preview
+// Guest 2 photo preview
 
-function readProductURL(input) {
+function readGuest2URL(input) {
 
     if (input.files && input.files[0]) {
         
         var reader = new FileReader();
         reader.onload = function (e) {
 
-            $('#product_photo_review')
+            $('#guest2_photo_review')
                 .attr('src', e.target.result)
                 .width(80)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// SSC certificate photo preview
+
+function readSSCcertPhotoURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#ssc_certificate_photo_review')
+                .attr('src', e.target.result)
+                .width(120)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// HSC certificate photo preview
+
+function readHSCcertPhotoURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#hsc_certificate_photo_review')
+                .attr('src', e.target.result)
+                .width(120)
                 .height(80);
         };
 

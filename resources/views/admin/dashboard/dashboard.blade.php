@@ -411,7 +411,7 @@
                             <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> Photo</b></h4>
                         </div>
                         <div class="col-12 col-md-3 text-center">
-                            <a class="btn btn-info" href="{{ route('edit_user_information', ['id' => $graduate_list_id]) }}" title="Edit">Upload Photo</a>
+                            <a class="btn btn-info" href="{{ route('user_photo_upload', ['id' => $graduate_list_id]) }}" title="Edit">Upload Photo</a>
                         </div>
                     </div>
                 </div>
@@ -422,14 +422,59 @@
                         </thead>
                         <tbody>
                         <tr>
-                        <td><b>Name</b></td>
+                        <td><b>Student photo</b></td>
                         <td>:</td>
-                        <td>{{$user->name ? $user->name : ''}}</td>
+                        <td>
+                        @if($user->student_photo!='')
+                            <img src="{{asset('uploads/student/'.$user->student_photo)}}" alt="student photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
                         </tr>
                         <tr>
-                        <td><b>Student ID</b></td>
+                        <td><b>Guest 1 photo</b></td>
                         <td>:</td>
-                        <td>{{$user->student_id ? $user->student_id : ''}}</td>
+                        <td>
+                        @if($user->guest1_photo!='')
+                            <img src="{{asset('uploads/guest/'.$user->guest1_photo)}}" alt="Guest 1 photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Guest 2 photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->guest2_photo!='')
+                            <img src="{{asset('uploads/guest/'.$user->guest2_photo)}}" alt="Guest 2 photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>SSC certificate photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->ssc_certificate_photo!='')
+                            <img src="{{asset('uploads/ssc/'.$user->ssc_certificate_photo)}}" alt="SSC certificate photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>HSC certificate photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->hsc_certificate_photo!='')
+                            <img src="{{asset('uploads/hsc/'.$user->hsc_certificate_photo)}}" alt="HSC certificate photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
                         </tr>
                         </tbody>
                     </table>

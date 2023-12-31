@@ -3,6 +3,10 @@
 /public/build
 /public/hot
 /public/storage
+/public/uploads/guest/
+/public/uploads/hsc/
+/public/uploads/ssc/
+/public/uploads/student/
 /storage/*.key
 /vendor
 .env

@@ -36,6 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
 Route::get('dashboard/user/information/edit/{id}', [ProfileController::class, 'edit'])->name('edit_user_information');
 Route::post('dashboard/user/information/update', [ProfileController::class, 'update'])->name('update_user_information');
+Route::get('dashboard/user/photo/upload/{id}', [ProfileController::class, 'photoUpload'])->name('user_photo_upload');
+Route::post('dashboard/user/photo/upload/update', [ProfileController::class, 'photoUploadUpdate'])->name('user_photo_upload_update');
+
 });
 
 // Route::get('/dashboard', function () {
