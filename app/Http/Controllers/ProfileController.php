@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -12,6 +13,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\Models\GraduateList;
+use App\Models\User;
 use App\Models\Batch;
 use App\Models\Program;
 use App\Models\Department;
@@ -30,7 +32,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the user's profile form.
+     * 
      */
     public function edit($encryptedId): View
     {
@@ -52,7 +54,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * 
      */
     public function update(Request $request): RedirectResponse
     {
@@ -251,15 +253,135 @@ class ProfileController extends Controller
             Session::flash('error','Photo upload process failed!');
             return redirect()->route('user_photo_upload');
         }
-        // $request->user()->fill($request->validated());
+    }
 
-        // if ($request->user()->isDirty('email')) {
-        //     $request->user()->email_verified_at = null;
-        // }
+    public function secondRegistration($encryptedId): View
+    {
+        try {
+            $gradId = Crypt::decryptString($encryptedId);
+            //dd($id);
+        } catch (DecryptException $e) {
+           
+        }
+        $departments = Department::all();
+        $programs = Program::all();
+        $batchs = Batch::all();
 
-        // $request->user()->save();
+        return view('admin.student.second-registration', compact('gradId', 'departments', 'programs', 'batchs'));
+    }
 
-        // return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    public function secondRegistrationSubmit(Request $request)
+    {
+        $this->validate($request,[
+            'student_id' =>'required|max:50|exists:graduate_lists,student_id|unique:users,student_id',
+            'program'=>'required',
+            'batch'=>'required',
+            'department'=>'required',
+            'academic_year_from'=>'required|max:255',
+            'academic_year_to'=>'required|max:255',
+            'admission_year'=>'required|max:255',
+            'admission_semester'=>'required|max:255',
+            'credit_earned'=>'required|max:255|numeric',
+            'cgpa'=>'required|max:4|numeric',
+            'passing_trimester'=>'required|max:255',
+        ],[
+            'student_id.exists'=>'Your student ID is invalid, please open a support ticket for resolving this issue.',
+            'student_id.unique'=>'Your account already registered with this student ID, please open a support ticket for resolving this issue.',
+        ]);
+        //dd($request);
+        $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();
+        $parent_grad_lists_info = GraduateList::where('id', $request->grad_list_id)->first();
+        $userPassword = User::where('graduate_lists_id', $request->grad_list_id)->value('password');
+        
+        $userCreated = User::create([
+            //'name' => $request->name,
+            //'email' => $request->email,
+            'student_id' => $request->student_id,
+            'graduate_lists_id' => $graduate_lists_info->id,
+            'email' => $graduate_lists_info->email,
+            'role_id' => '3',
+            'password' => $userPassword,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+
+        $loggedUser = Auth::user()->id;
+
+        $update1 = GraduateList::where('id', $graduate_lists_info->id)->update([
+            'program_id'=>$request->program,
+            'batch_id'=>$request->batch,
+            'department_id'=>$request->department,
+            'major'=>$request->major,
+            'minor'=>$request->minor,
+            'academic_year_from'=>$request->academic_year_from,
+            'academic_year_to'=>$request->academic_year_to,
+            'admission_year'=>$request->admission_year,
+            'admission_semester'=>$request->admission_semester,
+            'credit_earned'=>$request->credit_earned,
+            'cgpa'=>$request->cgpa,
+            'passing_trimester'=>$request->passing_trimester,
+            'father_name'=>$parent_grad_lists_info->father_name,
+            'mother_name'=>$parent_grad_lists_info->mother_name,
+            'phone'=>$parent_grad_lists_info->phone,
+            'blood_group'=>$parent_grad_lists_info->blood_group,
+            'nid'=>$parent_grad_lists_info->nid,
+            'birth_certificate_no'=>$parent_grad_lists_info->birth_certificate_no,
+            'dob'=>$parent_grad_lists_info->dob,
+            'present_address'=>$parent_grad_lists_info->present_address,
+            'permanent_address'=>$parent_grad_lists_info->permanent_address,
+            'organization_name'=>$parent_grad_lists_info->organization_name,
+            'designation'=>$parent_grad_lists_info->designation,
+            'office_address'=>$parent_grad_lists_info->office_address,
+            'office_phone'=>$parent_grad_lists_info->office_phone,
+            'office_mobile'=>$parent_grad_lists_info->office_mobile,
+            'guest1_name'=>$parent_grad_lists_info->guest1_name,
+            'guest1_relationship'=>$parent_grad_lists_info->guest1_relationship,
+            'guest1_nid'=>$parent_grad_lists_info->guest1_nid,
+            'guest1_present_address'=>$parent_grad_lists_info->guest1_present_address,
+            'guest1_permanent_address'=>$parent_grad_lists_info->guest1_permanent_address,
+            'guest2_name'=>$parent_grad_lists_info->guest2_name,
+            'guest2_relationship'=>$parent_grad_lists_info->guest2_relationship,
+            'guest2_nid'=>$parent_grad_lists_info->guest2_nid,
+            'guest2_present_address'=>$parent_grad_lists_info->guest2_present_address,
+            'guest2_permanent_address'=>$parent_grad_lists_info->guest2_permanent_address,
+            'ssc_institute'=>$parent_grad_lists_info->ssc_institute,
+            'ssc_board'=>$parent_grad_lists_info->ssc_board,
+            'ssc_result'=>$parent_grad_lists_info->ssc_result,
+            'ssc_group'=>$parent_grad_lists_info->ssc_group,
+            'ssc_passing_year'=>$parent_grad_lists_info->ssc_passing_year,
+            'hsc_institute'=>$parent_grad_lists_info->hsc_institute,
+            'hsc_board'=>$parent_grad_lists_info->hsc_board,
+            'hsc_result'=>$parent_grad_lists_info->hsc_result,
+            'hsc_group'=>$parent_grad_lists_info->hsc_group,
+            'hsc_passing_year'=>$parent_grad_lists_info->hsc_passing_year,
+            'bachelor_institute'=>$parent_grad_lists_info->bachelor_institute,
+            'bachelor_board'=>$parent_grad_lists_info->bachelor_board,
+            'bachelor_result'=>$parent_grad_lists_info->bachelor_result,
+            'bachelor_group'=>$parent_grad_lists_info->bachelor_group,
+            'bachelor_passing_year'=>$parent_grad_lists_info->bachelor_passing_year,
+            'masters_institute'=>$parent_grad_lists_info->masters_institute,
+            'masters_board'=>$parent_grad_lists_info->masters_board,
+            'masters_result'=>$parent_grad_lists_info->masters_result,
+            'masters_group'=>$parent_grad_lists_info->masters_group,
+            'masters_passing_year'=>$parent_grad_lists_info->masters_passing_year,
+            'second_program_grad_list_id'=>$parent_grad_lists_info->id,
+            'edit_start_status'=>'1',
+            'registration_complete_status'=>'1',
+            'child_account_status'=>'1',
+            'updated_by'=>$loggedUser,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+
+        $update2 = GraduateList::where('id', $request->grad_list_id)->update([
+            'second_program_grad_list_id'=>$graduate_lists_info->id,
+        ]);
+        
+        if($userCreated && $update1 && $update2){
+            Session::flash('success','Second program registration successfully completed!');
+            return redirect()->route('dashboard');
+        }else{
+            Session::flash('error','Second program registration process failed!');
+            return redirect()->route('user_second_registration');
+        }
     }
 
     /**

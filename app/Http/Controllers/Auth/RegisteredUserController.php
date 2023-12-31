@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $trimmed_student_id = str_replace([' ', '-'], '', trim($request->student_id));
+        //$trimmed_student_id = str_replace([' ', '-'], '', trim($request->student_id));
         //dd($trimmed_student_id);
         $request->validate([
             //'name' => ['required', 'string', 'max:255'],

@@ -516,7 +516,7 @@
                         </div>
                         <div class="col-12 col-md-3 text-center">
                             @if($user->second_program_grad_list_id=='')
-                                <a class="btn btn-info" href="{{ route('user_photo_upload', ['id' => $graduate_list_id]) }}" title="Edit">Upload Photo</a>
+                                <a class="btn btn-info" href="{{ route('user_second_registration', ['id' => $graduate_list_id]) }}" title="Register">Register</a>
                             @endif
                         </div>
                     </div>
