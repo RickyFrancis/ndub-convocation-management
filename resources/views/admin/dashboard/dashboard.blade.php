@@ -530,79 +530,123 @@
                         <tr>
                         <td><b>Student ID</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->student_id ? $user->secondProgramInfo->student_id : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->student_id ? $user->secondProgramInfo->student_id : ''}}</td>
+                        @endif
                         </tr>
                         <tr>
                         <td><b>Program</b></td>
                         <td>:</td>
                         <td>
+                        @if($user->second_program_grad_list_id!='')
                             @if($user->secondProgramInfo->program_id!='')
                             {{$user->secondProgramInfo->programInfo->program_name ? $user->secondProgramInfo->programInfo->program_name : ''}}
                             @endif
+                        @endif
                         </td>
                         </tr>
                         <tr>
                         <td><b>Batch</b></td>
                         <td>:</td>
                         <td>
+                        @if($user->second_program_grad_list_id!='')
                             @if($user->secondProgramInfo->batch_id!='')
                             {{$user->secondProgramInfo->batchInfo->batch_name ? $user->secondProgramInfo->batchInfo->batch_name : ''}}
                             @endif
+                        @endif
                         </td>
                         </tr>
                         <tr>
                         <td><b>Department</b></td>
                         <td>:</td>
                         <td>
+                        @if($user->second_program_grad_list_id!='')
                             @if($user->secondProgramInfo->department_id!='')
                             {{$user->secondProgramInfo->departmentInfo->department_name ? $user->secondProgramInfo->departmentInfo->department_name : ''}}
                             @endif
+                        @endif
                         </td>
                         </tr>
                         <tr>
                         <td><b>Major</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->major ? $user->secondProgramInfo->major : ''}}</td>
+                        <td>
+                            @if($user->second_program_grad_list_id!='')
+                                {{$user->secondProgramInfo->major ? $user->secondProgramInfo->major : ''}}
+                            @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Minor</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->minor ? $user->secondProgramInfo->minor : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->minor ? $user->secondProgramInfo->minor : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Admission year</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->admission_year ? $user->secondProgramInfo->admission_year : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->admission_year ? $user->secondProgramInfo->admission_year : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Admission semester</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->admission_semester ? $user->secondProgramInfo->admission_semester : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->admission_semester ? $user->secondProgramInfo->admission_semester : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Academic year </b></td>
                         <td>:</td>
-                        <td><b>From:</b> {{$user->secondProgramInfo->academic_year_from ? $user->secondProgramInfo->academic_year_from : ''}} <b>To:</b> {{$user->secondProgramInfo->academic_year_to ? $user->secondProgramInfo->academic_year_to : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            <b>From:</b> {{$user->secondProgramInfo->academic_year_from ? $user->secondProgramInfo->academic_year_from : ''}} <b>To:</b> {{$user->secondProgramInfo->academic_year_to ? $user->secondProgramInfo->academic_year_to : ''}}</td>
+                        @endif
                         </tr>
                         <tr>
                         <td><b>Result publish date</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->result_publish_date ? $user->secondProgramInfo->result_publish_date : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->result_publish_date ? $user->secondProgramInfo->result_publish_date : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Passing semester</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->passing_trimester ? $user->secondProgramInfo->passing_trimester : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->passing_trimester ? $user->secondProgramInfo->passing_trimester : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>Credit earned</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->credit_earned ? $user->secondProgramInfo->credit_earned : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->credit_earned ? $user->secondProgramInfo->credit_earned : ''}}
+                        @endif
+                        </td>
                         </tr>
                         <tr>
                         <td><b>CGPA</b></td>
                         <td>:</td>
-                        <td>{{$user->secondProgramInfo->cgpa ? $user->secondProgramInfo->cgpa : ''}}</td>
+                        <td>
+                        @if($user->second_program_grad_list_id!='')
+                            {{$user->secondProgramInfo->cgpa ? $user->secondProgramInfo->cgpa : ''}}
+                        @endif
+                        </td>
                         </tr>
                         </tbody>
                     </table>
