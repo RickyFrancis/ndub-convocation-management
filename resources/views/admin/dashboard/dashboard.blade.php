@@ -487,5 +487,133 @@
         </div>
         </div>
 
+        <!-- Register another program Section -->
+
+        <div class="row">
+            <div class="col-md-12">
+            <hr>
+            <h3 class="text-center">
+                @if($user->second_program_grad_list_id=='')
+                    Register for another program
+                @elseif($user->second_program_grad_list_id!='')
+                    Registered second program
+                @endif
+            </h3>
+            <h5 class="text-center">
+                @if($user->second_program_grad_list_id=='')
+                    (If you have completed multiple programs from NDUB, you can also register for that program for convocation)</h5>
+                @elseif($user->second_program_grad_list_id!='')
+                @endif
+            <hr>
+            </div>
+
+            <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> Information</b></h4>
+                        </div>
+                        <div class="col-12 col-md-3 text-center">
+                            @if($user->second_program_grad_list_id=='')
+                                <a class="btn btn-info" href="{{ route('user_photo_upload', ['id' => $graduate_list_id]) }}" title="Edit">Upload Photo</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dt-responsive view_table">
+                        <thead class="thead-dark">
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td><b>Student ID</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->student_id ? $user->secondProgramInfo->student_id : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Program</b></td>
+                        <td>:</td>
+                        <td>
+                            @if($user->secondProgramInfo->program_id!='')
+                            {{$user->secondProgramInfo->programInfo->program_name ? $user->secondProgramInfo->programInfo->program_name : ''}}
+                            @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Batch</b></td>
+                        <td>:</td>
+                        <td>
+                            @if($user->secondProgramInfo->batch_id!='')
+                            {{$user->secondProgramInfo->batchInfo->batch_name ? $user->secondProgramInfo->batchInfo->batch_name : ''}}
+                            @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Department</b></td>
+                        <td>:</td>
+                        <td>
+                            @if($user->secondProgramInfo->department_id!='')
+                            {{$user->secondProgramInfo->departmentInfo->department_name ? $user->secondProgramInfo->departmentInfo->department_name : ''}}
+                            @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Major</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->major ? $user->secondProgramInfo->major : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Minor</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->minor ? $user->secondProgramInfo->minor : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Admission year</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->admission_year ? $user->secondProgramInfo->admission_year : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Admission semester</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->admission_semester ? $user->secondProgramInfo->admission_semester : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Academic year </b></td>
+                        <td>:</td>
+                        <td><b>From:</b> {{$user->secondProgramInfo->academic_year_from ? $user->secondProgramInfo->academic_year_from : ''}} <b>To:</b> {{$user->secondProgramInfo->academic_year_to ? $user->secondProgramInfo->academic_year_to : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Result publish date</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->result_publish_date ? $user->secondProgramInfo->result_publish_date : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Passing semester</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->passing_trimester ? $user->secondProgramInfo->passing_trimester : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Credit earned</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->credit_earned ? $user->secondProgramInfo->credit_earned : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>CGPA</b></td>
+                        <td>:</td>
+                        <td>{{$user->secondProgramInfo->cgpa ? $user->secondProgramInfo->cgpa : ''}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+               
+                </div>
+            </div>
+        </div>
+        </div>
+
     </div>
 @endsection

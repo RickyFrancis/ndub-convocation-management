@@ -19,4 +19,9 @@ class GraduateList extends Model{
     public function batchInfo(){
         return $this->belongsTo('App\Models\Batch','batch_id','batch_id');
     }
+
+    public function secondProgramInfo(){
+        return $this->belongsTo('App\Models\GraduateList','second_program_grad_list_id','id')
+        ->with(['departmentInfo', 'programInfo', 'batchInfo']);
+    }
 }
