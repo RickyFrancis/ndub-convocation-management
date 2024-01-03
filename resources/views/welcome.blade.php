@@ -50,36 +50,42 @@
 </head>
 
 <body class="index_body_class">
-        <header>
-        <div class="container-fluid header_container">
-            <div class="row p-3 mb-3 index_header_row text-center">
-                <div class="col-12 col-md-9">
-                    <h1 class="text-center index_header_text">NDUB Convocation Portal</h1>
-                </div>
-                <div class="col-12 col-md-3 text-center">
-                @if (Route::has('login'))
-                @auth
-                    <a class="btn btn-light btn-lg ml-5" href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a class="btn btn-light btn-lg ml-5" href="{{ route('login') }}">Sign In</a>
-                @if (Route::has('register'))
-                    <a class="btn btn-light btn-lg ml-3" href="{{ route('register') }}">Register </a>
-                @endif
-                @endauth
-                @endif
-                </div>
+    <header>
+    <div class="container-fluid header_container">
+        <div class="row p-3 mb-3 index_header_row text-center">
+            <div class="col-12 col-md-8">
+                <h1 class="text-left index_header_text">NDUB Convocation Portal</h1>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+            @if (Route::has('login'))
+            @auth
+                <a class="btn btn-light btn-lg mb-1" href="{{ url('/dashboard') }}">Dashboard</a>
+            @else
+                <a class="btn btn-light btn-lg mb-1" href="{{ route('login') }}">Sign In</a>
+            @if (Route::has('register'))
+                <a class="btn btn-light btn-lg ml-3 mb-1" href="{{ route('register') }}">Register </a>
+            @endif
+            @endauth
+            @endif
+            <a class="btn btn-light btn-lg ml-3 mb-1" href="{{ route('register') }}">Support</a>
             </div>
         </div>
-        </header>
-        <section>
-            <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-4">
-                    <img src="{{ asset('contents/admin/') }}/assets/img/ndub.png" alt="" class="img-fluid" width="">
-                    <h1 class="text-center text-primary">Notre Dame University Bangladesh</h1>
-                </div>
-                <div class="col-md-3"></div>
+    </div>
+    </header>
+    
+    <section>
+        <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-md-12">
+                <img src="{{ asset('contents/admin/') }}/assets/img/ndub.png" alt="" class="img-fluid" width="">
+                <h1 class="text-center text-white text-bold">Notre Dame University Bangladesh</h1>
             </div>
-        </section>
+            <div class="row text-center">
+                <div class="col-12 col-md-12"><h1 class="text-center text-primary text-bold"></h1></div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
 </body>
 </html>

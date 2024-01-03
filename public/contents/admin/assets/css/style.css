@@ -106,7 +106,6 @@ img {
 {
     font-size: 30px;
     font-family: sans-serif;
-
     color: white;
 }
 
@@ -145,7 +144,6 @@ img {
   display: block;
   color: white;
   padding: 8px 16px;
-
   text-decoration: none;
 }
 
@@ -216,7 +214,6 @@ img {
 
 .btn_for_custom{
   margin: 3px;
-  
   margin-bottom: 8px;
 }
 
@@ -252,35 +249,26 @@ img {
 
 .view_table tr td:first-child
 {
-
   width: 26%;
 }
 
 .view_table tr td:last-child
 {
-
   width: 72%;
-
 }
 
 
 
 .btn-unban-color
 {
-
   background-color:rgb(104, 50, 231);
-
   color: white;
-
 }
 
 .btn-email-color
 {
-
   background-color:rgb(81, 143, 10);
-
   color: white;
-
 }
 
 /* Report */
@@ -296,12 +284,12 @@ img {
  /* index page css start */
 
  .index_body_class{
-  background-image: url('../img/convocation.jpg');
-  background-size: 100% 110%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  /* Apply an rgba color with reduced opacity */
-  background-color: rgba(0, 0, 0, 0.1); /* Adjust the alpha value (0 to 1) for the desired opacity */
+    background-image: url('../img/convocation.jpg');
+    /* background-size: cover; */
+    background-size: 100% 110%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white; /* Text color on the overlay */
 }
 
 .index_header_text{

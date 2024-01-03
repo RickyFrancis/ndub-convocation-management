@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('major') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Major:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Major: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="major" value="{{old('major')}}">
                     @error('major')
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('minor') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Minor:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Minor: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="minor" value="{{old('minor')}}">
                     @error('minor')
@@ -135,28 +135,8 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-3 @error('academic_year_from') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Academic year (from):<span class="text-danger">*</span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="academic_year_from" value="{{old('academic_year_from')}}" required>
-                    @error('academic_year_from')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('academic_year_to') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Academic year (to):<span class="text-danger">*</span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="academic_year_to" value="{{old('academic_year_to')}}" required>
-                    @error('academic_year_to')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
                 <div class="form-group row mb-3 @error('admission_year') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Admission year:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Admission Year:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="admission_year" value="{{old('admission_year')}}" required>
                     @error('admission_year')
@@ -166,7 +146,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('admission_semester') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Admission semester:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Admission Trimester/Semester:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="admission_semester" value="{{old('admission_semester')}}" required>
                     @error('admission_semester')
@@ -175,8 +155,28 @@
                     </div>
                 </div>
 
+                <div class="form-group row mb-3 @error('passing_year') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Passing Year<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="passing_year" value="{{old('passing_year')}}" required>
+                    @error('passing_year')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('passing_trimester') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Passing Trimester/Semester:<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="passing_trimester" value="{{old('passing_trimester')}}" required>
+                    @error('passing_trimester')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
                 <div class="form-group row mb-3 @error('credit_earned') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Credit earned:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Total Credits Earned:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="credit_earned" value="{{old('credit_earned')}}" required>
                     @error('credit_earned')
@@ -190,16 +190,6 @@
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="cgpa" value="{{old('cgpa')}}" required>
                     @error('cgpa')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('passing_trimester') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Passing semester:<span class="text-danger">*</span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="passing_trimester" value="{{old('passing_trimester')}}" required>
-                    @error('passing_trimester')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
