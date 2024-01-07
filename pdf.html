@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <title>{{ $submission->dc_number }}</title>
+
+</head>
+
+<body>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-11">
+                    <p class="text-center">
+                        <img alt="" class="img-fluid" src="{{ asset('images/FOP5-logo-main.png') }}"
+                            style="width: 100px;">
+                    </p>
+                    <h2 class="card-title mb-0 font-weight-bold text-center">Memorandum</h2>
+                    <p class="text-center">Police | City of Philadelphia</p>
+                    <hr class="my-4">
+                </div>
+                <div class="col-11">
+
+                    <h5 class="card-title mb-0 font-weight-bold">DC Number:
+                        {{ $submission->dc_number }}
+                        @if ($submission->award_status == 'Pending')
+                            <span class="badge badge-warning ">{{ $submission->award_status }}</span>
+                        @elseif($submission->award_status == 'Denied')
+                            <span class="badge badge-danger ">{{ $submission->award_status }}</span>
+                        @elseif($submission->award_status == 'Approved')
+                            <span class="badge badge-success ">{{ $submission->award_status }}</span>
+                        @elseif($submission->award_status == 'Awarded')
+                            <span class="badge badge-primary ">{{ $submission->award_status }}</span>
+                        @endif
+
+                    </h5>
+                    <p class="card-text mb-0">Submitted by:
+                        {{ $submission->submitted_by_name ? $submission->submitted_by_name : 'N/A' }}
+                        ({{ $submission->rankInfo->rank ? $submission->rankInfo->rank : 'N/A' }})
+                    </p> <br>
+                    <small class="text-secondary">Submission Date:
+                        {{ date_format($submission->created_at, 'F j, Y, g:i A') }} | Last Update:
+                        {{ date_format($submission->updated_at, 'F j, Y, g:i A') }}</small>
+                    <hr class="my-4">
+                    <p class="card-text mb-1"><span class="font-weight-bold">Date of occurrence:</span>
+                        {{ (new DateTime($submission->date_of_occurance))->format('F j, Y') }}
+                    </p>
+                    <p class="card-text mb-1"><span class="font-weight-bold">Incident:</span>
+                        {{ $submission->incident->incident }}
+                    </p>
+                    <p class="card-text mb-1 text-justify"><span class="font-weight-bold">The facts of the case that
+                            make it a
+                            commendable action are as follows:</span><br>
+                        {{ $submission->facts_of_case }}
+                    </p>
+
+                </div>
+                <div class="col-11">
+                    <hr class="my-4">
+                    <p class="card-text mb-1"><span class="font-weight-bold">A request is hereby made for a Commendation
+                            for
+                            Merit for the below officers actions on
+                            {{ (new DateTime($submission->date_of_occurance))->format('F j, Y') }}:</span>
+                    </p>
+                    <table class="table table-sm">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Badge</th>
+                                <th scope="col">Payroll</th>
+                                <th scope="col">District</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($submission->awardWinners as $award_winner)
+                                <tr>
+                                    <td>{{ $award_winner->first_name }} {{ $award_winner->last_name }}
+                                    </td>
+                                    <td>{{ $award_winner->rank ? $award_winner->rank->rank : 'N/A' }}
+                                    </td>
+                                    <td>{{ $award_winner->badge }}</td>
+                                    <td>{{ $award_winner->payroll }}</td>
+                                    <td>{{ $award_winner->district ? $award_winner->district->district : 'N/A' }}
+                                    </td>
+
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-11">
+                    <hr class="my-4">
+                    {{-- <p class="card-text mb-1"><span class="font-weight-bold">Date Awarded:</span>
+                        {{ (new DateTime($submission->date_awarded))->format('F j, Y') }}
+                    </p> --}}
+                    <p class="card-text mb-1"><span class="font-weight-bold">Writer:</span>
+                        {{ $submission->writer_assigned ? $submission->writer_assigned : 'Not assigned' }}
+                    </p>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-11">
+                            <span class="badge badge-pill badge-primary p-2">Reviewed by:
+                                {{ $submission->reviewed_by ? $submission->reviewed_by : 'N/A' }}</span>
+                            @if ($submission->award_status == 'Approved' && $submission->approvedBy1)
+                                <span class="badge badge-pill badge-success p-2">Approved by:
+                                    {{ $submission->approvedBy1 ? $submission->approvedBy1->name : 'N/A' }}</span>
+                            @endif
+                            @if ($submission->award_status == 'Denied' && $submission->deniedBy1)
+                                <span class="badge badge-pill badge-danger p-2"><i
+                                        class="fa-solid fa-triangle-exclamation"></i> Denied by:
+                                    {{ $submission->deniedBy1 ? $submission->deniedBy1->name : 'N/A' }}</span>
+                                <p class="card-text mb-1"><span class="font-weight-bold">Denial Reason 1:</span>
+                                    {{ $submission->denial_reason_1 ? $submission->denial_reason_1 : 'N/A' }}
+                                </p>
+                            @endif
+                            @if ($submission->award_status == 'Denied' && $submission->deniedBy2)
+                                <span class="badge badge-pill badge-danger p-2"><i
+                                        class="fa-solid fa-triangle-exclamation"></i> Denied by:
+                                    {{ $submission->deniedBy2 ? $submission->deniedBy2->name : 'N/A' }}</span>
+                                <p class="card-text mb-1"><span class="font-weight-bold">Denial Reason 2:</span>
+                                    {{ $submission->denial_reason_2 ? $submission->denial_reason_2 : 'N/A' }}
+                                </p>
+                            @endif
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+
+</body>
+
+</html>

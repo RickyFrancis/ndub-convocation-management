@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ConvocationRegistrationController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SecondProgramRegistrationController;
 use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -22,39 +24,28 @@ Route::get('/', function () {
 
 // Route::get('/dashboard', function () {
 //     //return view('dashboard');
-
-//     return view('admin.dashboard');
-
-// })->middleware(['auth'])->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/dashboard', function () {
-    //return view('dashboard');
-    return view('admin.dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
-    Route::get('dashboard/user/information/edit/{id}', [ProfileController::class, 'edit'])->name('edit_user_information');
-    Route::post('dashboard/user/information/update', [ProfileController::class, 'update'])->name('update_user_information');
-    Route::get('dashboard/user/photo/upload/{id}', [ProfileController::class, 'photoUpload'])->name('user_photo_upload');
-    Route::post('dashboard/user/photo/upload/update', [ProfileController::class, 'photoUploadUpdate'])->name('user_photo_upload_update');
-    Route::get('dashboard/user/second-registration/{id}', [ProfileController::class, 'secondRegistration'])->name('user_second_registration');
-    Route::post('dashboard/user/second-registration', [ProfileController::class, 'secondRegistrationSubmit'])->name('user_second_registration_submit');
-});
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
+//     return view('admin.dashboard.dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Convocation Registration (First Program)
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [ConvocationRegistrationController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard/student/information/edit/{id}', [ConvocationRegistrationController::class, 'edit'])->name('edit_student_information');
+    Route::post('dashboard/student/information/update', [ConvocationRegistrationController::class, 'update'])->name('update_student_information');
+    Route::get('dashboard/student/photo/upload/{id}', [ConvocationRegistrationController::class, 'photoUpload'])->name('student_photo_upload');
+    Route::post('dashboard/student/photo/upload/update', [ConvocationRegistrationController::class, 'photoUpdate'])->name('student_photo_update');
 });
+// Convocation Registration (Second Program - If Applicable)
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard/student/second-registration/{id}', [SecondProgramRegistrationController::class, 'add'])->name('student_second_registration');
+    Route::post('dashboard/student/second-registration/submit', [SecondProgramRegistrationController::class, 'submit'])->name('student_second_registration_submit');
+});
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::get('/send-test-email', function () {
     Mail::to('ishan@ndub.edu.bd')->send(new WelcomeEmail());
