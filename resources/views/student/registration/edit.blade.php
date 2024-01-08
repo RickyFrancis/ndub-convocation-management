@@ -414,7 +414,14 @@
                     @endphp
                     >
                     <b>Birth Certificate No.</b>
+                    
                     </div>
+                </div>
+
+                <div class="col-sm-12">
+                    @error('guest1_nid1_or_birth_cert2_status')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group row mb-3 @error('guest1_present_address') is-invalid @enderror">
