@@ -48,6 +48,16 @@
 
                 <input type="hidden" name="id" value="{{$user->id}}">
 
+                <div class="form-group row mb-3 @error('name') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Name:<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="name" value="{{$user->name}}" required>
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
                 <div class="form-group row mb-3 @error('program') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Program:<span
                                 class="text-danger">*</span></b></label>
@@ -234,10 +244,34 @@
                 <div class="form-group row mb-3 @error('nid_or_birth_cert_no') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>NID/Birth Certificate No.<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nid_or_birth_cert_no" value="{{$user->nid_or_birth_cert_no}}" required>
+                    <input type="text" class="form-control mb-2" name="nid_or_birth_cert_no" value="{{$user->nid_or_birth_cert_no}}" required>
                     @error('nid_or_birth_cert_no')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                  
+                    <div class="col-sm-3">
+                    <input type="radio" value="1" name="nid1_or_birth_cert2_status"
+                    @php
+                        if($user->nid1_or_birth_cert2_status==1){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>NID</b>
+                    </div>
+
+                    <div class="col-sm-3">
+                    <input type="radio" value="2" name="nid1_or_birth_cert2_status"
+                    @php
+                        if($user->nid1_or_birth_cert2_status==2){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>Birth Certificate No.</b>
                     </div>
                 </div>
 
@@ -356,6 +390,31 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
+
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                  
+                    <div class="col-sm-3">
+                    <input type="radio" value="1" name="guest1_nid1_or_birth_cert2_status"
+                    @php
+                        if($user->guest1_nid1_or_birth_cert2_status==1){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>NID</b>
+                    </div>
+
+                    <div class="col-sm-3">
+                    <input type="radio" value="2" name="guest1_nid1_or_birth_cert2_status"
+                    @php
+                        if($user->guest1_nid1_or_birth_cert2_status==2){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>Birth Certificate No.</b>
+                    </div>
                 </div>
 
                 <div class="form-group row mb-3 @error('guest1_present_address') is-invalid @enderror">
@@ -379,11 +438,13 @@
                         @enderror
                     </div>
                 </div>
-
+                <hr>
+                    <div class="text-center text-bold"><h5>If you plan to bring an additional guest, please fill out the 'Guest 2 Information' field. Otherwise, leave it blank</h5></div>
+                <hr>
                 <div class="form-group row mb-3 @error('guest2_name') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 Name:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 Name:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_name" value="{{$user->guest2_name}}" required>
+                    <input type="text" class="form-control" name="guest2_name" value="{{$user->guest2_name}}">
                     @error('guest2_name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -391,9 +452,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_relationship') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 Relationship:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 Relationship:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_relationship" value="{{$user->guest2_relationship}}" required>
+                    <input type="text" class="form-control" name="guest2_relationship" value="{{$user->guest2_relationship}}">
                     @error('guest2_relationship')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -401,20 +462,45 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_nid_or_birth_cert') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 NID/Birth Certificate No.:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 NID/Birth Certificate No.:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_nid_or_birth_cert" value="{{$user->guest2_nid_or_birth_cert}}" required>
+                    <input type="text" class="form-control" name="guest2_nid_or_birth_cert" value="{{$user->guest2_nid_or_birth_cert}}">
                     @error('guest2_nid_or_birth_cert')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+                    </div>
+
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                  
+                    <div class="col-sm-3">
+                    <input type="radio" value="1" name="guest2_nid1_or_birth_cert2_status"
+                    @php
+                        if($user->guest2_nid1_or_birth_cert2_status==1){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>NID</b>
+                    </div>
+
+                    <div class="col-sm-3">
+                    <input type="radio" value="2" name="guest2_nid1_or_birth_cert2_status"
+                    @php
+                        if($user->guest2_nid1_or_birth_cert2_status==2){
+                        echo "checked";
+                        }
+                    @endphp
+                    >
+                    <b>Birth Certificate No.</b>
                     </div>
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_present_address') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Guest 2 Present Address:<span
-                                class="text-danger">*</span></b></label>
+                                class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="guest2_present_address" required>{{ $user->guest2_present_address }}</textarea>
+                        <textarea type="text" class="form-control" name="guest2_present_address">{{ $user->guest2_present_address }}</textarea>
                         @error('guest2_present_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -423,9 +509,9 @@
 
                 <div class="form-group row mb-3 @error('guest2_permanent_address') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Guest 2 Permanent Address:<span
-                                class="text-danger">*</span></b></label>
+                                class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="guest2_permanent_address" required>{{ $user->guest2_permanent_address }}</textarea>
+                        <textarea type="text" class="form-control" name="guest2_permanent_address">{{ $user->guest2_permanent_address }}</textarea>
                         @error('guest2_permanent_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -436,7 +522,7 @@
                 <div class="text-center text-bold"><h5>(English-medium students will provide their information in place of SSC and HSC details)</h5></div>
                 <hr>
                 <div class="form-group row mb-3 @error('ssc_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>SSC/Equivalent Institute:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>SSC/Equivalent School:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="ssc_institute" value="{{$user->ssc_institute}}" required>
                     @error('ssc_institute')
@@ -486,7 +572,7 @@
                 </div>
                 <!-- HSC -->
                 <div class="form-group row mb-3 @error('hsc_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>HSC/Equivalent Institute:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>HSC/Equivalent College:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="hsc_institute" value="{{$user->hsc_institute}}" required>
                     @error('hsc_institute')
@@ -536,7 +622,7 @@
                 </div>
                 <!-- Bachelor -->
                 <div class="form-group row mb-3 @error('bachelor_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Bachelor Institute:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Bachelor University:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="bachelor_institute" value="{{$user->bachelor_institute}}" required>
                     @error('bachelor_institute')
@@ -546,9 +632,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('bachelor_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Bachelor Board:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Bachelor Board: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="bachelor_board" value="{{$user->bachelor_board}}" required>
+                    <input type="text" class="form-control" name="bachelor_board" value="{{$user->bachelor_board}}">
                     @error('bachelor_board')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -566,9 +652,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('bachelor_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Bachelor Group:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Bachelor Group: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="bachelor_group" value="{{$user->bachelor_group}}" required>
+                    <input type="text" class="form-control" name="bachelor_group" value="{{$user->bachelor_group}}">
                     @error('bachelor_group')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -586,20 +672,10 @@
                 </div>
                 <!-- Masters -->
                 <div class="form-group row mb-3 @error('masters_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Institute:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Masters University:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_institute" value="{{$user->masters_institute}}">
                     @error('masters_institute')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('masters_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Board:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="masters_board" value="{{$user->masters_board}}">
-                    @error('masters_board')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
@@ -615,21 +691,62 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-3 @error('masters_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Group:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="masters_group" value="{{$user->masters_group}}">
-                    @error('masters_group')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
                 <div class="form-group row mb-3 @error('masters_passing_year') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Masters Year:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_passing_year" value="{{$user->masters_passing_year}}">
                     @error('masters_passing_year')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <!-- Others -->
+                <div class="form-group row mb-3 @error('others_institute') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Others Institute:<span class="text-danger"></span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="others_institute" value="{{$user->others_institute}}">
+                    @error('others_institute')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('others_board') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Others Board:<span class="text-danger"></span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="others_board" value="{{$user->others_board}}">
+                    @error('others_board')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('others_result') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Others Result:<span class="text-danger"></span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="others_result" value="{{$user->others_result}}">
+                    @error('others_result')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('others_group') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Others Group:<span class="text-danger"></span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="others_group" value="{{$user->others_group}}">
+                    @error('others_group')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('others_passing_year') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Others Year:<span class="text-danger"></span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="others_passing_year" value="{{$user->others_passing_year}}">
+                    @error('others_passing_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>

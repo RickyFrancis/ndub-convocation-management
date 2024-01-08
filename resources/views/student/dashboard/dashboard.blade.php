@@ -195,7 +195,7 @@
                         </tr>
                         <!-- Bachelor -->
                         <tr>
-                        <td><b>Bachelor Institute</b></td>
+                        <td><b>Bachelor University</b></td>
                         <td>:</td>
                         <td>{{$user->bachelor_institute ? $user->bachelor_institute : ''}}</td>
                         </tr>
@@ -221,14 +221,9 @@
                         </tr>
                         <!-- Masters -->
                         <tr>
-                        <td><b>Masters Institute</b></td>
+                        <td><b>Masters University</b></td>
                         <td>:</td>
                         <td>{{$user->masters_institute ? $user->masters_institute : ''}}</td>
-                        </tr>
-                        <tr>
-                        <td><b>Masters Board</b></td>
-                        <td>:</td>
-                        <td>{{$user->masters_board ? $user->masters_board : ''}}</td>
                         </tr>
                         <tr>
                         <td><b>Masters Result</b></td>
@@ -236,14 +231,35 @@
                         <td>{{$user->masters_result ? $user->masters_result : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Masters Group</b></td>
-                        <td>:</td>
-                        <td>{{$user->masters_group ? $user->masters_group : ''}}</td>
-                        </tr>
-                        <tr>
                         <td><b>Masters Passing Year</b></td>
                         <td>:</td>
                         <td>{{$user->masters_passing_year ? $user->masters_passing_year : ''}}</td>
+                        </tr>
+                        <!-- Others -->
+                        <tr>
+                        <td><b>Others Institute</b></td>
+                        <td>:</td>
+                        <td>{{$user->others_institute ? $user->others_institute : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Others Board</b></td>
+                        <td>:</td>
+                        <td>{{$user->others_board ? $user->others_board : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Others Result</b></td>
+                        <td>:</td>
+                        <td>{{$user->others_result ? $user->others_result : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Others Group</b></td>
+                        <td>:</td>
+                        <td>{{$user->others_group ? $user->others_group : ''}}</td>
+                        </tr>
+                        <tr>
+                        <td><b>Others Passing Year</b></td>
+                        <td>:</td>
+                        <td>{{$user->others_passing_year ? $user->others_passing_year : ''}}</td>
                         </tr>
                         <tr>
                         <td></td>

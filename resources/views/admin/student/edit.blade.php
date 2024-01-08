@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <form method="post" action="{{ route('update_user_information') }}" enctype="multipart/form-data">    
+            <form method="post" action="{{ route('update_student_information') }}" enctype="multipart/form-data">    
             @csrf
             <div class="card">
                 <div class="card-header">
@@ -47,6 +47,16 @@
                 </div>
 
                 <input type="hidden" name="id" value="{{$user->id}}">
+
+                <div class="form-group row mb-3 @error('name') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Name:<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control" name="name" value="{{$user->name}}" required>
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                </div>
 
                 <div class="form-group row mb-3 @error('program') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Program:<span
@@ -273,7 +283,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="text-center text-bold"><h4>Employment Status (If any)</h4></div>
+                <div class="text-center text-bold"><h4>Employment Status (If any) (Alumni Purpose)</h4></div>
                 <hr>
                 <div class="form-group row mb-3 @error('organization_name') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b> Name of the Organization:<span class="text-danger"></span></b></label>
@@ -381,9 +391,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_name') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 Name:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 Name:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_name" value="{{$user->guest2_name}}" required>
+                    <input type="text" class="form-control" name="guest2_name" value="{{$user->guest2_name}}">
                     @error('guest2_name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -391,9 +401,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_relationship') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 Relationship:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 Relationship:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_relationship" value="{{$user->guest2_relationship}}" required>
+                    <input type="text" class="form-control" name="guest2_relationship" value="{{$user->guest2_relationship}}">
                     @error('guest2_relationship')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -401,9 +411,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('guest2_nid_or_birth_cert') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Guest 2 NID/Birth Certificate No.:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Guest 2 NID/Birth Certificate No.:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="guest2_nid_or_birth_cert" value="{{$user->guest2_nid_or_birth_cert}}" required>
+                    <input type="text" class="form-control" name="guest2_nid_or_birth_cert" value="{{$user->guest2_nid_or_birth_cert}}">
                     @error('guest2_nid_or_birth_cert')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -412,9 +422,9 @@
 
                 <div class="form-group row mb-3 @error('guest2_present_address') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Guest 2 Present Address:<span
-                                class="text-danger">*</span></b></label>
+                                class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="guest2_present_address" required>{{ $user->guest2_present_address }}</textarea>
+                        <textarea type="text" class="form-control" name="guest2_present_address">{{ $user->guest2_present_address }}</textarea>
                         @error('guest2_present_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -423,9 +433,9 @@
 
                 <div class="form-group row mb-3 @error('guest2_permanent_address') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Guest 2 Permanent Address:<span
-                                class="text-danger">*</span></b></label>
+                                class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="guest2_permanent_address" required>{{ $user->guest2_permanent_address }}</textarea>
+                        <textarea type="text" class="form-control" name="guest2_permanent_address">{{ $user->guest2_permanent_address }}</textarea>
                         @error('guest2_permanent_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -433,9 +443,10 @@
                 </div>
                 <hr>
                 <div class="text-center text-bold"><h4>Academic Background</h4></div>
+                <div class="text-center text-bold"><h5>(English-medium students will provide their information in place of SSC and HSC details)</h5></div>
                 <hr>
                 <div class="form-group row mb-3 @error('ssc_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>SSC/Equivalent Institute:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>SSC/Equivalent School:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="ssc_institute" value="{{$user->ssc_institute}}" required>
                     @error('ssc_institute')
@@ -485,7 +496,7 @@
                 </div>
                 <!-- HSC -->
                 <div class="form-group row mb-3 @error('hsc_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>HSC/Equivalent Institute:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>HSC/Equivalent College:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="hsc_institute" value="{{$user->hsc_institute}}" required>
                     @error('hsc_institute')
@@ -545,9 +556,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('bachelor_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Bachelor Board:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Bachelor Board: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="bachelor_board" value="{{$user->bachelor_board}}" required>
+                    <input type="text" class="form-control" name="bachelor_board" value="{{$user->bachelor_board}}">
                     @error('bachelor_board')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -565,9 +576,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('bachelor_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Bachelor Group:<span class="text-danger">*</span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Bachelor Group: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="bachelor_group" value="{{$user->bachelor_group}}" required>
+                    <input type="text" class="form-control" name="bachelor_group" value="{{$user->bachelor_group}}">
                     @error('bachelor_group')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -594,31 +605,11 @@
                     </div>
                 </div>
 
-                <div class="form-group row mb-3 @error('masters_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Board:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="masters_board" value="{{$user->masters_board}}">
-                    @error('masters_board')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
                 <div class="form-group row mb-3 @error('masters_result') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Masters Result:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_result" value="{{$user->masters_result}}">
                     @error('masters_result')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('masters_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Group:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="masters_group" value="{{$user->masters_group}}">
-                    @error('masters_group')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
