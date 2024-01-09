@@ -267,57 +267,145 @@ class ConvocationRegistrationController extends Controller{
         return view('student.registration.photo-upload', compact('user'));
     }
 
-    public function photoUploadUpdate(Request $request): RedirectResponse{
-        $this->validate($request,[
-            'student_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
-            'guest1_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
-            'guest2_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
-            'ssc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
-            'hsc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
-        ]);
-
+    public function photoUpdate(Request $request): RedirectResponse{
+        $user = GraduateList::where('id', $request->id)->first();
         $loggedUser = Auth::user()->id;
 
-        if($request->hasFile('student_photo')){
-            $image1 = $request->file('student_photo');
-            $imageName1 = 'student_'.$loggedUser.'_'.time().'.'.$image1->getClientOriginalExtension();
-            Image::make($image1)->save('uploads/student/'.$imageName1);
-        }
-        
-        if($request->hasFile('guest1_photo')){
-            $image2 = $request->file('guest1_photo');
-            $imageName2 = 'guest1_'.$loggedUser.'_'.time().'.'.$image2->getClientOriginalExtension();
-            Image::make($image2)->save('uploads/guest/'.$imageName2);
+        if($user->guest2_name==''){
+            $this->validate($request,[
+                'student_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest1_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest1_nid_or_birth_cert_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                //'guest2_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'ssc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'hsc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            ]);
+
+            if($request->hasFile('student_photo')){
+                $image1 = $request->file('student_photo');
+                $imageName1 = 'student_'.$loggedUser.'_'.time().'.'.$image1->getClientOriginalExtension();
+                Image::make($image1)->save('uploads/student/'.$imageName1);
+            }
+            
+            if($request->hasFile('guest1_photo')){
+                $image2 = $request->file('guest1_photo');
+                $imageName2 = 'guest1_'.$loggedUser.'_'.time().'.'.$image2->getClientOriginalExtension();
+                Image::make($image2)->save('uploads/guest/'.$imageName2);
+            }
+    
+            if($request->hasFile('guest1_nid_or_birth_cert_photo')){
+                $image3 = $request->file('guest1_nid_or_birth_cert_photo');
+                $imageName3 = 'guest1_nid_birth'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
+                Image::make($image3)->save('uploads/nid-or-birth-certificate/'.$imageName3);
+            }
+    
+            // if($request->hasFile('guest2_photo')){
+            //     $image3 = $request->file('guest2_photo');
+            //     $imageName3 = 'guest2_'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
+            //     Image::make($image3)->save('uploads/guest/'.$imageName3);
+            // }
+            
+            if($request->hasFile('ssc_certificate_photo')){
+                $image4 = $request->file('ssc_certificate_photo');
+                $imageName4 = 'ssc_certificate_'.$loggedUser.'_'.time().'.'.$image4->getClientOriginalExtension();
+                Image::make($image4)->save('uploads/ssc/'.$imageName4);
+            }
+    
+            if($request->hasFile('hsc_certificate_photo')){
+                $image5 = $request->file('hsc_certificate_photo');
+                $imageName5 = 'hsc_certificate_'.$loggedUser.'_'.time().'.'.$image5->getClientOriginalExtension();
+                Image::make($image5)->save('uploads/hsc/'.$imageName5);
+            }
+
+            $update = GraduateList::where('id', $request->id)->update([
+                'student_photo'=>$imageName1,
+                'guest1_photo'=>$imageName2,
+                //'guest2_photo'=>$imageName3,
+                'guest1_nid_or_birth_cert_photo'=>$imageName3,
+                'ssc_certificate_photo'=>$imageName4,
+                'hsc_certificate_photo'=>$imageName5,
+                'edit_start_status'=>'1',
+                'updated_by'=>$loggedUser,
+                'updated_at'=>Carbon::now()->toDateTimeString(),
+            ]);
         }
 
-        if($request->hasFile('guest2_photo')){
-            $image3 = $request->file('guest2_photo');
-            $imageName3 = 'guest2_'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
-            Image::make($image3)->save('uploads/guest/'.$imageName3);
-        }
-        
-        if($request->hasFile('ssc_certificate_photo')){
-            $image4 = $request->file('ssc_certificate_photo');
-            $imageName4 = 'ssc_certificate_'.$loggedUser.'_'.time().'.'.$image4->getClientOriginalExtension();
-            Image::make($image4)->save('uploads/ssc/'.$imageName4);
-        }
+        if($user->guest2_name!=''){
+            $this->validate($request,[
+                'student_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest1_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest1_nid_or_birth_cert_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest2_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'guest2_nid_or_birth_cert_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'ssc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+                'hsc_certificate_photo' => 'required|image|mimes:jpg|max:2048|dimensions:max_width=1000,max_height=1000',
+            ]);
 
-        if($request->hasFile('hsc_certificate_photo')){
-            $image5 = $request->file('hsc_certificate_photo');
-            $imageName5 = 'hsc_certificate_'.$loggedUser.'_'.time().'.'.$image5->getClientOriginalExtension();
-            Image::make($image5)->save('uploads/hsc/'.$imageName5);
+            if($request->hasFile('student_photo')){
+                $image1 = $request->file('student_photo');
+                $imageName1 = 'student_'.$loggedUser.'_'.time().'.'.$image1->getClientOriginalExtension();
+                Image::make($image1)->save('uploads/student/'.$imageName1);
+            }
+            
+            if($request->hasFile('guest1_photo')){
+                $image2 = $request->file('guest1_photo');
+                $imageName2 = 'guest1_'.$loggedUser.'_'.time().'.'.$image2->getClientOriginalExtension();
+                Image::make($image2)->save('uploads/guest/'.$imageName2);
+            }
+    
+            if($request->hasFile('guest1_nid_or_birth_cert_photo')){
+                $image3 = $request->file('guest1_nid_or_birth_cert_photo');
+                $imageName3 = 'guest1_nid_birth'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
+                Image::make($image3)->save('uploads/nid-or-birth-certificate/'.$imageName3);
+            }
+    
+            // if($request->hasFile('guest2_photo')){
+            //     $image3 = $request->file('guest2_photo');
+            //     $imageName3 = 'guest2_'.$loggedUser.'_'.time().'.'.$image3->getClientOriginalExtension();
+            //     Image::make($image3)->save('uploads/guest/'.$imageName3);
+            // }
+            
+            if($request->hasFile('ssc_certificate_photo')){
+                $image4 = $request->file('ssc_certificate_photo');
+                $imageName4 = 'ssc_certificate_'.$loggedUser.'_'.time().'.'.$image4->getClientOriginalExtension();
+                Image::make($image4)->save('uploads/ssc/'.$imageName4);
+            }
+    
+            if($request->hasFile('hsc_certificate_photo')){
+                $image5 = $request->file('hsc_certificate_photo');
+                $imageName5 = 'hsc_certificate_'.$loggedUser.'_'.time().'.'.$image5->getClientOriginalExtension();
+                Image::make($image5)->save('uploads/hsc/'.$imageName5);
+            }
+    
+            // If guest 2 name have value
+    
+            if($request->hasFile('guest2_photo')){
+                $image6 = $request->file('guest2_photo');
+                $imageName6 = 'guest2_'.$loggedUser.'_'.time().'.'.$image6->getClientOriginalExtension();
+                Image::make($image6)->save('uploads/guest/'.$imageName6);
+            }
+    
+            if($request->hasFile('guest2_nid_or_birth_cert_photo')){
+                $image7 = $request->file('guest2_nid_or_birth_cert_photo');
+                $imageName7 = 'guest2_nid_birth'.$loggedUser.'_'.time().'.'.$image7->getClientOriginalExtension();
+                Image::make($image7)->save('uploads/nid-or-birth-certificate/'.$imageName7);
+            }
+            //
+            $update = GraduateList::where('id', $request->id)->update([
+                'student_photo'=>$imageName1,
+                'guest1_photo'=>$imageName2,
+                //'guest2_photo'=>$imageName3,
+                'guest1_nid_or_birth_cert_photo'=>$imageName3,
+                'ssc_certificate_photo'=>$imageName4,
+                'hsc_certificate_photo'=>$imageName5,
+                'guest2_photo'=>$imageName6,
+                //'guest2_photo'=>$imageName3,
+                'guest2_nid_or_birth_cert_photo'=>$imageName7,
+                'edit_start_status'=>'1',
+                'updated_by'=>$loggedUser,
+                'updated_at'=>Carbon::now()->toDateTimeString(),
+            ]);
         }
-
-        $update = GraduateList::where('id', $request->id)->update([
-            'student_photo'=>$imageName1,
-            'guest1_photo'=>$imageName2,
-            'guest2_photo'=>$imageName3,
-            'ssc_certificate_photo'=>$imageName4,
-            'hsc_certificate_photo'=>$imageName5,
-            'edit_start_status'=>'1',
-            'updated_by'=>$loggedUser,
-            'updated_at'=>Carbon::now()->toDateTimeString(),
-        ]);
         
         if($update){
             Session::flash('success','Photo successfully uploaded!');

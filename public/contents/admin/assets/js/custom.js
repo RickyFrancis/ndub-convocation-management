@@ -74,6 +74,26 @@ function readGuest1URL(input) {
     }
 }
 
+// Guest 1 NID photo preview
+
+function readGuest1nidURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#guest1_nid_or_birth_cert_photo_review')
+                .attr('src', e.target.result)
+                .width(120)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
 // Guest 2 photo preview
 
 function readGuest2URL(input) {
@@ -86,6 +106,25 @@ function readGuest2URL(input) {
             $('#guest2_photo_review')
                 .attr('src', e.target.result)
                 .width(80)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// Guest 2 NID photo preview
+
+function readGuest2nidURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#guest2_nid_or_birth_cert_photo_review')
+                .attr('src', e.target.result)
+                .width(120)
                 .height(80);
         };
 

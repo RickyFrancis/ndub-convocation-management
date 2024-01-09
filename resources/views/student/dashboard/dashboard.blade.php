@@ -450,7 +450,18 @@
                         <td>:</td>
                         <td>
                         @if($user->guest1_photo!='')
-                            <img src="{{asset('uploads/guest/'.$user->guest1_photo)}}" alt="Guest 1 photo" class="img-fluid" height="65px" width="65px">
+                            <img src="{{asset('uploads/guest/'.$user->guest1_photo)}}" alt="Guest 1 Photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Guest 1 NID/Birth Certificate Photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->guest1_nid_or_birth_cert_photo!='')
+                            <img src="{{asset('uploads/nid-or-birth-certificate/'.$user->guest1_nid_or_birth_cert_photo)}}" alt="Guest 1 NID/Birth Certificate Photo" class="img-fluid" height="65px" width="65px">
                         @else
                             <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
                         @endif
@@ -461,7 +472,18 @@
                         <td>:</td>
                         <td>
                         @if($user->guest2_photo!='')
-                            <img src="{{asset('uploads/guest/'.$user->guest2_photo)}}" alt="Guest 2 photo" class="img-fluid" height="65px" width="65px">
+                            <img src="{{asset('uploads/guest/'.$user->guest2_photo)}}" alt="Guest 2 Photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Guest 2 NID/Birth Certificate Photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->guest2_nid_or_birth_cert_photo!='')
+                            <img src="{{asset('uploads/nid-or-birth-certificate/'.$user->guest2_nid_or_birth_cert_photo)}}" alt="Guest 2 NID/Birth Certificate Photo" class="img-fluid" height="65px" width="65px">
                         @else
                             <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
                         @endif
