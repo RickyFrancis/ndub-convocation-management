@@ -402,6 +402,7 @@ class ConvocationRegistrationController extends Controller{
         ->first();
 
         $user = [
+            'student_photo'=>$data->student_photo,
             'name'=>$data->name,
             'program_name'=>$data->programInfo->program_name,
             'student_id'=>$data->student_id,
@@ -413,6 +414,7 @@ class ConvocationRegistrationController extends Controller{
             'admission_semester'=>$data->admission_semester,
             'credit_earned'=>$data->credit_earned,
             'cgpa'=>$data->cgpa,
+			'email'=>$data->email,
             'passing_trimester'=>$data->passing_trimester,
             'passing_year'=>$data->passing_year,
             'father_name'=>$data->father_name,
@@ -421,6 +423,7 @@ class ConvocationRegistrationController extends Controller{
             'blood_group'=>$data->blood_group,
             'nid_or_birth_cert_no'=>$data->nid_or_birth_cert_no,
             'dob'=>$data->dob,
+            'result_publish_date'=>$data->result_publish_date,
             'present_address'=>$data->present_address,
             'permanent_address'=>$data->permanent_address,
             'organization_name'=>$data->organization_name,
@@ -454,10 +457,13 @@ class ConvocationRegistrationController extends Controller{
             'bachelor_group'=>$data->bachelor_group,
             'bachelor_passing_year'=>$data->bachelor_passing_year,
             'masters_institute'=>$data->masters_institute,
-            'masters_board'=>$data->masters_board,
             'masters_result'=>$data->masters_result,
-            'masters_group'=>$data->masters_group,
-            'masters_passing_year'=>$data->masters_passing_year
+            'masters_passing_year'=>$data->masters_passing_year,
+			'others_institute'=>$data->others_institute,
+            'others_board'=>$data->others_board,
+            'others_result'=>$data->others_result,
+            'others_group'=>$data->others_group,
+            'others_passing_year'=>$data->others_passing_year
         ];
 
         $pdf = Pdf::loadView('student.pdf.registration-form', $user)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4');
