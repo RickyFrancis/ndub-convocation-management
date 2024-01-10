@@ -26,69 +26,6 @@ class ConvocationRegistrationController extends Controller{
     public function dashboard(){
         $user = GraduateList::where('id', Auth::user()->graduate_lists_id)->first();
 
-        // For PDF
-        // $data = GraduateList::where('id', Auth::user()->graduate_lists_id)->first();
-
-        // $user = [
-        //     'program_id'=>$data->program,
-        //     'id'=>$data->id,
-        //     'batch_id'=>$data->batch,
-        //     'department_id'=>$data->department,
-        //     'major'=>$data->major,
-        //     'minor'=>$data->minor,
-        //     'admission_year'=>$data->admission_year,
-        //     'admission_semester'=>$data->admission_semester,
-        //     'credit_earned'=>$data->credit_earned,
-        //     'cgpa'=>$data->cgpa,
-        //     'passing_trimester'=>$data->passing_trimester,
-        //     'passing_year'=>$data->passing_year,
-        //     'father_name'=>$data->father_name,
-        //     'mother_name'=>$data->mother_name,
-        //     'phone'=>$data->phone,
-        //     'blood_group'=>$data->blood_group,
-        //     'nid_or_birth_cert_no'=>$data->nid_or_birth_cert_no,
-        //     'dob'=>$data->dob,
-        //     'present_address'=>$data->present_address,
-        //     'permanent_address'=>$data->permanent_address,
-        //     'organization_name'=>$data->organization_name,
-        //     'designation'=>$data->designation,
-        //     'office_address'=>$data->office_address,
-        //     'office_phone'=>$data->office_phone,
-        //     'office_mobile'=>$data->office_mobile,
-        //     'guest1_name'=>$data->guest1_name,
-        //     'guest1_relationship'=>$data->guest1_relationship,
-        //     'guest1_nid_or_birth_cert'=>$data->guest1_nid_or_birth_cert,
-        //     'guest1_present_address'=>$data->guest1_present_address,
-        //     'guest1_permanent_address'=>$data->guest1_permanent_address,
-        //     'guest2_name'=>$data->guest2_name,
-        //     'guest2_relationship'=>$data->guest2_relationship,
-        //     'guest2_nid_or_birth_cert'=>$data->guest2_nid_or_birth_cert,
-        //     'guest2_present_address'=>$data->guest2_present_address,
-        //     'guest2_permanent_address'=>$data->guest2_permanent_address,
-        //     'ssc_institute'=>$data->ssc_institute,
-        //     'ssc_board'=>$data->ssc_board,
-        //     'ssc_result'=>$data->ssc_result,
-        //     'ssc_group'=>$data->ssc_group,
-        //     'ssc_passing_year'=>$data->ssc_passing_year,
-        //     'hsc_institute'=>$data->hsc_institute,
-        //     'hsc_board'=>$data->hsc_board,
-        //     'hsc_result'=>$data->hsc_result,
-        //     'hsc_group'=>$data->hsc_group,
-        //     'hsc_passing_year'=>$data->hsc_passing_year,
-        //     'bachelor_institute'=>$data->bachelor_institute,
-        //     'bachelor_board'=>$data->bachelor_board,
-        //     'bachelor_result'=>$data->bachelor_result,
-        //     'bachelor_group'=>$data->bachelor_group,
-        //     'bachelor_passing_year'=>$data->bachelor_passing_year,
-        //     'masters_institute'=>$data->masters_institute,
-        //     'masters_board'=>$data->masters_board,
-        //     'masters_result'=>$data->masters_result,
-        //     'masters_group'=>$data->masters_group,
-        //     'masters_passing_year'=>$data->masters_passing_year];
-
-        // $pdf = Pdf::loadView('admin.dashboard.dashboard', $user)->setOptions(['defaultFont' => 'sans-serif']);
-        // return $pdf->download('form.pdf');
-
         if($user->child_account_status=='0'){
             return view('student.dashboard.dashboard', compact('user'));
         }elseif($user->child_account_status=='1'){
@@ -243,7 +180,12 @@ class ConvocationRegistrationController extends Controller{
             'masters_result'=>$request->masters_result,
             //'masters_group'=>$request->masters_group,
             'masters_passing_year'=>$request->masters_passing_year,
-            'edit_start_status'=>'1',
+            'others_institute'=>$request->others_institute,
+            'others_board'=>$request->others_board,
+            'others_result'=>$request->others_result,
+            'others_group'=>$request->others_group,
+            'others_passing_year'=>$request->others_passing_year,
+            'edit_start_status'=>1,
             'updated_by'=>$loggedUser,
             'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
@@ -324,7 +266,7 @@ class ConvocationRegistrationController extends Controller{
                 'guest1_nid_or_birth_cert_photo'=>$imageName3,
                 'ssc_certificate_photo'=>$imageName4,
                 'hsc_certificate_photo'=>$imageName5,
-                'edit_start_status'=>'1',
+                'photo_upload_status'=>1,
                 'updated_by'=>$loggedUser,
                 'updated_at'=>Carbon::now()->toDateTimeString(),
             ]);
@@ -401,7 +343,7 @@ class ConvocationRegistrationController extends Controller{
                 'guest2_photo'=>$imageName6,
                 //'guest2_photo'=>$imageName3,
                 'guest2_nid_or_birth_cert_photo'=>$imageName7,
-                'edit_start_status'=>'1',
+                'photo_upload_status'=>1,
                 'updated_by'=>$loggedUser,
                 'updated_at'=>Carbon::now()->toDateTimeString(),
             ]);
@@ -415,4 +357,111 @@ class ConvocationRegistrationController extends Controller{
             return redirect()->route('student_photo_upload');
         }
     }
+    
+    public function formSubmit(Request $request): RedirectResponse{
+        $submitStatus = GraduateList::where('id', $request->modal_id)->first();
+
+        if($submitStatus->edit_start_status==1 && $submitStatus->photo_upload_status==1){
+        
+            $loggedUser = Auth::user()->id;
+            
+            $update1 = GraduateList::where('id', $request->modal_id)->update([
+                'registration_complete_status'=>1,
+                'updated_by'=>$loggedUser,
+                'updated_at'=>Carbon::now()->toDateTimeString(),
+            ]);
+            $second_program_grad_list_id = GraduateList::where('id', $request->modal_id)->value('second_program_grad_list_id');
+            
+            if($second_program_grad_list_id!=''){
+                $update2 = GraduateList::where('id', $second_program_grad_list_id)->update([
+                    'registration_complete_status'=>1,
+                    'updated_by'=>$loggedUser,
+                    'updated_at'=>Carbon::now()->toDateTimeString(),
+                ]);
+            }
+            
+            if($update1){
+                Session::flash('success','Convocation registration submitted successfully!');
+                return redirect()->route('dashboard');
+            }else{
+                Session::flash('error','Convocation registration process failed!');
+                return redirect()->route('dashboard');
+            }
+
+        }else{
+            Session::flash('error','Please fill in all required information fields for final submission!');
+            return redirect()->route('dashboard');
+        }
+
+    }
+
+    public function registrationFromPDF(){
+        // For PDF
+        $data = GraduateList::where('id', Auth::user()->graduate_lists_id)
+        ->with(['departmentInfo', 'programInfo', 'batchInfo', 'secondProgramInfo'])
+        ->first();
+
+        $user = [
+            'name'=>$data->name,
+            'program_name'=>$data->programInfo->program_name,
+            'student_id'=>$data->student_id,
+            'batch_name'=>$data->batchInfo->batch_name,
+            'department_name'=>$data->departmentInfo->department_name,
+            'major'=>$data->major,
+            'minor'=>$data->minor,
+            'admission_year'=>$data->admission_year,
+            'admission_semester'=>$data->admission_semester,
+            'credit_earned'=>$data->credit_earned,
+            'cgpa'=>$data->cgpa,
+            'passing_trimester'=>$data->passing_trimester,
+            'passing_year'=>$data->passing_year,
+            'father_name'=>$data->father_name,
+            'mother_name'=>$data->mother_name,
+            'phone'=>$data->phone,
+            'blood_group'=>$data->blood_group,
+            'nid_or_birth_cert_no'=>$data->nid_or_birth_cert_no,
+            'dob'=>$data->dob,
+            'present_address'=>$data->present_address,
+            'permanent_address'=>$data->permanent_address,
+            'organization_name'=>$data->organization_name,
+            'designation'=>$data->designation,
+            'office_address'=>$data->office_address,
+            'office_phone'=>$data->office_phone,
+            'office_mobile'=>$data->office_mobile,
+            'guest1_name'=>$data->guest1_name,
+            'guest1_relationship'=>$data->guest1_relationship,
+            'guest1_nid_or_birth_cert'=>$data->guest1_nid_or_birth_cert,
+            'guest1_present_address'=>$data->guest1_present_address,
+            'guest1_permanent_address'=>$data->guest1_permanent_address,
+            'guest2_name'=>$data->guest2_name,
+            'guest2_relationship'=>$data->guest2_relationship,
+            'guest2_nid_or_birth_cert'=>$data->guest2_nid_or_birth_cert,
+            'guest2_present_address'=>$data->guest2_present_address,
+            'guest2_permanent_address'=>$data->guest2_permanent_address,
+            'ssc_institute'=>$data->ssc_institute,
+            'ssc_board'=>$data->ssc_board,
+            'ssc_result'=>$data->ssc_result,
+            'ssc_group'=>$data->ssc_group,
+            'ssc_passing_year'=>$data->ssc_passing_year,
+            'hsc_institute'=>$data->hsc_institute,
+            'hsc_board'=>$data->hsc_board,
+            'hsc_result'=>$data->hsc_result,
+            'hsc_group'=>$data->hsc_group,
+            'hsc_passing_year'=>$data->hsc_passing_year,
+            'bachelor_institute'=>$data->bachelor_institute,
+            'bachelor_board'=>$data->bachelor_board,
+            'bachelor_result'=>$data->bachelor_result,
+            'bachelor_group'=>$data->bachelor_group,
+            'bachelor_passing_year'=>$data->bachelor_passing_year,
+            'masters_institute'=>$data->masters_institute,
+            'masters_board'=>$data->masters_board,
+            'masters_result'=>$data->masters_result,
+            'masters_group'=>$data->masters_group,
+            'masters_passing_year'=>$data->masters_passing_year
+        ];
+
+        $pdf = Pdf::loadView('student.pdf.registration-form', $user)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4');
+        return $pdf->download('form.pdf');
+    }
+
 }

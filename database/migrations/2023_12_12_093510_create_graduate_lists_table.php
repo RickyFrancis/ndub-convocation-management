@@ -97,6 +97,7 @@ return new class extends Migration
             $table->integer('deleted_by')->nullable();
             $table->integer('deleted_at')->nullable();
             $table->integer('edit_start_status')->default(0);
+            //$table->integer('photo_upload_status')->default(0);
             $table->integer('child_account_status')->default(0);
             $table->integer('parent_account_status')->default(0);
             $table->integer('registration_complete_status')->default(0);

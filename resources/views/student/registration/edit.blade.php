@@ -541,7 +541,7 @@
                 <div class="form-group row mb-3 @error('ssc_board') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>SSC/Equivalent Board:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="ssc_board" value="{{$user->ssc_board}}" required>
+                    <input type="text" class="form-control" name="ssc_board" value="{{$user->ssc_board}}" placeholder="For Ex. SSC= Dhaka or O Level= N/A" required>
                     @error('ssc_board')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -561,7 +561,7 @@
                 <div class="form-group row mb-3 @error('ssc_group') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>SSC/Equivalent Group:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="ssc_group" value="{{$user->ssc_group}}" required>
+                    <input type="text" class="form-control" name="ssc_group" value="{{$user->ssc_group}}" placeholder="For Ex. Group= Science or O Level= N/A" required>
                     @error('ssc_group')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -591,7 +591,7 @@
                 <div class="form-group row mb-3 @error('hsc_board') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>HSC/Equivalent Board:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="hsc_board" value="{{$user->hsc_board}}" required>
+                    <input type="text" class="form-control" name="hsc_board" value="{{$user->hsc_board}}" placeholder="For Ex. Board= Dhaka or A Level= N/A" required>
                     @error('hsc_board')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -611,7 +611,7 @@
                 <div class="form-group row mb-3 @error('hsc_group') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>HSC/Equivalent Group:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="hsc_group" value="{{$user->hsc_group}}" required>
+                    <input type="text" class="form-control" name="hsc_group" value="{{$user->hsc_group}}" placeholder="For Ex. Group= Science or A Level= N/A" required>
                     @error('hsc_group')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -679,7 +679,7 @@
                 </div>
                 <!-- Masters -->
                 <div class="form-group row mb-3 @error('masters_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters University:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Master's University:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_institute" value="{{$user->masters_institute}}">
                     @error('masters_institute')
@@ -689,7 +689,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('masters_result') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Result:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Master's Result:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_result" value="{{$user->masters_result}}">
                     @error('masters_result')
@@ -699,7 +699,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('masters_passing_year') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Masters Year:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Master's Year:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_passing_year" value="{{$user->masters_passing_year}}">
                     @error('masters_passing_year')
@@ -710,7 +710,7 @@
 
                 <!-- Others -->
                 <div class="form-group row mb-3 @error('others_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Others Institute:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Other's Institute:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="others_institute" value="{{$user->others_institute}}">
                     @error('others_institute')
@@ -720,7 +720,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('others_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Others Board:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Other's Board:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="others_board" value="{{$user->others_board}}">
                     @error('others_board')
@@ -730,7 +730,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('others_result') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Others Result:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Other's Result:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="others_result" value="{{$user->others_result}}">
                     @error('others_result')
@@ -740,7 +740,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('others_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Others Group:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Other's Group:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="others_group" value="{{$user->others_group}}">
                     @error('others_group')
@@ -750,7 +750,7 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('others_passing_year') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Others Year:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Other's Year:<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="others_passing_year" value="{{$user->others_passing_year}}">
                     @error('others_passing_year')

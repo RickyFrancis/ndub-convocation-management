@@ -44,8 +44,9 @@
                             $graduate_list_id =  Crypt::encryptString($user->id);
                             @endphp
                             
+                            @if($user->registration_complete_status==0)
                             <a class="btn btn-info" href="{{ route('edit_student_information', ['id' => $graduate_list_id]) }}" title="Edit">Edit Information</a>
-                            
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -221,43 +222,43 @@
                         </tr>
                         <!-- Masters -->
                         <tr>
-                        <td><b>Masters University</b></td>
+                        <td><b>Master's University</b></td>
                         <td>:</td>
                         <td>{{$user->masters_institute ? $user->masters_institute : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Masters Result</b></td>
+                        <td><b>Master's Result</b></td>
                         <td>:</td>
                         <td>{{$user->masters_result ? $user->masters_result : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Masters Passing Year</b></td>
+                        <td><b>Master's Passing Year</b></td>
                         <td>:</td>
                         <td>{{$user->masters_passing_year ? $user->masters_passing_year : ''}}</td>
                         </tr>
                         <!-- Others -->
                         <tr>
-                        <td><b>Others Institute</b></td>
+                        <td><b>Other's Institute</b></td>
                         <td>:</td>
                         <td>{{$user->others_institute ? $user->others_institute : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Others Board</b></td>
+                        <td><b>Other's Board</b></td>
                         <td>:</td>
                         <td>{{$user->others_board ? $user->others_board : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Others Result</b></td>
+                        <td><b>Other's Result</b></td>
                         <td>:</td>
                         <td>{{$user->others_result ? $user->others_result : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Others Group</b></td>
+                        <td><b>Other's Group</b></td>
                         <td>:</td>
                         <td>{{$user->others_group ? $user->others_group : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Others Passing Year</b></td>
+                        <td><b>Other's Passing Year</b></td>
                         <td>:</td>
                         <td>{{$user->others_passing_year ? $user->others_passing_year : ''}}</td>
                         </tr>
@@ -424,7 +425,9 @@
                             <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> Photo</b></h4>
                         </div>
                         <div class="col-12 col-md-3 text-center">
+                        @if($user->registration_complete_status==0)
                             <a class="btn btn-info" href="{{ route('student_photo_upload', ['id' => $graduate_list_id]) }}" title="Edit">Upload Photo</a>
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -550,9 +553,11 @@
                             <h4 class="card-title"><i class="fab fa-gg-circle"></i><b> Information</b></h4>
                         </div>
                         <div class="col-12 col-md-3 text-center">
+                        @if($user->registration_complete_status==0)
                             @if($user->second_program_grad_list_id=='')
                                 <a class="btn btn-info" href="{{ route('student_second_registration', ['id' => $graduate_list_id]) }}" title="Register">Register</a>
                             @endif
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -694,7 +699,53 @@
             </div>
         </div>
         </div>
+        @if($user->registration_complete_status==0)
+        <hr>
+        <div class="col-12 col-md-12 text-center">
+            <a class="btn btn-danger btn-lg text-white" id="confirm" data-toggle="modal" data-target="#confirmModal" data-id="{{$user->id}}" title="Submit for convocation registration">Submit for convocation registration</a>
+        </div>
+        <hr>
+        @endif
+        @if($user->registration_complete_status==1)
+        <hr>
+        <!-- Show PDF download option -->
+        <div class="col-12 col-md-12 text-center">
+            <a class="btn btn-danger btn-lg text-white" href="{{ route('registrationFromPDF') }}" title="Download Form">Download Form</a>
+        </div>
+        <hr>
+        @endif
 
     </div>
 
+    <!-- Registration confirmation modal start -->
+    <div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        
+        <form method="post" action="{{ route('student_form_submit') }}">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header modal_header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Convocation Registration Submission</h5>
+            </div>
+            <div class="modal-body modal_card">
+            <b>Do you want to submit the convocation registration form?<br>
+            Once submitted, it cannot be edited and will be finalized.</b>
+            <input type="hidden" id="modal_id" name="modal_id">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-md btn-success text-white waves-effect waves-light">Yes</button>
+                <button type="button" class="btn btn-md btn-danger waves-effect" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    <script>
+        // Confirm modal
+        $(document).on("click", "#confirm", function () {
+            var confirmID = $(this).data('id');
+            $(".modal_card #modal_id").val( confirmID );
+        });
+    </script>
 @endsection

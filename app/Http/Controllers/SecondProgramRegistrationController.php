@@ -82,7 +82,7 @@ class SecondProgramRegistrationController extends Controller{
             'passing_trimester'=>$request->passing_trimester,
             'passing_year'=>$request->passing_year,
             'second_program_grad_list_id'=>$parent_grad_lists_info->id,
-            'edit_start_status'=>'1',
+            //'edit_start_status'=>'1',
             'child_account_status'=>'1',
             'updated_by'=>$loggedUser,
             'updated_at'=>Carbon::now()->toDateTimeString(),
