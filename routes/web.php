@@ -30,7 +30,6 @@ Route::get('/', function () {
 //     //return view('dashboard');
 //     return view('admin.dashboard.dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/pdf', [ConvocationRegistrationController::class, 'registrationFromPDF'])->name('registrationFromPDF');
 
 // Convocation Registration (First Program)
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -40,6 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/student/photo/upload/{id}', [ConvocationRegistrationController::class, 'photoUpload'])->name('student_photo_upload');
     Route::post('dashboard/student/photo/upload/update', [ConvocationRegistrationController::class, 'photoUpdate'])->name('student_photo_update');
     Route::post('dashboard/student/convocation-registration', [ConvocationRegistrationController::class, 'formSubmit'])->name('student_form_submit');
+    Route::get('dashboard/registration-form-pdf', [ConvocationRegistrationController::class, 'registrationFormPDF'])->name('registrationFormPDF');
+    Route::get('dashboard/student-copy-pdf', [ConvocationRegistrationController::class, 'studentCopyPDF'])->name('studentCopyPDF');
 });
 // Convocation Registration (Second Program - If Applicable)
 Route::middleware(['auth', 'verified'])->group(function () {

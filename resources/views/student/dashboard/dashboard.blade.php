@@ -710,7 +710,8 @@
         <hr>
         <!-- Show PDF download option -->
         <div class="col-12 col-md-12 text-center">
-            <a class="btn btn-danger btn-lg text-white" href="{{ route('registrationFromPDF') }}" title="Download Form">Download Form</a>
+            <a class="btn btn-danger btn-lg text-white mt-2" href="{{ route('registrationFormPDF') }}" title="Download Form">Download Registration Form</a>
+            <a class="btn btn-danger btn-lg text-white mt-2" href="{{ route('studentCopyPDF') }}" title="Download Student Copy">Download Student Copy</a>
         </div>
         <hr>
         @endif

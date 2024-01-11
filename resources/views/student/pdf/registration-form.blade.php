@@ -97,11 +97,20 @@
         .page-break {
             page-break-after: always;
         }
+
+        li {
+            padding-bottom: 10px; /* Adjust the value based on your preference */
+        }
+
+        .no-page-break {
+            page-break-inside: avoid;
+        }
     </style>
 </head>
 
 <body>
 <!-- <button onclick="window.print()">Print</button> -->
+<div class="no-page-break">
     <div class="container">
         <div class="row mt-2">
             <div class="image-container">
@@ -109,9 +118,9 @@
                 <img id="img1" style="float:right;" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/student/'.$student_photo))) ?>" alt="">
                 <div style="">
                 <p style="text-align: center;">
-    <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
-    <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span>
-</p>
+                    <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
+                    <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span>
+                </p>
                     </div>
                 </div>
             </div>
@@ -124,12 +133,7 @@
                         <tr>
                             <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name Of the Student: {{$name ? $name : ''}}
-                                </span>
-                                <br>
-                                <span class="text-left" style="font-size: 8px; font-weight: bold">
-                                [Write in block letters matching
-                                with SSC & HSC Certificates]
+                                Name Of the Student: {{ $name ? strtoupper($name) : ''}}
                                 </span>
                             </td>
                         </tr>
@@ -472,6 +476,7 @@
             </p>
             
         </div>
+</div>
     <!-- </div> -->
     <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
     <!-- Page break -->

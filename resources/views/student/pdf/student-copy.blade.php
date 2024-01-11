@@ -97,6 +97,10 @@
         .page-break {
             page-break-after: always;
         }
+
+        li {
+            padding-bottom: 10px; /* Adjust the value based on your preference */
+        }
     </style>
 </head>
 
@@ -126,327 +130,33 @@
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Name Of the Student: {{$name ? $name : ''}}
                                 </span>
-                                <br>
-                                <span class="text-left" style="font-size: 8px; font-weight: bold">
-                                [Write in block letters matching
-                                with SSC & HSC Certificates]
-                                </span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1">
+                            <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 ID Number: {{$student_id ? $student_id : ''}}
                                 </span>
                             </td>
-                            <td colspan="2">
+                        </tr>
+                        <tr>
+                            <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Program: {{$program_name ? $program_name : ''}}
                                 </span>
                             </td>
-                            <td colspan="1">
+                        </tr>
+                        <tr>
+                            <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Batch: {{$batch_name ? $batch_name : ''}}
                                 </span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Major: {{$major ? $major : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Minor: {{$minor ? $minor : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
                             <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Father's Name: {{$father_name ? $father_name : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Mother's Name: {{$mother_name ? $mother_name : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Phone No.: {{$phone ? $phone : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Email Address: {{$email ? $email : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Present Address: {{$present_address ? $present_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Permanent Address: {{$permanent_address ? $permanent_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
-    </div>
-    <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name of the Organization: {{$organization_name ? $organization_name : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Designation: {{$designation ? $designation : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Office Address: {{$office_address ? $office_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Telephone No.: {{$office_phone ? $office_phone : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Mobile: {{$office_mobile ? $office_mobile : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
-    </div>
-
-    <p style="font-size: 14px; font-weight: bold">Academic Background</p>
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name of Degree/Certificate
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                School/College/University
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Board
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Division/GPA/CGPA
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Group
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Year
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                SSC/Equivalent
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$ssc_institute ? $ssc_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$ssc_board ? $ssc_board : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$ssc_result ? $ssc_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$ssc_group ? $ssc_group : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$ssc_passing_year ? $ssc_passing_year : ''}}
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                HSC/Equivalent
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$hsc_institute ? $hsc_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$hsc_board ? $hsc_board : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$hsc_result ? $hsc_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$hsc_group ? $hsc_group : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$hsc_passing_year ? $hsc_passing_year : ''}}
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Bachelor
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$bachelor_institute ? $bachelor_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$bachelor_board ? $bachelor_board : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$bachelor_result ? $bachelor_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$bachelor_group ? $bachelor_group : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$bachelor_passing_year ? $bachelor_passing_year : ''}}
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Master's
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$masters_institute ? $masters_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$masters_result ? $masters_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$masters_passing_year ? $masters_passing_year : ''}}
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Other's
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_institute ? $others_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_board ? $others_board : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_result ? $others_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_group ? $others_group : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_passing_year ? $others_passing_year : ''}}
+                                Please, keep this slip safely. Without this student slip ‘Original Certificate’ will not be delivered.
                                 </span>
                             </td>
                         </tr>
@@ -455,54 +165,67 @@
         </div>
     </div>
 <br><br>
-    <!-- First page signature start -->
-    <!-- <div class="signature-grid-container"> -->
-        <div class="signature-grid-item" style="float:left; text-align: center;">
-            <p>
-                ____________________________<br>
-                Student’s Signature
-            </p>
-        </div>
-        <!-- <div class="signature-grid-item"></div>
-        <div class="signature-grid-item"></div> -->
-        <div class="signature-grid-item" style="float:right; text-align: center;">
-            <p>
-                _____________<br>
-                Date
-            </p>
-            
-        </div>
-    <!-- </div> -->
-    <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
-    <!-- Page break -->
-    <div class="page-break"></div>
+<p style="font-size: 14px; font-weight: bold">Instructions:</p>
+    <ol style="font-size: 11px; font-weight: normal; text-align:justify">
+    <li>The student is required to <b>keep this ‘Student Copy’ safely until receiving the Official Certificate</b> so that it can be shown when necessary.</li>
+    <li>Graduates must pay the registration fee, for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) in any branch of <b>Mercantile Bank Limited</b> or by <b>Rocket</b> as well as <b>Nexus Pay.</b></li>
+    <li><b>‘Original Bank Slip’</b> or <b>‘Online Payment Receipt’</b> of Convocation Registration Fee, photocopies of the Provisional Certificate, Transcript and NID, along with the Convocation Registration Form, must be submitted to the office.</li>
+    <li><b>Provisional Certificate</b> (not a photocopy) & <b>Student ID Card</b> must be <b>returned at the time of Registration.</b> Otherwise, the <b>Original Certificate will not be provided.</b></li>
+    <li><b>Attendance</b> in the <b>Convocation Rehearsal</b> is <b>Compulsory.</b></li>
+    <li>For <b>Physically Challenged Guest,</b> students must inform the NDUB authority for rendering special support.</b></li>
+    <li>The student must show this <b>‘Student Copy’</b> at the time of receiving <b>Gown, Entry Passes, Food Coupons along with Security Rules and Regulations.</b></li>
+    <li>To receive the official certificate the graduate must be present in person.</li>
 
-    <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
-                            <td colspan="2">
+                            <td colspan="5">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Total Credits Earned: {{$credit_earned ? $credit_earned : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                CGPA: {{$cgpa ? $cgpa : ''}}
+                                To be filled by the Office:
                                 </span>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Result Publication Date: {{$result_publish_date ? $result_publish_date : ''}}
+                            <td colspan="1">
+                                <span class="text-left" style="font-size: 11px; font-weight: normal">
+                                Gown Receiving Information
                                 </span>
                             </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Passing Trimester: {{$passing_trimester ? $passing_trimester : ''}}
+                            <td colspan="3">
+                                <span class="text-center" style="font-size: 11px; font-weight: normal; text-align:center;">
+                                
+                                </span>
+                            </td>
+                            <td colspan="1">
+                                <span class="text-center" style="font-size: 11px; font-weight: bold; text-align:center;">
+                                <br><br>
+                                <p>
+                                    __________________<br>
+                                    Signature and Date
+                                </p>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <span class="text-left" style="font-size: 11px; font-weight: normal;">
+                                Gown Returning Information
+                                </span>
+                            </td>
+                            <td colspan="3">
+                                <span class="text-center" style="font-size: 11px; font-weight: normal; text-align:center;">
+                                
+                                </span>
+                            </td>
+                            <td colspan="1">
+                                <span class="text-center" style="font-size: 11px; font-weight: bold; text-align:center;">
+                                <br><br>
+                                <p>
+                                    __________________<br>
+                                    Signature and Date
+                                </p>
                                 </span>
                             </td>
                         </tr>
@@ -510,221 +233,21 @@
             </div>
         </div>
     </div>
-
-    <p style="font-size: 14px; font-weight: bold">Guest Details</p>
-    <p style="font-size: 11px; font-weight: normal">Maximum two (2) persons are allowed. Once submitted, guest names will not be changed. Guests less than 15 years old are not allowed to be accompanied in the convocation ceremony. Depends on the availability of seats. First come first get basis.
-    </p>
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Particulars
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Guest 1
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Guest 2
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Guest Name
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest1_name ? $guest1_name : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest2_name ? $guest2_name : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Relationship
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest1_relationship ? $guest1_relationship : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest2_relationship ? $guest2_relationship : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                National ID/Birth Certificate No.
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest1_nid_or_birth_cert ? $guest1_nid_or_birth_cert : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest2_nid_or_birth_cert ? $guest2_nid_or_birth_cert : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Present Address
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest1_present_address ? $guest1_present_address : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest2_present_address ? $guest2_present_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Permanent Address
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest1_permanent_address ? $guest1_permanent_address : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$guest2_permanent_address ? $guest2_permanent_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
-    </div>
-    <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
-    </p>
-    <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
-    </p>
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Clearance from Respective Sections
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Authorized Signature with Date & Seal:
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Library (Room# 601)
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Accounts (Room# 208)
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Department
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Administrative
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
-    </div>
-
-    <p style="font-size: 14px; font-weight: bold">Attachments:</p>
-    <p style="font-size: 11px; font-weight: normal">
-    Please submit the following documents with the Registration Form:
-    <ol style="font-size: 11px; font-weight: normal">
-    <li>Bring <b>attested photocopies of all previous academic degrees,</b> and these documents are to be submitted.</li>
-    <li>The <b>Provisional Certificate from NDUB received earlier is to be returned</b> at the time of receiving the Official Certificate.</li>
-    <li>Four copies of <b>Passport-size color photographs in formal dress.</b> Write your name and ID on the backside of the photographs.</li>
-    <li>Bring <b>‘Original Bank Slip’</b> or <b>‘Online Payment Receipt’</b> of Convocation Registration Fee.</li>
-    <li>Bring one copy of a <b>Passport-size photo for each guest,</b> and <b>a photocopy of their NID Card or Birth Registration Certificate.</b></li>
     <!-- Add more sentences as needed -->
     </ol>
-    </p>
+    
+
     <!-- Second page signature start -->
     <!-- <div class="signature-grid-container"> -->
         <br><br>
-        <div class="signature-grid-item" style="float:left; text-align: center;">
-            <p>
-                ____________________________<br>
-                Registrar’s Signature & Date
-            </p>
-        </div>
         <div class="signature-grid-item" style="float:right; text-align: center;">
             <p>
                 ____________________________<br>
-                Deputy Controller of<br> 
-                Examination’s Signature & Date
+                Authorized Signature & Date
             </p>
         </div>
+    
+    
         <!-- <div class="signature-grid-item"></div>
         <div class="signature-grid-item"></div> -->
         

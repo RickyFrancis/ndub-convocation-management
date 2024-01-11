@@ -72,14 +72,15 @@ class ConvocationRegistrationController extends Controller{
             'nid_or_birth_cert_no'=>'required|max:150',
             'nid1_or_birth_cert2_status'=>'required',
             'dob'=>'required',
-            'present_address'=>'required',
-            'permanent_address'=>'required',
+            'present_address'=>'required|max:300',
+            'permanent_address'=>'required|max:300',
+            'office_address'=>'required|max:300',
             'guest1_name'=>'required|max:150',
             'guest1_relationship'=>'required|max:150',
             'guest1_nid_or_birth_cert'=>'required|max:150',
             'guest1_nid1_or_birth_cert2_status'=>'required',
-            'guest1_present_address'=>'required',
-            'guest1_permanent_address'=>'required',
+            'guest1_present_address'=>'required|max:300',
+            'guest1_permanent_address'=>'required|max:300',
             // 'guest2_name'=>'required|max:150',
             // 'guest2_relationship'=>'required|max:150',
             // 'guest2_nid_or_birth_cert'=>'required|max:150',
@@ -88,6 +89,8 @@ class ConvocationRegistrationController extends Controller{
             'guest2_name'=>'max:150',
             'guest2_relationship'=>'max:150',
             'guest2_nid_or_birth_cert'=>'max:150',
+            'guest2_present_address'=>'max:300',
+            'guest2_permanent_address'=>'max:400',
             'ssc_institute'=>'required|max:150',
             'ssc_board'=>'required|max:150',
             //'ssc_result'=>'required|max:5|numeric',
@@ -395,7 +398,7 @@ class ConvocationRegistrationController extends Controller{
 
     }
 
-    public function registrationFromPDF(){
+    public function registrationFormPDF(){
         // For PDF
         $data = GraduateList::where('id', Auth::user()->graduate_lists_id)
         ->with(['departmentInfo', 'programInfo', 'batchInfo', 'secondProgramInfo'])
@@ -467,7 +470,82 @@ class ConvocationRegistrationController extends Controller{
         ];
 
         $pdf = Pdf::loadView('student.pdf.registration-form', $user)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4');
-        return $pdf->download('form.pdf');
+        return $pdf->download('Registration Form.pdf');
+    }
+
+    public function studentCopyPDF(){
+        // For PDF
+        $data = GraduateList::where('id', Auth::user()->graduate_lists_id)
+        ->with(['departmentInfo', 'programInfo', 'batchInfo', 'secondProgramInfo'])
+        ->first();
+
+        $user = [
+            'student_photo'=>$data->student_photo,
+            'name'=>$data->name,
+            'program_name'=>$data->programInfo->program_name,
+            'student_id'=>$data->student_id,
+            'batch_name'=>$data->batchInfo->batch_name,
+            'department_name'=>$data->departmentInfo->department_name,
+            'major'=>$data->major,
+            'minor'=>$data->minor,
+            'admission_year'=>$data->admission_year,
+            'admission_semester'=>$data->admission_semester,
+            'credit_earned'=>$data->credit_earned,
+            'cgpa'=>$data->cgpa,
+			'email'=>$data->email,
+            'passing_trimester'=>$data->passing_trimester,
+            'passing_year'=>$data->passing_year,
+            'father_name'=>$data->father_name,
+            'mother_name'=>$data->mother_name,
+            'phone'=>$data->phone,
+            'blood_group'=>$data->blood_group,
+            'nid_or_birth_cert_no'=>$data->nid_or_birth_cert_no,
+            'dob'=>$data->dob,
+            'result_publish_date'=>$data->result_publish_date,
+            'present_address'=>$data->present_address,
+            'permanent_address'=>$data->permanent_address,
+            'organization_name'=>$data->organization_name,
+            'designation'=>$data->designation,
+            'office_address'=>$data->office_address,
+            'office_phone'=>$data->office_phone,
+            'office_mobile'=>$data->office_mobile,
+            'guest1_name'=>$data->guest1_name,
+            'guest1_relationship'=>$data->guest1_relationship,
+            'guest1_nid_or_birth_cert'=>$data->guest1_nid_or_birth_cert,
+            'guest1_present_address'=>$data->guest1_present_address,
+            'guest1_permanent_address'=>$data->guest1_permanent_address,
+            'guest2_name'=>$data->guest2_name,
+            'guest2_relationship'=>$data->guest2_relationship,
+            'guest2_nid_or_birth_cert'=>$data->guest2_nid_or_birth_cert,
+            'guest2_present_address'=>$data->guest2_present_address,
+            'guest2_permanent_address'=>$data->guest2_permanent_address,
+            'ssc_institute'=>$data->ssc_institute,
+            'ssc_board'=>$data->ssc_board,
+            'ssc_result'=>$data->ssc_result,
+            'ssc_group'=>$data->ssc_group,
+            'ssc_passing_year'=>$data->ssc_passing_year,
+            'hsc_institute'=>$data->hsc_institute,
+            'hsc_board'=>$data->hsc_board,
+            'hsc_result'=>$data->hsc_result,
+            'hsc_group'=>$data->hsc_group,
+            'hsc_passing_year'=>$data->hsc_passing_year,
+            'bachelor_institute'=>$data->bachelor_institute,
+            'bachelor_board'=>$data->bachelor_board,
+            'bachelor_result'=>$data->bachelor_result,
+            'bachelor_group'=>$data->bachelor_group,
+            'bachelor_passing_year'=>$data->bachelor_passing_year,
+            'masters_institute'=>$data->masters_institute,
+            'masters_result'=>$data->masters_result,
+            'masters_passing_year'=>$data->masters_passing_year,
+			'others_institute'=>$data->others_institute,
+            'others_board'=>$data->others_board,
+            'others_result'=>$data->others_result,
+            'others_group'=>$data->others_group,
+            'others_passing_year'=>$data->others_passing_year
+        ];
+
+        $pdf = Pdf::loadView('student.pdf.student-copy', $user)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4');
+        return $pdf->download('Student Copy.pdf');
     }
 
 }
