@@ -114,18 +114,20 @@
     <div class="container">
         <div class="row mt-2">
             <div class="image-container">
-                <img id="img2" style="float:left;" src="data:image/png;base64,<?= base64_encode(file_get_contents(public_path('contents/admin/assets/img/form-ndub.png'))) ?>" alt="">
+                <img id="img2" style="float:left;" src="data:image/png;base64,<?= base64_encode(file_get_contents(public_path('contents/admin/assets/img/convocation-logo.png'))) ?>" alt="">
                 <img id="img1" style="float:right;" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/student/'.$student_photo))) ?>" alt="">
-                <div style="">
-                <p style="text-align: center;">
-                    <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
-                    <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span>
-                </p>
+                    <div style="">
+                        <p style="text-align: center;">
+                            <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
+                            <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span><br>
+                            <span style="font-size: 12px;">GPO BOX-7, 2/A, Arambagh, Motijheel, Dhaka 1000, Bangladesh</span><br>
+                            <span style="font-size: 12px;">Phone: +880 2-41070719, +880 2-41070720</span><br>
+                            <span style="font-size: 12px;">Email: info@ndub.edu.bd, Web: https://ndub.edu.bd/</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <br><br>
         <div class="row" style="margin-top: 30px;">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
@@ -205,46 +207,6 @@
                             <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Permanent Address: {{$permanent_address ? $permanent_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
-    </div>
-    <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name of the Organization: {{$organization_name ? $organization_name : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Designation: {{$designation ? $designation : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Office Address: {{$office_address ? $office_address : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Telephone No.: {{$office_phone ? $office_phone : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Mobile: {{$office_mobile ? $office_mobile : ''}}
                                 </span>
                             </td>
                         </tr>
@@ -421,66 +383,10 @@
                                 </span>
                             </td>
                         </tr>
-
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Other's
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_institute ? $others_institute : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_board ? $others_board : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_result ? $others_result : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_group ? $others_group : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                {{$others_passing_year ? $others_passing_year : ''}}
-                                </span>
-                            </td>
-                        </tr>
                     </table>
             </div>
         </div>
     </div>
-<br><br>
-    <!-- First page signature start -->
-    <!-- <div class="signature-grid-container"> -->
-        <div class="signature-grid-item" style="float:left; text-align: center;">
-            <p>
-                ____________________________<br>
-                Student’s Signature
-            </p>
-        </div>
-        <!-- <div class="signature-grid-item"></div>
-        <div class="signature-grid-item"></div> -->
-        <div class="signature-grid-item" style="float:right; text-align: center;">
-            <p>
-                _____________<br>
-                Date
-            </p>
-            
-        </div>
-</div>
-    <!-- </div> -->
-    <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
-    <!-- Page break -->
-    <div class="page-break"></div>
 
     <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
     <div class="row">
@@ -500,14 +406,74 @@
                             </td>
                         </tr>
                         <tr>
+                            <td colspan="4">
+                                <span class="text-left" style="font-size: 11px; font-weight: bold">
+                                Passing Trimester: {{$passing_trimester ? $passing_trimester : ''}}
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <!-- First page signature start -->
+    <!-- <div class="signature-grid-container"> -->
+        <div class="signature-grid-item" style="float:left; text-align: center;">
+            <p>
+                ____________________________<br>
+                Student’s Signature
+            </p>
+        </div>
+        <!-- <div class="signature-grid-item"></div>
+        <div class="signature-grid-item"></div> -->
+        <div class="signature-grid-item" style="float:right; text-align: center;">
+            <p>
+                _____________<br>
+                Date
+            </p>
+            
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
+    <!-- Page break -->
+    <div class="page-break"></div>
+
+    <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
+    <div class="row">
+            <div class="col-12 mt-2">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
                             <td colspan="2">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Result Publication Date: {{$result_publish_date ? $result_publish_date : ''}}
+                                Name of the Organization: {{$organization_name ? $organization_name : ''}}
                                 </span>
                             </td>
                             <td colspan="2">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Passing Trimester: {{$passing_trimester ? $passing_trimester : ''}}
+                                Designation: {{$designation ? $designation : ''}}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <span class="text-left" style="font-size: 11px; font-weight: bold">
+                                Office Address: {{$office_address ? $office_address : ''}}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="text-left" style="font-size: 11px; font-weight: bold">
+                                Telephone No.: {{$office_phone ? $office_phone : ''}}
+                                </span>
+                            </td>
+                            <td colspan="2">
+                                <span class="text-left" style="font-size: 11px; font-weight: bold">
+                                Mobile: {{$office_mobile ? $office_mobile : ''}}
                                 </span>
                             </td>
                         </tr>
@@ -538,6 +504,25 @@
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Guest 2
                                 </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <span class="text-left" style="font-size: 11px; font-weight: bold">
+                                Guest Photo
+                                </span>
+                            </td>
+                            <td colspan="1">
+                                @if($guest1_photo!='')
+                                    <img id="img1" style="" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/guest/'.$guest1_photo))) ?>" alt="">
+                                @else
+                                @endif
+                            </td>
+                            <td colspan="1">
+                                @if($guest2_photo!='')
+                                    <img id="img1" style="" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/guest/'.$guest2_photo))) ?>" alt="">
+                                @else
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -676,7 +661,7 @@
                         <tr>
                             <td colspan="2">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Department
+                                Department (Office use only)
                                 </span>
                             </td>
                             <td colspan="2">
@@ -688,7 +673,7 @@
                         <tr>
                             <td colspan="2">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Administrative
+                                Administrative (Office use only)
                                 </span>
                             </td>
                             <td colspan="2">

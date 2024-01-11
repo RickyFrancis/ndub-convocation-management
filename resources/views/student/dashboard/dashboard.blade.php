@@ -134,11 +134,6 @@
                         <td>{{$user->credit_earned ? $user->credit_earned : ''}}</td>
                         </tr>
                         <tr>
-                        <td><b>Result Publication Date</b></td>
-                        <td>:</td>
-                        <td>{{$user->result_publish_date ? $user->result_publish_date : ''}}</td>
-                        </tr>
-                        <tr>
                         <td></td>
                         <td></td>
                         <td><div class="text-bold"><h4>Academic Background</h4></div></td>
@@ -235,32 +230,6 @@
                         <td><b>Master's Passing Year</b></td>
                         <td>:</td>
                         <td>{{$user->masters_passing_year ? $user->masters_passing_year : ''}}</td>
-                        </tr>
-                        <!-- Others -->
-                        <tr>
-                        <td><b>Other's Institute</b></td>
-                        <td>:</td>
-                        <td>{{$user->others_institute ? $user->others_institute : ''}}</td>
-                        </tr>
-                        <tr>
-                        <td><b>Other's Board</b></td>
-                        <td>:</td>
-                        <td>{{$user->others_board ? $user->others_board : ''}}</td>
-                        </tr>
-                        <tr>
-                        <td><b>Other's Result</b></td>
-                        <td>:</td>
-                        <td>{{$user->others_result ? $user->others_result : ''}}</td>
-                        </tr>
-                        <tr>
-                        <td><b>Other's Group</b></td>
-                        <td>:</td>
-                        <td>{{$user->others_group ? $user->others_group : ''}}</td>
-                        </tr>
-                        <tr>
-                        <td><b>Other's Passing Year</b></td>
-                        <td>:</td>
-                        <td>{{$user->others_passing_year ? $user->others_passing_year : ''}}</td>
                         </tr>
                         <tr>
                         <td></td>
@@ -677,15 +646,6 @@
                         <td>
                         @if($user->second_program_grad_list_id!='')
                             {{$user->secondProgramInfo->credit_earned ? $user->secondProgramInfo->credit_earned : ''}}
-                        @endif
-                        </td>
-                        </tr>
-                        <tr>
-                        <td><b>Result Publication Date</b></td>
-                        <td>:</td>
-                        <td>
-                        @if($user->second_program_grad_list_id!='')
-                            {{$user->secondProgramInfo->result_publish_date ? $user->secondProgramInfo->result_publish_date : ''}}
                         @endif
                         </td>
                         </tr>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('graduate_lists', function (Blueprint $table) {
             $table->id('id');
             $table->string('name')->nullable();
-            $table->string('student_id')->nullable();
+            $table->string('student_id')->nullable()->unique();
             $table->integer('program_id')->nullable();
             $table->integer('batch_id')->nullable();
             $table->integer('department_id')->nullable();
@@ -97,8 +97,12 @@ return new class extends Migration
             $table->integer('deleted_by')->nullable();
             $table->integer('deleted_at')->nullable();
             $table->integer('edit_start_status')->default(0);
-            //$table->integer('photo_upload_status')->default(0);
+            $table->integer('photo_upload_status')->default(0);
             $table->integer('child_account_status')->default(0);
+            $table->integer('bachelor_program_status')->default(0);
+            $table->integer('master_program_status')->default(0);
+            $table->integer('student_program_choice')->default(0);
+            $table->integer('document_verify_status')->default(0);
             $table->integer('parent_account_status')->default(0);
             $table->integer('registration_complete_status')->default(0);
             $table->integer('payment_complete_status')->default(0);

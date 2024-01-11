@@ -138,7 +138,7 @@
                 <div class="form-group row mb-3 @error('admission_year') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Admission Year:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="admission_year" value="{{old('admission_year')}}" required>
+                    <input type="text" class="form-control" name="admission_year" value="{{old('admission_year')}}" placeholder="According to the transcript" required>
                     @error('admission_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -148,7 +148,7 @@
                 <div class="form-group row mb-3 @error('admission_semester') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Admission Trimester/Semester:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="admission_semester" value="{{old('admission_semester')}}" required>
+                    <input type="text" class="form-control" name="admission_semester" value="{{old('admission_semester')}}" placeholder="According to the transcript" required>
                     @error('admission_semester')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -158,7 +158,7 @@
                 <div class="form-group row mb-3 @error('passing_year') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Passing Year<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="passing_year" value="{{old('passing_year')}}" required>
+                    <input type="text" class="form-control" name="passing_year" value="{{old('passing_year')}}" placeholder="According to the transcript" required>
                     @error('passing_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -168,7 +168,7 @@
                 <div class="form-group row mb-3 @error('passing_trimester') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Passing Trimester/Semester:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="passing_trimester" value="{{old('passing_trimester')}}" required>
+                    <input type="text" class="form-control" name="passing_trimester" value="{{old('passing_trimester')}}" placeholder="According to the transcript" required>
                     @error('passing_trimester')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -178,7 +178,7 @@
                 <div class="form-group row mb-3 @error('credit_earned') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Total Credits Earned:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="credit_earned" value="{{old('credit_earned')}}" required>
+                    <input type="text" class="form-control" name="credit_earned" value="{{old('credit_earned')}}" placeholder="According to the transcript" required>
                     @error('credit_earned')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -188,7 +188,7 @@
                 <div class="form-group row mb-3 @error('cgpa') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>CGPA:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cgpa" value="{{old('cgpa')}}" required>
+                    <input type="text" class="form-control" name="cgpa" value="{{old('cgpa')}}" placeholder="According to the transcript" required>
                     @error('cgpa')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

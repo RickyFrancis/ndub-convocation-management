@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
             $table->string('details')->nullable();
+            $table->integer('job_status')->default(0);
             $table->string('remarks')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();

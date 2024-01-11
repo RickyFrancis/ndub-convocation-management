@@ -121,7 +121,7 @@
                 <div class="form-group row mb-3 @error('major') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Major: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="major" value="{{$user->major}}">
+                    <input type="text" class="form-control" name="major" value="{{$user->major}}" placeholder="According to the transcript">
                     @error('major')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -131,7 +131,7 @@
                 <div class="form-group row mb-3 @error('minor') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Minor: (If Applicable)<span class="text-danger"></span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="minor" value="{{$user->minor}}">
+                    <input type="text" class="form-control" name="minor" value="{{$user->minor}}" placeholder="According to the transcript">
                     @error('minor')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -141,7 +141,7 @@
                 <div class="form-group row mb-3 @error('admission_year') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Admission Year:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="admission_year" value="{{$user->admission_year}}" required>
+                    <input type="text" class="form-control" name="admission_year" value="{{$user->admission_year}}" placeholder="According to the transcript" required>
                     @error('admission_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -151,7 +151,7 @@
                 <div class="form-group row mb-3 @error('admission_semester') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Admission Trimester/Semester:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="admission_semester" value="{{$user->admission_semester}}" required>
+                    <input type="text" class="form-control" name="admission_semester" value="{{$user->admission_semester}}" placeholder="According to the transcript" required>
                     @error('admission_semester')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -161,7 +161,7 @@
                 <div class="form-group row mb-3 @error('passing_year') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Passing Year:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="passing_year" value="{{$user->passing_year}}" required>
+                    <input type="text" class="form-control" name="passing_year" value="{{$user->passing_year}}" placeholder="According to the transcript" required>
                     @error('passing_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -171,7 +171,7 @@
                 <div class="form-group row mb-3 @error('passing_trimester') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Passing Trimester/Semester:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="passing_trimester" value="{{$user->passing_trimester}}" required>
+                    <input type="text" class="form-control" name="passing_trimester" value="{{$user->passing_trimester}}" placeholder="According to the transcript" required>
                     @error('passing_trimester')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -181,7 +181,7 @@
                 <div class="form-group row mb-3 @error('credit_earned') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Total Credits Earned:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="credit_earned" value="{{$user->credit_earned}}" required>
+                    <input type="text" class="form-control" name="credit_earned" value="{{$user->credit_earned}}" placeholder="According to the transcript" required>
                     @error('credit_earned')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -191,7 +191,7 @@
                 <div class="form-group row mb-3 @error('cgpa') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>CGPA:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cgpa" value="{{$user->cgpa}}" required>
+                    <input type="text" class="form-control" name="cgpa" value="{{$user->cgpa}}" placeholder="According to the transcript" required>
                     @error('cgpa')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -703,57 +703,6 @@
                     <div class="col-sm-6">
                     <input type="text" class="form-control" name="masters_passing_year" value="{{$user->masters_passing_year}}">
                     @error('masters_passing_year')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <!-- Others -->
-                <div class="form-group row mb-3 @error('others_institute') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Other's Institute:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="others_institute" value="{{$user->others_institute}}">
-                    @error('others_institute')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('others_board') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Other's Board:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="others_board" value="{{$user->others_board}}">
-                    @error('others_board')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('others_result') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Other's Result:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="others_result" value="{{$user->others_result}}">
-                    @error('others_result')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('others_group') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Other's Group:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="others_group" value="{{$user->others_group}}">
-                    @error('others_group')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('others_passing_year') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Other's Year:<span class="text-danger"></span></b></label>
-                    <div class="col-sm-6">
-                    <input type="text" class="form-control" name="others_passing_year" value="{{$user->others_passing_year}}">
-                    @error('others_passing_year')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
