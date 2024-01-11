@@ -3,6 +3,7 @@
 use App\Http\Controllers\ConvocationRegistrationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SecondProgramRegistrationController;
+use App\Http\Controllers\SupportTicketController;
 use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/student/second-registration/{id}', [SecondProgramRegistrationController::class, 'add'])->name('student_second_registration');
     Route::post('dashboard/student/second-registration/submit', [SecondProgramRegistrationController::class, 'submit'])->name('student_second_registration_submit');
 });
+//Support Ticket
+Route::get('support/ticket', [SupportTicketController::class, 'add'])->name('add_support_ticket');
+Route::post('support/ticket/submit', [SupportTicketController::class, 'submit'])->name('submit_ticket');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

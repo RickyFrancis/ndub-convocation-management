@@ -40,6 +40,15 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('add_support_ticket') }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Support
+                            </p>
+                        </a>
+                    </li>
                 @endif
 
                 {{-- @if (Auth::user()->role_id == '3')

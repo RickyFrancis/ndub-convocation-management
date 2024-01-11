@@ -67,7 +67,7 @@
             @endif
             @endauth
             @endif
-            <a class="btn btn-light btn-lg ml-3 mb-1" href="{{ route('register') }}">Support</a>
+            <a class="btn btn-light btn-lg ml-3 mb-1" href="{{ route('add_support_ticket') }}">Support</a>
             </div>
         </div>
     </div>
