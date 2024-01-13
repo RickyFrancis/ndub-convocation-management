@@ -47,6 +47,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/student/second-registration/{id}', [SecondProgramRegistrationController::class, 'add'])->name('student_second_registration');
     Route::post('dashboard/student/second-registration/submit', [SecondProgramRegistrationController::class, 'submit'])->name('student_second_registration_submit');
+    Route::get('dashboard/student/second-registration/edit/{id}', [SecondProgramRegistrationController::class, 'edit'])->name('edit_second_registration');
+    Route::post('dashboard/student/second-registration/update', [SecondProgramRegistrationController::class, 'update'])->name('update_second_registration');
 });
 //Support Ticket
 Route::get('support/ticket', [SupportTicketController::class, 'add'])->name('add_support_ticket');

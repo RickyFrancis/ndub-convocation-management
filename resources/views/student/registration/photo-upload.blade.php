@@ -66,6 +66,30 @@
                     </div>
                 </div>
 
+                <div class="form-group row mb-3 @error('student_nid_or_birth_cert_photo') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Student NID/Birth Certificate Photo:<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="file" onchange="readStudentNidURL(this);" class="form-control" name="student_nid_or_birth_cert_photo" value="" required>
+                    @error('student_nid_or_birth_cert_photo')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <br>
+                    <img id="student_nid_or_birth_cert_photo_review" src="#" alt=""/>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3 @error('student_signature_photo') is-invalid @enderror">
+                    <label class="col-sm-3 col-form-label"><b>Student Signature Photo:<span class="text-danger">*</span></b></label>
+                    <div class="col-sm-6">
+                    <input type="file" onchange="readStudentSignatureURL(this);" class="form-control" name="student_signature_photo" value="" required>
+                    @error('student_signature_photo')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <br>
+                    <img id="student_signature_photo_review" src="#" alt=""/>
+                    </div>
+                </div>
+
                 <div class="form-group row mb-3 @error('guest1_photo') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Guest 1 Photo:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">

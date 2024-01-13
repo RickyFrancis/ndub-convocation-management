@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Carbon;
 
 class RegisteredUserController extends Controller
 {
@@ -38,9 +39,11 @@ class RegisteredUserController extends Controller
             //'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'student_id' => 'required|max:50|exists:graduate_lists,student_id|unique:users,student_id',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'student_program_choice' => ['required'],
         ],[
             'student_id.exists'=>'Your student ID is invalid, please open a support ticket for resolving this issue.',
             'student_id.unique'=>'Your account already registered with this student ID, please login or go to forget password.',
+            'student_program_choice.unique'=>'Please choose one option.',
         ]);
 
         $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();
@@ -51,8 +54,14 @@ class RegisteredUserController extends Controller
             'student_id' => $request->student_id,
             'graduate_lists_id' => $graduate_lists_info->id,
             'email' => $graduate_lists_info->email,
+            'student_program_choice' => $request->student_program_choice,
             'role_id' => '3',
             'password' => Hash::make($request->password),
+        ]);
+
+        $update = GraduateList::where('id', $graduate_lists_info->id)->update([
+            'student_program_choice' => $request->student_program_choice,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
 
         event(new Registered($user));

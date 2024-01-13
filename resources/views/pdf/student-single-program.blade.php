@@ -111,27 +111,24 @@
             <div class="image-container">
                 <img id="img2" style="float:left;" src="data:image/png;base64,<?= base64_encode(file_get_contents(public_path('contents/admin/assets/img/form-ndub.png'))) ?>" alt="">
                 <img id="img1" style="float:right;" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/student/'.$student_photo))) ?>" alt="">
-                <div style="">
-                <p style="text-align: center;">
-    <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
-    <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span>
-</p>
+                    <div style="">
+                        <p style="text-align: center;">
+                            <span style="font-weight: bold; font-size: 22px;">NOTRE DAME UNIVERSITY BANGLADESH</span><br>
+                            <span style="font-size: 16px;">2nd CONVOCATION REGISTRATION FORM</span><br>
+                            <span style="font-size: 12px;">GPO BOX-7, 2/A, Arambagh, Motijheel, Dhaka 1000, Bangladesh</span><br>
+                            <span style="font-size: 12px;">Phone: +880 2-41070719, +880 2-41070720</span><br>
+                            <span style="font-size: 12px;">Email: info@ndub.edu.bd, Web: https://ndub.edu.bd/</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <br><br>
-        <div class="row" style="margin-top: 30px;">
+        <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
+        <div class="row" style="margin-top: 10px;">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
                     <table class="table table-bordered">
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name Of the Student: {{$name ? $name : ''}}
-                                </span>
-                            </td>
-                        </tr>
                         <tr>
                             <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
@@ -153,17 +150,14 @@
                                 </span>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="4">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Please, keep this slip safely. Without this student slip ‘Original Certificate’ will not be delivered.
-                                </span>
-                            </td>
-                        </tr>
                     </table>
+                </div>
             </div>
         </div>
-    </div>
+
+    <span class="text-left" style="font-size: 11px; font-weight: bold; margin-top: 10px;">
+    Please, keep this slip safely. Without this student slip ‘Original Certificate’ will not be delivered.
+    </span>
 <br><br>
 <p style="font-size: 14px; font-weight: bold">Instructions:</p>
     <ol style="font-size: 11px; font-weight: normal; text-align:justify">

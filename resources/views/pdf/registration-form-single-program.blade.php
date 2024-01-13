@@ -46,6 +46,10 @@
             width: 120px;
             height: 120px;
         }
+        #signature {
+            width: 300px;
+            height: 80px;
+        }
         /* .image-container {
             display: flex;
             align-items: center;
@@ -127,44 +131,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" style="margin-top: 30px;">
+        </div style="margin-top: 30px;">
+
+        <p style="font-size: 14px; font-weight: bold">Student's Personal Information</p>
+        <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="4">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Name Of the Student: {{ $name ? strtoupper($name) : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                ID Number: {{$student_id ? $student_id : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Program: {{$program_name ? $program_name : ''}}
-                                </span>
-                            </td>
-                            <td colspan="1">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Batch: {{$batch_name ? $batch_name : ''}}
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Major: {{$major ? $major : ''}}
-                                </span>
-                            </td>
-                            <td colspan="2">
-                                <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                Minor: {{$minor ? $minor : ''}}
+                                Name of the Student: {{ $name ? strtoupper($name) : ''}}
                                 </span>
                             </td>
                         </tr>
@@ -215,11 +192,50 @@
         </div>
     </div>
 
+    <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
+    <div class="row">
+        <div class="col-12 mt-2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <td colspan="1">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            ID Number: {{$student_id ? $student_id : ''}}
+                            </span>
+                        </td>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Program: {{$program_name ? $program_name : ''}}
+                            </span>
+                        </td>
+                        <td colspan="1">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Batch: {{$batch_name ? $batch_name : ''}}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Major: {{$major ? $major : ''}}
+                            </span>
+                        </td>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Minor: {{$minor ? $minor : ''}}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <p style="font-size: 14px; font-weight: bold">Academic Background</p>
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="width:100%; border-collapse:collapse; table-layout:fixed;">
                         <tr>
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
@@ -228,7 +244,8 @@
                             </td>
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
-                                School/College/University
+                                School/College
+                                /University
                                 </span>
                             </td>
                             <td colspan="1">
@@ -388,6 +405,30 @@
         </div>
     </div>
 
+    <br><br>
+    <!-- First page signature start -->
+    <!-- <div class="signature-grid-container"> -->
+        <!-- <div class="signature-grid-item" style="float:left; text-align: center;">
+            <p>
+                ____________________________<br>
+                Student’s Signature
+            </p>
+        </div> -->
+        <!-- <div class="signature-grid-item"></div>
+        <div class="signature-grid-item"></div> -->
+        <!-- <div class="signature-grid-item" style="float:right; text-align: center;">
+            <p>
+                _____________<br>
+                Date
+            </p>
+            
+        </div> -->
+    </div>
+    <!-- </div> -->
+    <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
+    <!-- Page break -->
+    <div class="page-break"></div>
+
     <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
     <div class="row">
             <div class="col-12 mt-2">
@@ -416,30 +457,6 @@
             </div>
         </div>
     </div>
-
-    <br><br>
-    <!-- First page signature start -->
-    <!-- <div class="signature-grid-container"> -->
-        <div class="signature-grid-item" style="float:left; text-align: center;">
-            <p>
-                ____________________________<br>
-                Student’s Signature
-            </p>
-        </div>
-        <!-- <div class="signature-grid-item"></div>
-        <div class="signature-grid-item"></div> -->
-        <div class="signature-grid-item" style="float:right; text-align: center;">
-            <p>
-                _____________<br>
-                Date
-            </p>
-            
-        </div>
-    </div>
-    <!-- </div> -->
-    <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
-    <!-- Page break -->
-    <div class="page-break"></div>
 
     <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
     <div class="row">
@@ -614,10 +631,37 @@
             </div>
         </div>
     </div>
+
     <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
     </p>
     <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
     </p>
+
+    <br>
+    <p style="font-size: 11px; font-weight: bold">I affirm the accuracy of the aforementioned information, attesting that it is indeed correct in its entirety.
+    </p>
+    <div class="signature-grid-item" style="float:right; text-align: center;">
+    
+    
+    
+        <!-- <p>
+            ____________________________<br>
+            Student’s Signature & Date 
+        </p> -->
+    </div>
+    <div class="row">
+            <div class="col-12 mt-2">
+        <img id="signature"  width= "100px" height =" 80px" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/signature/'.$signature_photo))) ?>" alt="">
+    <br>{{$form_submission_date ? $form_submission_date : ''}}
+        <p>
+        ____________________________<br>
+            Student’s Signature & Date 
+    </p>
+        
+    </div>
+    </div>
+
+
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">

@@ -85,15 +85,6 @@
                         </td>
                         </tr>
                         <tr>
-                        <td><b>Department</b></td>
-                        <td>:</td>
-                        <td>
-                            @if($user->department_id!='')
-                            {{$user->departmentInfo->department_name ? $user->departmentInfo->department_name : ''}}
-                            @endif
-                        </td>
-                        </tr>
-                        <tr>
                         <td><b>Major</b></td>
                         <td>:</td>
                         <td>{{$user->major ? $user->major : ''}}</td>
@@ -418,6 +409,28 @@
                         </td>
                         </tr>
                         <tr>
+                        <td><b>Student NID/Birth Certificate Photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->nid_or_birth_cert_photo!='')
+                            <img src="{{asset('uploads/nid-or-birth-certificate/'.$user->nid_or_birth_cert_photo)}}" alt="Student NID/Birth Certificate Photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
+                        <td><b>Student Signature Photo</b></td>
+                        <td>:</td>
+                        <td>
+                        @if($user->signature_photo!='')
+                            <img src="{{asset('uploads/signature/'.$user->signature_photo)}}" alt="Student Signature Photo" class="img-fluid" height="65px" width="65px">
+                        @else
+                            <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
+                        @endif
+                        </td>
+                        </tr>
+                        <tr>
                         <td><b>Guest 1 Photo</b></td>
                         <td>:</td>
                         <td>
@@ -495,22 +508,26 @@
         </div>
 
         <!-- Register second program section -->
-
+@if($user->student_program_choice==3)
         <div class="row">
             <div class="col-md-12">
             <hr>
             <h3 class="text-center">
                 @if($user->second_program_grad_list_id=='')
-                    Register for Another Program
+                    @if($user->bachelor_program_status==1)
+                        Register for Master's Program
+                    @elseif($user->master_program_status==1)
+                        Register for Bachelor's Program
+                    @endif
                 @elseif($user->second_program_grad_list_id!='')
-                    Registered Second Program
+                    @if($user->bachelor_program_status==1)
+                        Registered Master's Program
+                    @elseif($user->master_program_status==1)
+                        Registered Bachelor's Program
+                    @endif
                 @endif
             </h3>
             <h5 class="text-center">
-                @if($user->second_program_grad_list_id=='')
-                    (If you have completed multiple programs from NDUB, you can also register for that program for convocation)</h5>
-                @elseif($user->second_program_grad_list_id!='')
-                @endif
             <hr>
             </div>
 
@@ -525,6 +542,9 @@
                         @if($user->registration_complete_status==0)
                             @if($user->second_program_grad_list_id=='')
                                 <a class="btn btn-info" href="{{ route('student_second_registration', ['id' => $graduate_list_id]) }}" title="Register">Register</a>
+                            @endif
+                            @if($user->second_program_grad_list_id!='')
+                                <a class="btn btn-info" href="{{ route('edit_second_registration', ['id' => $graduate_list_id]) }}" title="Edit">Edit</a>
                             @endif
                         @endif
                         </div>
@@ -659,6 +679,7 @@
             </div>
         </div>
         </div>
+@endif
         @if($user->registration_complete_status==0)
         <hr>
         <div class="col-12 col-md-12 text-center">
@@ -690,12 +711,14 @@
             </div>
             <div class="modal-body modal_card">
             <b>Do you want to submit the convocation registration form?<br>
-            Once submitted, it cannot be edited and will be finalized.</b>
+            Once submitted, it cannot be edited and will be finalized.</b><br><br>
             <input type="hidden" id="modal_id" name="modal_id">
+            <input type="checkbox" required>
+            <b>I affirm the accuracy of the aforementioned information, attesting that it is indeed correct in its entirety.<b>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-md btn-success text-white waves-effect waves-light">Yes</button>
-                <button type="button" class="btn btn-md btn-danger waves-effect" data-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-md btn-success text-white waves-effect waves-light">Submit</button>
+                <button type="button" class="btn btn-md btn-danger waves-effect" data-dismiss="modal">Close</button>
             </div>
         </div>
         </form>

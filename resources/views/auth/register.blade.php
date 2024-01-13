@@ -24,12 +24,19 @@
             <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <input type="radio" value="1" name="student_program_choice"><span style="color:white;"> For the Bachelor's Program</span><br>
+            <input type="radio" value="2" name="student_program_choice"><span style="color:white;"> For the Master's Program</span><br>
+            <input type="radio" value="3" name="student_program_choice"><span style="color:white;"> For the Both Programs</span><br>
+            <x-input-error :messages="$errors->get('student_program_choice')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Create a new password')" />
 
             <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="new-password" />
+                autocomplete="new-password" placeholder="The password field must be at least 8 characters."/>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -39,7 +46,7 @@
             <x-input-label for="password_confirmation" :value="__('Please retype your new password for confirmation')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+                name="password_confirmation" required autocomplete="new-password" placeholder="Retype your password"/>
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>

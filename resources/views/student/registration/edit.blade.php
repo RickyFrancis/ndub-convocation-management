@@ -65,9 +65,20 @@
                         <select name="program" id="program" class="form-control" required>
                             <option value="">Select your program</option>
                             @forelse ($programs as $program )
+                            @if($user->bachelor_program_status==1)
+                                @if($program->is_program_from_master==0)
                             <option value="{{ $program->program_id }}" @if ( $user->program_id ==
                                 $program->program_id) selected @endif >{{ $program->program_name }}
                             </option>
+                                @endif
+                            @endif
+                            @if($user->master_program_status==1)
+                                @if($program->is_program_from_master==1)
+                            <option value="{{ $program->program_id }}" @if ( $user->program_id ==
+                                $program->program_id) selected @endif >{{ $program->program_name }}
+                            </option>
+                                @endif
+                            @endif
                             @empty
                             No program found
                             @endforelse
@@ -93,26 +104,6 @@
                             @endforelse
                         </select>
                         @error('batch')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-3 @error('department') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Department:<span
-                                class="text-danger">*</span></b></label>
-                    <div class="col-sm-6">
-                        <select name="department" id="department" class="form-control" required>
-                            <option value="">Select your department</option>
-                            @forelse ($departments as $department )
-                            <option value="{{ $department->department_id }}" @if ( $user->department_id ==
-                                $department->department_id) selected @endif >{{ $department->department_name }}
-                            </option>
-                            @empty
-                            No department found
-                            @endforelse
-                        </select>
-                        @error('department')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -310,9 +301,9 @@
                 <div class="text-center text-bold"><h4>Employment Status (If any) (Alumni Purpose)</h4></div>
                 <hr>
                 <div class="form-group row mb-3 @error('organization_name') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b> Name of the Organization:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b> Name of the Organization:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="organization_name" value="{{$user->organization_name}}">
+                    <input type="text" class="form-control" name="organization_name" value="{{$user->organization_name}}" required>
                     @error('organization_name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -320,9 +311,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('designation') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Designation:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Designation:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="designation" value="{{$user->designation}}">
+                    <input type="text" class="form-control" name="designation" value="{{$user->designation}}" required>
                     @error('designation')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -331,9 +322,9 @@
 
                 <div class="form-group row mb-3 @error('office_address') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Office Address:<span
-                                class="text-danger"></span></b></label>
+                                class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="office_address">{{ $user->office_address }}</textarea>
+                        <textarea type="text" class="form-control" name="office_address" required>{{ $user->office_address }}</textarea>
                         @error('office_address')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -341,9 +332,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('office_phone') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Office Telephone No.:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Office Telephone No.:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="office_phone" value="{{$user->office_phone}}">
+                    <input type="text" class="form-control" name="office_phone" value="{{$user->office_phone}}" required>
                     @error('office_phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -351,9 +342,9 @@
                 </div>
 
                 <div class="form-group row mb-3 @error('office_mobile') is-invalid @enderror">
-                    <label class="col-sm-3 col-form-label"><b>Office Mobile:<span class="text-danger"></span></b></label>
+                    <label class="col-sm-3 col-form-label"><b>Office Mobile:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" name="office_mobile" value="{{$user->office_mobile}}">
+                    <input type="text" class="form-control" name="office_mobile" value="{{$user->office_mobile}}" required>
                     @error('office_mobile')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

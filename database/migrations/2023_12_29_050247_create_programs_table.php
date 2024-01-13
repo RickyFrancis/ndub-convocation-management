@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id('program_id');
             $table->string('program_name')->nullable();
             $table->string('program_slug')->nullable();
+            $table->integer('is_program_from_master')->default(0);
             $table->integer('department_id')->nullable();
+            $table->string('department_name')->nullable();
             $table->string('program_created_by')->nullable();
             $table->string('program_updated_by')->nullable();
             $table->string('program_deleted_by')->nullable();

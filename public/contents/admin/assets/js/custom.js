@@ -55,6 +55,44 @@ function readStudentURL(input) {
     }
 }
 
+// Student NID photo preview
+
+function readStudentNidURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#student_nid_or_birth_cert_photo_review')
+                .attr('src', e.target.result)
+                .width(120)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// Student Signature photo preview
+
+function readStudentSignatureURL(input) {
+
+    if (input.files && input.files[0]) {
+        
+        var reader = new FileReader();
+        reader.onload = function (e) {
+
+            $('#student_signature_photo_review')
+                .attr('src', e.target.result)
+                .width(300)
+                .height(80);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 // Guest 1 photo preview
 
 function readGuest1URL(input) {

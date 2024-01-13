@@ -26,14 +26,14 @@ class SecondProgramRegistrationController extends Controller{
     public function add($encryptedId): View{
         try {
             $gradId = Crypt::decryptString($encryptedId);
+            $user = GraduateList::where('id', $gradId)->first();
         } catch (DecryptException $e) {
         }
 
-        $departments = Department::all();
         $programs = Program::all();
         $batchs = Batch::all();
 
-        return view('student.registration.second-registration', compact('gradId', 'departments', 'programs', 'batchs'));
+        return view('student.registration.second-registration', compact('gradId', 'programs', 'batchs', 'user'));
     }
 
     public function submit(Request $request){
@@ -41,13 +41,12 @@ class SecondProgramRegistrationController extends Controller{
             'student_id' =>'required|max:50|exists:graduate_lists,student_id|unique:users,student_id',
             'program'=>'required',
             'batch'=>'required',
-            'department'=>'required',
-            'admission_year'=>'required|max:255',
-            'admission_semester'=>'required|max:255',
+            'admission_year'=>'required|max:50',
+            'admission_semester'=>'required|max:50',
             'credit_earned'=>'required|max:255|numeric',
             'cgpa'=>'required|max:4|numeric',
-            'passing_trimester'=>'required|max:255',
-            'passing_year'=>'required|max:255',
+            'passing_trimester'=>'required|max:50',
+            'passing_year'=>'required|max:50',
         ],[
             'student_id.exists'=>'Your student ID is invalid, please open a support ticket for resolving this issue.',
             'student_id.unique'=>'Your account already registered with this student ID, please open a support ticket for resolving this issue.',
@@ -72,7 +71,6 @@ class SecondProgramRegistrationController extends Controller{
         $update1 = GraduateList::where('id', $graduate_lists_info->id)->update([
             'program_id'=>$request->program,
             'batch_id'=>$request->batch,
-            'department_id'=>$request->department,
             'major'=>$request->major,
             'minor'=>$request->minor,
             'admission_year'=>$request->admission_year,
@@ -94,11 +92,66 @@ class SecondProgramRegistrationController extends Controller{
         ]);
         
         if($userCreated && $update1 && $update2){
-            Session::flash('success','Second program registration successfully completed!');
+            Session::flash('success','Information successfully submitted!');
             return redirect()->route('dashboard');
         }else{
-            Session::flash('error','Second program registration process failed!');
+            Session::flash('error','Information submission process failed!');
             return redirect()->route('student_second_registration');
+        }
+    }
+
+    public function edit($encryptedId){
+        try {
+            $gradId = Crypt::decryptString($encryptedId);
+        } catch (DecryptException $e) {
+        }
+
+        $programs = Program::all();
+        $batchs = Batch::all();
+
+        $second_program_grad_list_id = GraduateList::where('id', $gradId)->value('second_program_grad_list_id');
+
+        $user = GraduateList::where('id', $second_program_grad_list_id)->first();
+        return view('student.registration.second-registration-edit', compact('user', 'programs', 'batchs'));
+    }
+
+    /**
+     * 
+     */
+    public function update(Request $request): RedirectResponse{
+        $this->validate($request,[
+            'program'=>'required',
+            'batch'=>'required',
+            'admission_year'=>'required|max:50',
+            'admission_semester'=>'required|max:50',
+            'credit_earned'=>'required|max:255|numeric',
+            'cgpa'=>'required|max:4|numeric',
+            'passing_trimester'=>'required|max:50',
+            'passing_year'=>'required|max:50',
+        ]);
+        $loggedUser = Auth::user()->id;
+        $update = GraduateList::where('id', $request->id)->update([
+            'program_id'=>$request->program,
+            'batch_id'=>$request->batch,
+            'major'=>$request->major,
+            'minor'=>$request->minor,
+            'admission_year'=>$request->admission_year,
+            'admission_semester'=>$request->admission_semester,
+            'credit_earned'=>$request->credit_earned,
+            'cgpa'=>$request->cgpa,
+            'passing_trimester'=>$request->passing_trimester,
+            'passing_year'=>$request->passing_year,
+            'edit_start_status'=>1,
+            'updated_by'=>$loggedUser,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+
+        if($update){
+            Session::flash('success','Information successfully updated!');
+            return redirect()->route('dashboard');
+        }else{
+            Session::flash('error','Information edit process failed!');
+            return redirect()->route('edit_student_information');
         }
     }
 }
