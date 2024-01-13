@@ -22,6 +22,8 @@
     })
     </script>
 @endif
+
+@if($user->registration_complete_status==0)
 <br>
 <div class="container">
     <div class="row">
@@ -266,6 +268,12 @@
                     </div>
                 </div>
 
+                <div class="col-sm-12">
+                    @error('nid1_or_birth_cert2_status')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-group row mb-3 @error('dob') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b>Date of Birth:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
@@ -298,8 +306,12 @@
                     </div>
                 </div>
                 <hr>
-                <div class="text-center text-bold"><h4>Employment Status (If any) (Alumni Purpose)</h4></div>
+                <div class="text-center text-bold"><h4>Employment Status (If any) (Alumni Purpose)</h4>
+                </div>
                 <hr>
+                <div class="text-danger text-bold mb-4">
+                    *If no employment status information is available, fill these fields with 'N/A'.<br>
+                </div>
                 <div class="form-group row mb-3 @error('organization_name') is-invalid @enderror">
                     <label class="col-sm-3 col-form-label"><b> Name of the Organization:<span class="text-danger">*</span></b></label>
                     <div class="col-sm-6">
@@ -709,4 +721,5 @@
     </div>
 </div>
 
+@endif
 @endsection

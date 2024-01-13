@@ -109,7 +109,7 @@
     <div class="container">
         <div class="row mt-2">
             <div class="image-container">
-                <img id="img2" style="float:left;" src="data:image/png;base64,<?= base64_encode(file_get_contents(public_path('contents/admin/assets/img/form-ndub.png'))) ?>" alt="">
+                <img id="img2" style="float:left;" src="data:image/png;base64,<?= base64_encode(file_get_contents(public_path('contents/admin/assets/img/convocation-logo.png'))) ?>" alt="">
                 <img id="img1" style="float:right;" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/student/'.$student_photo))) ?>" alt="">
                 <div style="">
                 <p style="text-align: center;">
@@ -136,14 +136,7 @@
                             </td>
                         </tr>
                     </table>
-                </div>
-            </div>
-        </div>
-
-    <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12 mt-2">
-            <div class="table-responsive">
+            <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
                 <table class="table table-bordered">
                     <tr>
                         <td colspan="4">
@@ -167,13 +160,6 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12 mt-2">
-            <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
                         <td colspan="4">
@@ -197,28 +183,14 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>
-    </div>
-
-    <span class="text-left" style="font-size: 11px; font-weight: bold">
+                <span class="text-left" style="font-size: 11px; font-weight: bold">
         Please, keep this slip safely. Without this student slip ‘Original Certificate’ will not be delivered.
+    </span><br><br>
+    <span class="text-left" style="font-size: 11px; font-weight: bold">
+        Last date of gown return:
     </span>
-<br><br>
-<p style="font-size: 14px; font-weight: bold">Instructions:</p>
-    <ol style="font-size: 11px; font-weight: normal; text-align:justify">
-    <li>The student is required to <b>keep this ‘Student Copy’ safely until receiving the Official Certificate</b> so that it can be shown when necessary.</li>
-    <li>Graduates must pay the registration fee, for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) in any branch of <b>Mercantile Bank Limited</b> or by <b>Rocket</b> as well as <b>Nexus Pay.</b></li>
-    <li><b>‘Original Bank Slip’</b> or <b>‘Online Payment Receipt’</b> of Convocation Registration Fee, photocopies of the Provisional Certificate, Transcript and NID, along with the Convocation Registration Form, must be submitted to the office.</li>
-    <li><b>Provisional Certificate</b> (not a photocopy) & <b>Student ID Card</b> must be <b>returned at the time of Registration.</b> Otherwise, the <b>Original Certificate will not be provided.</b></li>
-    <li><b>Attendance</b> in the <b>Convocation Rehearsal</b> is <b>Compulsory.</b></li>
-    <li>For <b>Physically Challenged Guest,</b> students must inform the NDUB authority for rendering special support.</b></li>
-    <li>The student must show this <b>‘Student Copy’</b> at the time of receiving <b>Gown, Entry Passes, Food Coupons along with Security Rules and Regulations.</b></li>
-    <li>To receive the official certificate the graduate must be present in person.</li>
 
-    <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
+
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="5">
@@ -273,19 +245,32 @@
             </div>
         </div>
     </div>
+    <br><br>
+        <div class="signature-grid-item" style="float:right; text-align: center;">
+            <p>
+                ____________________________<br>
+                Authorized Signature & Date
+            </p>
+        </div><br><br>
+<p style="font-size: 14px; font-weight: bold">Instructions:</p>
+    <ol style="font-size: 11px; font-weight: normal; text-align:justify">
+    <li>The student is required to <b>keep this ‘Student Copy’ safely until receiving the Official Certificate</b> so that it can be shown when necessary.</li>
+    <li>Graduates must pay the registration fee, for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) in any branch of <b>Mercantile Bank Limited</b> or by <b>Rocket</b> as well as <b>Nexus Pay.</b></li>
+    <li><b>‘Original Bank Slip’</b> or <b>‘Online Payment Receipt’</b> of Convocation Registration Fee, photocopies of the Provisional Certificate, Transcript and NID, along with the Convocation Registration Form, must be submitted to the office.</li>
+    <li><b>Provisional Certificate</b> (not a photocopy) & <b>Student ID Card</b> must be <b>returned at the time of Registration.</b> Otherwise, the <b>Original Certificate will not be provided.</b></li>
+    <li><b>Attendance</b> in the <b>Convocation Rehearsal</b> is <b>Compulsory.</b></li>
+    <li>For <b>Physically Challenged Guest,</b> students must inform the NDUB authority for rendering special support.</b></li>
+    <li>The student must show this <b>‘Student Copy’</b> at the time of receiving <b>Gown, Entry Passes, Food Coupons along with Security Rules and Regulations.</b></li>
+    <li>To receive the official certificate the graduate must be present in person.</li>
+
+    
     <!-- Add more sentences as needed -->
     </ol>
     
 
     <!-- Second page signature start -->
     <!-- <div class="signature-grid-container"> -->
-        <br><br>
-        <div class="signature-grid-item" style="float:right; text-align: center;">
-            <p>
-                ____________________________<br>
-                Authorized Signature & Date
-            </p>
-        </div>
+        
     
     
         <!-- <div class="signature-grid-item"></div>

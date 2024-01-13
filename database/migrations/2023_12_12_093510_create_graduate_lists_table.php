@@ -101,6 +101,7 @@ return new class extends Migration
             $table->string('form_submission_date')->nullable();
             $table->integer('edit_start_status')->default(0);
             $table->integer('photo_upload_status')->default(0);
+            $table->integer('second_program_info_complete_status')->default(0);
             $table->integer('child_account_status')->default(0);
             $table->integer('bachelor_program_status')->default(0);
             $table->integer('master_program_status')->default(0);

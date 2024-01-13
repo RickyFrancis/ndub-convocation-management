@@ -22,6 +22,7 @@
     })
     </script>
 @endif
+@if($user->registration_complete_status==0)
 <br>
 <div class="container">
     <div class="row">
@@ -51,7 +52,8 @@
                 <div class="text-danger text-bold mb-4">
                     *The file size should be a maximum of 2048 kilobytes (2MB).<br>
                     *Only JPG images are allowed.<br>
-                    *Maximum dimensions: Height 1000px, Width 1000px.
+                    *Maximum dimensions: Height 1000px, Width 1000px.<br>
+                    *Only for student signature photo: Height 80px, Width 300px.
                 </div>
                 
                 <div class="form-group row mb-3 @error('student_photo') is-invalid @enderror">
@@ -172,4 +174,5 @@
     </div>
 </div>
 
+@endif
 @endsection

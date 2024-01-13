@@ -106,6 +106,9 @@ class ConvocationRegistrationController extends Controller{
             'masters_institute'=>'max:50',
             'masters_result'=>'max:50',
             'masters_passing_year'=>'max:50',
+        ],[
+            'nid1_or_birth_cert2_status.required'=>'Please choose the option for the number you are entering (NID/Birth Certificate).',
+            'guest1_nid1_or_birth_cert2_status.required'=>'Please choose the option for the number you are entering (NID/Birth Certificate).',
         ]);
         $loggedUser = Auth::user()->id;
         $update = GraduateList::where('id', $request->id)->update([
@@ -357,40 +360,76 @@ class ConvocationRegistrationController extends Controller{
     public function formSubmit(Request $request): RedirectResponse{
         $submitStatus = GraduateList::where('id', $request->modal_id)->first();
 
-        if($submitStatus->edit_start_status==1 && $submitStatus->photo_upload_status==1){
-        
-            $loggedUser = Auth::user()->id;
+        if($submitStatus->student_program_choice==1){
+            if($submitStatus->edit_start_status==1 && $submitStatus->photo_upload_status==1){
             
-            $update1 = GraduateList::where('id', $request->modal_id)->update([
-                'registration_complete_status'=>1,
-                'updated_by'=>$loggedUser,
-                'form_submission_date'=>Carbon::now()->toDateTimeString(),
-                'updated_at'=>Carbon::now()->toDateTimeString(),
-            ]);
-            $second_program_grad_list_id = GraduateList::where('id', $request->modal_id)->value('second_program_grad_list_id');
-            
-            if($second_program_grad_list_id!=''){
-                $update2 = GraduateList::where('id', $second_program_grad_list_id)->update([
+                $loggedUser = Auth::user()->id;
+                
+                $update1 = GraduateList::where('id', $request->modal_id)->update([
                     'registration_complete_status'=>1,
                     'updated_by'=>$loggedUser,
                     'form_submission_date'=>Carbon::now()->toDateTimeString(),
                     'updated_at'=>Carbon::now()->toDateTimeString(),
                 ]);
-            }
-            
-            if($update1){
-                Session::flash('success','Convocation registration submitted successfully!');
-                return redirect()->route('dashboard');
+                $second_program_grad_list_id = GraduateList::where('id', $request->modal_id)->value('second_program_grad_list_id');
+                
+                if($second_program_grad_list_id!=''){
+                    $update2 = GraduateList::where('id', $second_program_grad_list_id)->update([
+                        'registration_complete_status'=>1,
+                        'updated_by'=>$loggedUser,
+                        'form_submission_date'=>Carbon::now()->toDateTimeString(),
+                        'updated_at'=>Carbon::now()->toDateTimeString(),
+                    ]);
+                }
+                
+                if($update1){
+                    Session::flash('success','Convocation registration submitted successfully!');
+                    return redirect()->route('dashboard');
+                }else{
+                    Session::flash('error','Convocation registration process failed!');
+                    return redirect()->route('dashboard');
+                }
+
             }else{
-                Session::flash('error','Convocation registration process failed!');
+                Session::flash('error','Please fill in all required information fields for final submission!');
                 return redirect()->route('dashboard');
             }
+        }elseif($submitStatus->student_program_choice==3){
+            if($submitStatus->edit_start_status==1 && $submitStatus->photo_upload_status==1 && $submitStatus->second_program_info_complete_status==1){
+            
+                $loggedUser = Auth::user()->id;
+                
+                $update1 = GraduateList::where('id', $request->modal_id)->update([
+                    'registration_complete_status'=>1,
+                    'updated_by'=>$loggedUser,
+                    'form_submission_date'=>Carbon::now()->toDateTimeString(),
+                    'updated_at'=>Carbon::now()->toDateTimeString(),
+                ]);
+                $second_program_grad_list_id = GraduateList::where('id', $request->modal_id)->value('second_program_grad_list_id');
+                
+                if($second_program_grad_list_id!=''){
+                    $update2 = GraduateList::where('id', $second_program_grad_list_id)->update([
+                        'registration_complete_status'=>1,
+                        'updated_by'=>$loggedUser,
+                        'form_submission_date'=>Carbon::now()->toDateTimeString(),
+                        'updated_at'=>Carbon::now()->toDateTimeString(),
+                    ]);
+                }
+                
+                if($update1){
+                    Session::flash('success','Convocation registration submitted successfully!');
+                    return redirect()->route('dashboard');
+                }else{
+                    Session::flash('error','Convocation registration process failed!');
+                    return redirect()->route('dashboard');
+                }
 
-        }else{
-            Session::flash('error','Please fill in all required information fields for final submission!');
-            return redirect()->route('dashboard');
+            }else{
+                Session::flash('error','Please fill in all required information fields for final submission!');
+                return redirect()->route('dashboard');
+            }
         }
-
+            
     }
 
     public function registrationFormPDF(){

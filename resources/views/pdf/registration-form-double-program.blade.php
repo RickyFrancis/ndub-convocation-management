@@ -39,12 +39,12 @@
             height: 70px;
         }
         #img1 {
-            width: 135px;
-            height: 144px;
+            width: 80px;
+            height: 80px;
         }
         #img2 {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
         }
         /* .image-container {
             display: flex;
@@ -129,10 +129,10 @@
             </div>
         </div style="margin-top: 30px;">
 
-        <p style="font-size: 14px; font-weight: bold">Student's Personal Information</p>
+        
         <div class="row">
-            <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <b style="font-size: 14px;">Student's Personal Information</b><br>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="4">
@@ -185,13 +185,13 @@
                         </tr>
                     </table>
             </div>
-        </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
+    
     <div class="row">
         <div class="col-12 mt-2">
             <div class="table-responsive">
+            <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
                 <table class="table table-bordered">
                     <tr>
                         <td colspan="1">
@@ -219,6 +219,25 @@
                         <td colspan="2">
                             <span class="text-left" style="font-size: 11px; font-weight: bold">
                             Minor: {{$minor ? $minor : ''}}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Total Credits Earned: {{$credit_earned ? $credit_earned : ''}}
+                            </span>
+                        </td>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            CGPA: {{$cgpa ? $cgpa : ''}}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Passing Trimester: {{$passing_trimester ? $passing_trimester : ''}}
                             </span>
                         </td>
                     </tr>
@@ -260,15 +279,34 @@
                             </span>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Total Credits Earned: {{$credit_earned1 ? $credit_earned1 : ''}}
+                            </span>
+                        </td>
+                        <td colspan="2">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            CGPA: {{$cgpa1 ? $cgpa1 : ''}}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <span class="text-left" style="font-size: 11px; font-weight: bold">
+                            Passing Trimester: {{$passing_trimester1 ? $passing_trimester1 : ''}}
+                            </span>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
     </div>
-
-    <p style="font-size: 14px; font-weight: bold">Academic Background</p>
+    
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Academic Background</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="1">
@@ -438,34 +476,19 @@
         </div>
     </div>
 
-    <br><br>
     <!-- First page signature start -->
     <!-- <div class="signature-grid-container"> -->
-        <div class="signature-grid-item" style="float:left; text-align: center;">
-            <p>
-                ____________________________<br>
-                Student’s Signature
-            </p>
-        </div>
-        <!-- <div class="signature-grid-item"></div>
-        <div class="signature-grid-item"></div> -->
-        <div class="signature-grid-item" style="float:right; text-align: center;">
-            <p>
-                _____________<br>
-                Date
-            </p>
-            
-        </div>
+        
     </div>
     <!-- </div> -->
     <!-- <p style="text-align: center; font-size: 11px; margin-top: 80px;">1</p> -->
     <!-- Page break -->
-    <div class="page-break"></div>
 
-    <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
-    <div class="row">
+    
+    <!-- <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="2">
@@ -489,12 +512,13 @@
                     </table>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
+    
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="2">
@@ -532,12 +556,14 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Guest Details</p>
-    <p style="font-size: 11px; font-weight: normal">Maximum two (2) persons are allowed. Once submitted, guest names will not be changed. Guests less than 15 years old are not allowed to be accompanied in the convocation ceremony. Depends on the availability of seats. First come first get basis.
-    </p>
+    
     <div class="row">
-            <div class="col-12 mt-2">
-                <div class="table-responsive">
+        <div class="col-12 mt-2">
+            <div class="table-responsive">
+                <p style="font-size: 11px; font-weight: normal">
+                <b style="font-size: 14px; font-weight: bold">Guest Details</b><br>
+                Maximum two (2) persons are allowed. Once submitted, guest names will not be changed. Guests less than 15 years old are not allowed to be accompanied in the convocation ceremony. Depends on the availability of seats. First come first get basis.
+                </p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="1">
@@ -665,14 +691,29 @@
         </div>
     </div>
 
-    <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
-    </p>
-    <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
-    </p>
-
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+
+                <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
+            </p>
+            <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
+            </p>
+            <p style="font-size: 11px; font-weight: bold">I affirm the accuracy of the aforementioned information, attesting that it is indeed correct in its entirety.
+            <br>
+            <img id="signature" style="width:130px; height:50px;"  src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/signature/'.$signature_photo))) ?>" alt="">
+            <br>
+            @php
+                if($form_submission_date==''){
+                    
+                }elseif($form_submission_date!=''){
+                    $date = strtotime($form_submission_date);
+                    echo date('d/m/Y', $date);
+                }
+            @endphp <br>
+            ____________________________<br>
+            Student’s Signature & Date 
+            </p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="2">
@@ -739,8 +780,8 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Attachments:</p>
     <p style="font-size: 11px; font-weight: normal">
+    <b style="font-size: 14px; font-weight: bold">Attachments:</b><br>
     Please submit the following documents with the Registration Form:
     <ol style="font-size: 11px; font-weight: normal">
     <li>Bring <b>attested photocopies of all previous academic degrees,</b> and these documents are to be submitted.</li>
@@ -751,9 +792,6 @@
     <!-- Add more sentences as needed -->
     </ol>
     </p>
-    <!-- Second page signature start -->
-    <!-- <div class="signature-grid-container"> -->
-        <br><br>
         <div class="signature-grid-item" style="float:left; text-align: center;">
             <p>
                 ____________________________<br>

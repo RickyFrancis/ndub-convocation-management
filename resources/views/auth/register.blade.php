@@ -25,9 +25,9 @@
         </div>
 
         <div class="mt-4">
-            <input type="radio" value="1" name="student_program_choice"><span style="color:white;"> For the Bachelor's Program</span><br>
-            <input type="radio" value="2" name="student_program_choice"><span style="color:white;"> For the Master's Program</span><br>
-            <input type="radio" value="3" name="student_program_choice"><span style="color:white;"> For the Both Programs</span><br>
+            <span style="color:white;">Registration for</span><br>
+            <input type="radio" value="1" name="student_program_choice"><span style="color:white;"> One program (Bachelor or Master)</span><br>
+            <input type="radio" value="3" name="student_program_choice"><span style="color:white;"> Both programs (Bachelor and Master)</span><br>
             <x-input-error :messages="$errors->get('student_program_choice')" class="mt-2" />
         </div>
 

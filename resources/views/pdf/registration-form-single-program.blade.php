@@ -133,10 +133,11 @@
             </div>
         </div style="margin-top: 30px;">
 
-        <p style="font-size: 14px; font-weight: bold">Student's Personal Information</p>
+        
         <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Student's Personal Information</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="4">
@@ -192,10 +193,11 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
+    
     <div class="row">
         <div class="col-12 mt-2">
             <div class="table-responsive">
+            <p style="font-size: 14px; font-weight: bold">Registered Program Details</p>
                 <table class="table table-bordered">
                     <tr>
                         <td colspan="1">
@@ -231,12 +233,13 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Academic Background</p>
+    
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Academic Background</p>
                     <table class="table table-bordered" style="width:100%; border-collapse:collapse; table-layout:fixed;">
-                        <tr>
+                        <tr style="word-wrap: break-word;">
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Name of Degree/Certificate
@@ -269,7 +272,7 @@
                                 </span>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="word-wrap: break-word;">
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 SSC/Equivalent
@@ -302,7 +305,7 @@
                             </td>
                         </tr>
 
-                        <tr>
+                        <tr style="word-wrap: break-word;">
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 HSC/Equivalent
@@ -335,7 +338,7 @@
                             </td>
                         </tr>
 
-                        <tr>
+                        <tr style="word-wrap: break-word;">
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Bachelor
@@ -368,7 +371,7 @@
                             </td>
                         </tr>
 
-                        <tr>
+                        <tr style="word-wrap: break-word;">
                             <td colspan="1">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Master's
@@ -429,10 +432,11 @@
     <!-- Page break -->
     <div class="page-break"></div>
 
-    <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
+    
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Exam Controller’s Office:</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="2">
@@ -458,10 +462,12 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
+    
     <div class="row">
             <div class="col-12 mt-2">
+                
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Employment Status [If any, for Alumni Purpose]</p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="2">
@@ -499,12 +505,13 @@
         </div>
     </div>
 
-    <p style="font-size: 14px; font-weight: bold">Guest Details</p>
-    <p style="font-size: 11px; font-weight: normal">Maximum two (2) persons are allowed. Once submitted, guest names will not be changed. Guests less than 15 years old are not allowed to be accompanied in the convocation ceremony. Depends on the availability of seats. First come first get basis.
-    </p>
+    
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
+                <p style="font-size: 14px; font-weight: bold">Guest Details</p>
+                <p style="font-size: 11px; font-weight: normal">Maximum two (2) persons are allowed. Once submitted, guest names will not be changed. Guests less than 15 years old are not allowed to be accompanied in the convocation ceremony. Depends on the availability of seats. First come first get basis.
+                </p>
                     <table class="table table-bordered">
                         <tr>
                             <td colspan="1">
@@ -632,36 +639,42 @@
         </div>
     </div>
 
-    <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
-    </p>
-    <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
-    </p>
-
-    <br>
-    <p style="font-size: 11px; font-weight: bold">I affirm the accuracy of the aforementioned information, attesting that it is indeed correct in its entirety.
-    </p>
-    <div class="signature-grid-item" style="float:right; text-align: center;">
     
-    
-    
-        <!-- <p>
+    <!-- <div class="signature-grid-item" style="float:right; text-align: center;">
+        <p>
             ____________________________<br>
             Student’s Signature & Date 
-        </p> -->
-    </div>
-    <div class="row">
-            <div class="col-12 mt-2">
-        <img id="signature"  width= "100px" height =" 80px" src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/signature/'.$signature_photo))) ?>" alt="">
-    <br>{{$form_submission_date ? $form_submission_date : ''}}
-        <p>
-        ____________________________<br>
-            Student’s Signature & Date 
-    </p>
+        </p>
+    </div> -->
         
-    </div>
+    <div class="row" style="font-size: 11px; font-weight: bold;">
+        <div class="col-12 mt-2">
+            <p style="font-size: 11px; font-weight: bold">Convocation Registration Fee for One Program Tk. 8,000/- (Eight Thousand) and for Two Programs Tk. 10,000/- (Ten Thousand) only.
+            </p>
+            <p style="font-size: 11px; font-weight: bold">Money Receipt No./Ref. No.: _________________________________________  Payment Date: ________________________________
+            </p>
+
+            <br>
+            <p style="font-size: 11px; font-weight: bold">I affirm the accuracy of the aforementioned information, attesting that it is indeed correct in its entirety.
+            </p>
+            <p>
+            <img id="signature" style="width:200px; height:80px;"  src="data:image/png;base64,<?=  base64_encode(file_get_contents(public_path('uploads/signature/'.$signature_photo))) ?>" alt="">
+            <br>
+            @php
+                if($form_submission_date==''){
+                    
+                }elseif($form_submission_date!=''){
+                    $date = strtotime($form_submission_date);
+                    echo date('d/m/Y', $date);
+                }
+            @endphp <br>
+            ____________________________<br>
+            Student’s Signature & Date 
+            </p>
+        </div>
     </div>
 
-
+    <div class="page-break"></div>
     <div class="row">
             <div class="col-12 mt-2">
                 <div class="table-responsive">
@@ -678,54 +691,59 @@
                                 </span>
                             </td>
                         </tr>
+                        
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Library (Room# 601)
                                 </span>
                             </td>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 
                                 </span>
                             </td>
                         </tr>
+                        
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Accounts (Room# 208)
                                 </span>
                             </td>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 
                                 </span>
                             </td>
                         </tr>
+                        
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Department (Office use only)
                                 </span>
                             </td>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 
                                 </span>
                             </td>
                         </tr>
+                        
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 Administrative (Office use only)
                                 </span>
                             </td>
-                            <td colspan="2">
+                            <td colspan="2" rowspan="">
                                 <span class="text-left" style="font-size: 11px; font-weight: bold">
                                 
                                 </span>
                             </td>
                         </tr>
+                        
                     </table>
             </div>
         </div>

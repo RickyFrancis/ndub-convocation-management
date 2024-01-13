@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
         ],[
             'student_id.exists'=>'Your student ID is invalid, please open a support ticket for resolving this issue.',
             'student_id.unique'=>'Your account already registered with this student ID, please login or go to forget password.',
-            'student_program_choice.unique'=>'Please choose one option.',
+            'student_program_choice.required'=>'Please choose one option.',
         ]);
 
         $graduate_lists_info = GraduateList::where('student_id', $request->student_id)->first();

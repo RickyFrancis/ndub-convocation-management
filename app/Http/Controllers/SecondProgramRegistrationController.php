@@ -81,13 +81,15 @@ class SecondProgramRegistrationController extends Controller{
             'passing_year'=>$request->passing_year,
             'second_program_grad_list_id'=>$parent_grad_lists_info->id,
             //'edit_start_status'=>'1',
-            'child_account_status'=>'1',
+            'second_program_info_complete_status'=>1,
+            'child_account_status'=>1,
             'updated_by'=>$loggedUser,
             'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
         
         $update2 = GraduateList::where('id', $request->grad_list_id)->update([
             'second_program_grad_list_id'=>$graduate_lists_info->id,
+            'second_program_info_complete_status'=>1,
             'parent_account_status'=>1,
         ]);
         
@@ -141,12 +143,20 @@ class SecondProgramRegistrationController extends Controller{
             'cgpa'=>$request->cgpa,
             'passing_trimester'=>$request->passing_trimester,
             'passing_year'=>$request->passing_year,
+            'second_program_info_complete_status'=>1,
             'edit_start_status'=>1,
             'updated_by'=>$loggedUser,
             'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
 
-        if($update){
+        $parent_program_grad_list_id = GraduateList::where('id', $request->id)->value('second_program_grad_list_id');
+        $update1 = GraduateList::where('id', $parent_program_grad_list_id)->update([
+            'second_program_info_complete_status'=>1,
+            'updated_by'=>$loggedUser,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+
+        if($update && $update1){
             Session::flash('success','Information successfully updated!');
             return redirect()->route('dashboard');
         }else{

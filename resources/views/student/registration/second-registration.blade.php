@@ -22,6 +22,7 @@
     })
     </script>
 @endif
+@if($user->registration_complete_status==0)
 <br>
 <div class="container">
     <div class="row">
@@ -224,4 +225,5 @@
     </div>
 </div>
 
+@endif
 @endsection

@@ -12,6 +12,10 @@
         </span>
         <br>
 
+        <div style="color: white; text-align:justify">
+            For support, call the NDUB IT (Software Division) between 9 AM and 5 PM at +8800000000, or email convocation.support@ndub.edu.bd.
+        </div>
+        <br>
         <!-- NDUB ID -->
         <div>
             <x-input-label for="student_id" :value="__('NDUB ID')" />

@@ -32,8 +32,9 @@ Route::get('/', function () {
 //     return view('admin.dashboard.dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Student
 // Convocation Registration (First Program)
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'student'])->group(function () {
     Route::get('/dashboard', [ConvocationRegistrationController::class, 'dashboard'])->name('dashboard');
     Route::get('dashboard/student/information/edit/{id}', [ConvocationRegistrationController::class, 'edit'])->name('edit_student_information');
     Route::post('dashboard/student/information/update', [ConvocationRegistrationController::class, 'update'])->name('update_student_information');
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/student-copy-pdf', [ConvocationRegistrationController::class, 'studentCopyPDF'])->name('studentCopyPDF');
 });
 // Convocation Registration (Second Program - If Applicable)
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'student'])->group(function () {
     Route::get('dashboard/student/second-registration/{id}', [SecondProgramRegistrationController::class, 'add'])->name('student_second_registration');
     Route::post('dashboard/student/second-registration/submit', [SecondProgramRegistrationController::class, 'submit'])->name('student_second_registration_submit');
     Route::get('dashboard/student/second-registration/edit/{id}', [SecondProgramRegistrationController::class, 'edit'])->name('edit_second_registration');
@@ -59,6 +60,8 @@ Route::post('support/ticket/submit', [SupportTicketController::class, 'submit'])
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+
 
 Route::get('/send-test-email', function () {
     Mail::to('ishan@ndub.edu.bd')->send(new WelcomeEmail());
