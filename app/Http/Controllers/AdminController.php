@@ -28,6 +28,21 @@ class AdminController extends Controller{
         return view('admin.student.all', compact('all'));
     }
 
+    public function viewStudent($encryptedId){
+        try {
+            $id = Crypt::decryptString($encryptedId);
+        } catch (DecryptException $e) {
+        }
+
+        $user = GraduateList::where('id', $id)->first();
+
+        if($user->child_account_status=='0'){
+            return view('admin.student.view', compact('user'));
+        }elseif($user->child_account_status=='1'){
+            //return view('student.dashboard.second-program-dashboard', compact('user'));
+        }
+    }
+
     public function editStudent($encryptedId): View{
         try {
             $id = Crypt::decryptString($encryptedId);
@@ -168,6 +183,37 @@ class AdminController extends Controller{
             return redirect()->route('all_student');
         }else{
             Session::flash('error','Information edit process failed!');
+            return redirect()->route('admin_edit_student_information');
+        }
+    }
+
+    public function editStudentEmail($encryptedId): View{
+        try {
+            $id = Crypt::decryptString($encryptedId);
+        } catch (DecryptException $e) {
+        }
+
+        $user = GraduateList::where('id', $id)->first();
+        return view('admin.student.edit-email', compact('user'));
+    }
+
+    public function updateStudentEmail(Request $request): RedirectResponse{
+        $this->validate($request,[
+            'email'=>'required|max:50',
+        ],[
+        ]);
+        $loggedUser = Auth::user()->id;
+        $update = GraduateList::where('id', $request->id)->update([
+            'email'=>$request->email,
+            'updated_by'=>$loggedUser,
+            'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
+
+        if($update){
+            Session::flash('success','Email successfully updated!');
+            return redirect()->route('all_student');
+        }else{
+            Session::flash('error','Email edit process failed!');
             return redirect()->route('admin_edit_student_information');
         }
     }

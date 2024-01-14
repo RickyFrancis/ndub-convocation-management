@@ -45,7 +45,7 @@ Swal.fire({
                 <div class="card-body">
                     
                     <div class="table-responsive">
-                    <table id="studenttableinfo" class="table table-bordered table-striped table-hover dt-responsive">
+                    <table id="studenttableinfo" class="table table-bordered table-striped">
                         <thead class="bg-dark text-white">
                         <tr>
                             <th>#</th>
@@ -84,13 +84,23 @@ Swal.fire({
                                     if($user->registration_complete_status==0){
                                         
                                     }if($user->registration_complete_status==1){
+                                        if($user->child_account_status=='1' && $user->parent_account_status=='0'){
                                 @endphp
-                                        <span class="btn btn-success">
+                                        <a class="btn btn-sm btn-primary text-white font-weight-bold" title="This Student Completed Registration">
+                                        @php
+                                            echo 'Registered as 2nd';
+                                        @endphp
+                                        <a>
+                                @php
+                                        }elseif($user->parent_account_status=='1' && $user->child_account_status=='0'){
+                                @endphp
+                                        <a class="btn btn-sm btn-success text-white font-weight-bold" title="This Student Completed Registration">
                                         @php
                                             echo 'Registered';
                                         @endphp
-                                        <span>
+                                        <a>
                                 @php
+                                        }
                                     }
                                 @endphp
                             </td>
@@ -98,12 +108,28 @@ Swal.fire({
                                 @php
                                     $graduate_list_id =  Crypt::encryptString($user->id);
                                 @endphp
-                                <a class="btn btn-info" href="{{ route('admin_edit_student_information', ['id' => $graduate_list_id]) }}" title="Edit">Edit</a>
-                                <!-- <a class="btn btn-danger text-white" id="delete" data-toggle="modal" data-target="#deleteModal" data-id="{{$user->user_slug}}" title="Delete">Delete</a> -->
+                                {{--  --}}
+                                @php
+                                if($user->child_account_status=='1'){
+                                        $graduate_second_list_id =  Crypt::encryptString($user->second_program_grad_list_id);
+                                @endphp
+                                <a class="btn btn-warning" href="{{ route('admin_view_student_information', ['id' => $graduate_second_list_id]) }}" title="View Student Information">View</a>
+                                @php
+                                    }elseif($user->parent_account_status=='0' || $user->parent_account_status=='1'){
+                                @endphp
+                                <a class="btn btn-warning" href="{{ route('admin_view_student_information', ['id' => $graduate_list_id]) }}" title="View Student Information">View</a>
+                                @php
+                                    }
+                                @endphp
                                 @if($user->registration_complete_status==1)
+                                <a class="btn btn-info mt-2" href="{{ route('admin_edit_student_information', ['id' => $graduate_list_id]) }}" title="Edit Student Information">Edit</a>
+                                <!-- <a class="btn btn-danger text-white" id="delete" data-toggle="modal" data-target="#deleteModal" data-id="{{$user->user_slug}}" title="Delete">Delete</a> -->
                                 <!-- Show PDF download option -->
-                                    <a class="btn btn-danger btn-sm text-white mt-2" href="{{ route('adminRegistrationFormPDF', ['id' => $graduate_list_id]) }}" title="Download Form">Download Registration Form</a>
-                                    <a class="btn btn-danger btn-sm text-white mt-2" href="{{ route('adminStudentCopyPDF', ['id' => $graduate_list_id]) }}" title="Download Student Copy">Download Student Copy</a>
+                                    <a class="btn btn-danger btn-sm text-white mt-2" href="{{ route('adminRegistrationFormPDF', ['id' => $graduate_list_id]) }}" title="Download Form">Registration Form</a>
+                                    <a class="btn btn-danger btn-sm text-white mt-2" href="{{ route('adminStudentCopyPDF', ['id' => $graduate_list_id]) }}" title="Download Student Copy">Student Copy</a>
+                                @endif
+                                @if($user->registration_complete_status==0)
+                                <a class="btn btn-info mt-2" href="{{ route('admin_edit_student_email', ['id' => $graduate_list_id]) }}" title="Edit Student Email">Edit Email</a>
                                 @endif
                             </td>
                         </tr>

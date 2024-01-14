@@ -129,7 +129,6 @@
             </div>
         </div style="margin-top: 30px;">
 
-        
         <div class="row">
                 <div class="table-responsive">
                 <b style="font-size: 14px;">Student's Personal Information</b><br>
@@ -187,7 +186,6 @@
             </div>
     </div>
 
-    
     <div class="row">
         <div class="col-12 mt-2">
             <div class="table-responsive">

@@ -70,8 +70,11 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('dashboard/admin/all-student', [AdminController::class, 'allStudent'])->name('all_student');
     //Route::get('dashboard/admin/add/student', [AdminController::class, 'addStudent'])->name('add_student');
     //Route::post('dashboard/admin/add/student/submit', [AdminController::class, 'submitStudent'])->name('submit_student');
+    Route::get('dashboard/admin/student-information/view/{id}', [AdminController::class, 'viewStudent'])->name('admin_view_student_information');
     Route::get('dashboard/admin/student-information/edit/{id}', [AdminController::class, 'editStudent'])->name('admin_edit_student_information');
-    Route::post('dashboard/admin/student/information/update', [AdminController::class, 'updateStudent'])->name('admin_update_student_information');
+    Route::post('dashboard/admin/student-information/update', [AdminController::class, 'updateStudent'])->name('admin_update_student_information');
+    Route::get('dashboard/admin/student-information/edit/email/{id}', [AdminController::class, 'editStudentEmail'])->name('admin_edit_student_email');
+    Route::post('dashboard/admin/student-information/email/update', [AdminController::class, 'updateStudentEmail'])->name('admin_update_student_email');
     //Route::get('dashboard/student/photo/upload/{id}', [AdminController::class, 'photoUpload'])->name('student_photo_upload');
     //Route::post('dashboard/student/photo/upload/update', [AdminController::class, 'photoUpdate'])->name('student_photo_update');
     Route::get('dashboard/registration-form-pdf/{id}', [PdfController::class, 'registrationFormPDF'])->name('adminRegistrationFormPDF');
