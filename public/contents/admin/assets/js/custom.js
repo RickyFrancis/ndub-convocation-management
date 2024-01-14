@@ -36,6 +36,18 @@ $.ajaxSetup({
     }
 });
 
+//Student data table
+
+
+$('#studenttableinfo').DataTable({
+        ordering:  false,
+        searching: true,
+        paging: true,
+        select: true,
+        //pageLength: 10
+    });
+
+
 // Student photo preview
 
 function readStudentURL(input) {

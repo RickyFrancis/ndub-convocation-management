@@ -50,4 +50,9 @@ class SupportTicketController extends Controller{
         }
 
     }
+    
+    public function allSupportTicket(){
+        $all = SupportTicket::all();
+        return view('admin.support-ticket.all', compact('all'));
+    }
 }

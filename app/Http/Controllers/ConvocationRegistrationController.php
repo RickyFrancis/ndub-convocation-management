@@ -743,5 +743,4 @@ class ConvocationRegistrationController extends Controller{
         $pdf = Pdf::loadView('pdf.student-single-program', $user)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4');
         return $pdf->download('Student Copy.pdf');
     }
-
 }

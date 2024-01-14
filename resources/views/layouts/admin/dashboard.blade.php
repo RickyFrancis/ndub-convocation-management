@@ -23,31 +23,23 @@
     <!-- Theme style -->
     <link href="{{ asset('contents/admin/') }}/dist/css/adminlte.min.css" rel="stylesheet">
     <!-- overlayScrollbars -->
-
     <link href="{{ asset('contents/admin/') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
         rel="stylesheet">
-
     <!-- Daterange picker -->
     <link href="{{ asset('contents/admin/') }}/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- summernote -->
     <link href="{{ asset('contents/admin/') }}/plugins/summernote/summernote-bs4.min.css" rel="stylesheet">
-
     <link href="{{ asset('contents/admin/assets') }}/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('contents/admin/assets') }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('contents/admin/assets') }}/css/style.css" rel="stylesheet">
     <link href="{{ asset('contents/admin/assets') }}/css/jquery.dataTables.min.css" rel="stylesheet">
-
-
     <script src="{{ asset('contents/admin/assets') }}/js/jquery-3.4.1.min.js"></script>
     <script src="{{ asset('contents/admin/assets') }}/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('contents/admin/assets') }}/js/sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         referrerpolicy="no-referrer" rel="stylesheet" />
-
     <style>
         /* Bootstrap 4 text input with search icon */
 
@@ -118,13 +110,13 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        {{-- <footer class="main-footer">
-    <strong>Copyright &copy; 2023 <a href="#">NDUB Convocation</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <!-- <b>Version</b> 1.0.0 -->
-    </div>
-  </footer> --}}
+        <!-- <footer class="main-footer">
+            <strong>Copyright &copy; 2024 <a href="#">NDUB Convocation</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0.0 -->
+            <!-- </div>
+        </footer> -->
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -137,9 +129,7 @@
 
     <!-- jQuery -->
     <script src="{{ asset('contents/admin/') }}/plugins/jquery/jquery.min.js"></script>
-
     <!-- jQuery UI 1.11.4 -->
-
     <script src="{{ asset('contents/admin/') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
@@ -174,12 +164,9 @@
     <script src="{{ asset('contents/admin/') }}/dist/js/pages/dashboard.js"></script>
 
     <!-- all js link -->
-
     <script src="{{ asset('contents/admin/assets') }}/js/bootstrap.min.js"></script>
     <script src="{{ asset('contents/admin/assets') }}/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('contents/admin/assets') }}/js/all.min.js"></script>
     <script src="{{ asset('contents/admin/assets') }}/js/custom.js"></script>
-
 </body>
-
 </html>

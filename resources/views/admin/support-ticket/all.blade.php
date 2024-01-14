@@ -35,7 +35,7 @@ Swal.fire({
                     <div class="row">
                         <div class="col-md-8">
                             
-                            <h4 class="card-title"><i class="fa fa-users"></i><b> All Student</b></h4>
+                            <h4 class="card-title"><i class="fa fa-users"></i><b> All Support Ticket</b></h4>
                         </div>
                         <div class="col-md-4 text-right">
                         </div>
@@ -52,7 +52,8 @@ Swal.fire({
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Photo</th>
+                            <th>Phone</th>
+                            <th>Details</th>
                             <th>Status</th>
                             <th>Manage</th>
                         </tr>
@@ -69,16 +70,8 @@ Swal.fire({
                             <td>{{$user->student_id ? $user->student_id : ''}}</td>
                             <td>{{$user->name ? $user->name : ''}}</td>
                             <td>{{$user->email ? $user->email : ''}}</td>
-                            <td>
-                                @php
-                                    $photo = $user->student_photo;
-                                @endphp
-                                @if($photo!='')
-                                    <img src="{{asset('uploads/student/'.$user->student_photo)}}" alt="User photo" class="img-fluid" height="65px" width="65px">
-                                @else
-                                    <!-- <img src="{{asset('contents/admin/assets')}}/img/avatar.png" alt="User photo" class="img-fluid" height="65px" width="65px"> -->
-                                @endif
-                            </td>
+                            <td>{{$user->phone ? $user->phone : ''}}</td>
+                            <td>{{$user->details ? $user->details : ''}}</td>
                             <td>
                                 @php
                                     if($user->registration_complete_status==0){

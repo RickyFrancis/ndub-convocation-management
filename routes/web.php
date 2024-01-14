@@ -4,6 +4,8 @@ use App\Http\Controllers\ConvocationRegistrationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SecondProgramRegistrationController;
 use App\Http\Controllers\SupportTicketController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PdfController;
 use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -61,7 +63,21 @@ Route::post('support/ticket/submit', [SupportTicketController::class, 'submit'])
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-
+// Admin
+// 
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+    //Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard/admin/all-student', [AdminController::class, 'allStudent'])->name('all_student');
+    //Route::get('dashboard/admin/add/student', [AdminController::class, 'addStudent'])->name('add_student');
+    //Route::post('dashboard/admin/add/student/submit', [AdminController::class, 'submitStudent'])->name('submit_student');
+    Route::get('dashboard/admin/student-information/edit/{id}', [AdminController::class, 'editStudent'])->name('admin_edit_student_information');
+    Route::post('dashboard/admin/student/information/update', [AdminController::class, 'updateStudent'])->name('admin_update_student_information');
+    //Route::get('dashboard/student/photo/upload/{id}', [AdminController::class, 'photoUpload'])->name('student_photo_upload');
+    //Route::post('dashboard/student/photo/upload/update', [AdminController::class, 'photoUpdate'])->name('student_photo_update');
+    Route::get('dashboard/registration-form-pdf/{id}', [PdfController::class, 'registrationFormPDF'])->name('adminRegistrationFormPDF');
+    Route::get('dashboard/student-copy-pdf/{id}', [PdfController::class, 'studentCopyPDF'])->name('adminStudentCopyPDF');
+    Route::get('dashboard/admin/support/ticket/all', [SupportTicketController::class, 'allSupportTicket'])->name('all_support_ticket');
+});
 
 Route::get('/send-test-email', function () {
     Mail::to('ishan@ndub.edu.bd')->send(new WelcomeEmail());

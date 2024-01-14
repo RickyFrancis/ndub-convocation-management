@@ -40,7 +40,38 @@
                             </p>
                         </a>
                     </li>
+                @endif
 
+                @if (Auth::user()->role_id == '1' || Auth::user()->role_id == '2')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('all_student') }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                All Students
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('all_student') }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Add Student
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('all_support_ticket') }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                All Support Tickets
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->role_id == '3')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('add_support_ticket') }}">
                             <i class="nav-icon fas fa-th"></i>
@@ -50,30 +81,7 @@
                         </a>
                     </li>
                 @endif
-
-                {{-- @if (Auth::user()->role_id == '3')
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{ url('dashboard/fop/award/form') }}">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Add Submission
-                            </p>
-                        </a>
-                    </li>
-                @endif --}}
-
-                @if (Auth::user()->role_id == '1' || Auth::user()->role_id == '2')
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('dashboard/user') }}">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                User
-                            </p>
-                        </a>
-                    </li>
-                @endif
-
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
